@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Integrated Shield Plan Master</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="/static/css/common.css" th:href="@{/css/common.css}" />
+</head>
+<body>
+
+<form action="#" th:action="@{/submit}" th:object="${applicationDto}" method="post">
+
+    <table style="text-align:left;">
+        <thead>
+        <tr>
+            <th colspan="2" height="40">Please provide your info below before starting recommendation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td height="40">Name</td>
+            <td>
+                <input type="text" name="name" th:field="*{name}" value="0"/>
+            </td>
+        <tr>
+            <td height="40">
+                <label>Age</label>
+            </td>
+            <td>
+                <input type="text" name="age" th:field="*{age}" value="0"/>
+            </td>
+        </tr>
+        <tr>
+            <td height="40">
+                <label>ID</label>
+            </td>
+            <td>
+                <input type="text" name="id" th:field="*{id}" value="0"/>
+            </td>
+        </tr>
+        <tr>
+            <td height="40">
+                <label>Issuer</label>
+            </td>
+            <td>
+                <input type="text" name="issuer" th:field="*{issuer}" value="0"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>

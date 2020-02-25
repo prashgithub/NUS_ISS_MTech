@@ -1,0 +1,11 @@
+web\dao\PolicyDto.class
+web\WebApplication.class
+integration\ISPMIntegration$3.class
+web\ApplicationConverter.class
+integration\ISPMIntegration$2.class
+web\dao\ApplicationDto.class
+integration\ISPMIntegration.class
+web\ISPMService.class
+integration\ISPMIntegration$1.class
+web\ISPMController.class
+web\ApplicationTemplate.class
