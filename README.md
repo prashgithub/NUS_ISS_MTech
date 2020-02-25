@@ -1,7 +1,12 @@
 # How to run web application
 
 ## build
+
 ```bash
+download Intellij then open the project
+
+or
+
 cd <your folder>\github\NUS_ISS_MTech\SystemCodes\ispm
 
 mvn clean package
