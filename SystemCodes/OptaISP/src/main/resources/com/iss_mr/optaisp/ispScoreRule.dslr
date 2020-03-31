@@ -1,0 +1,30 @@
+package com.iss_mr.optaisp;
+
+// ############################################################################
+// Hard constraints
+// ############################################################################
+
+rule "Hard last entry age"
+    when
+        $policy: Policy($lastEntryAge:lastEntryAge )
+        $preference:Preference ($requiredAge:requiredAge)
+        
+    then
+        scoreHolder.addHardConstraintMatch(kcontext, $lastEntryAge - $requiredAge);
+end
+
+
+// ############################################################################
+// Soft constraints
+// ############################################################################
+
+
+
+rule "Pre-Hospitalisation covered days"
+    when
+        $policy : Policy($postHospitalisationCoveredDays : postHospitalisationCoveredDays)
+        $preference:Preference ($requiredPostHospitalisationCoveredDays:requiredPostHospitalisationCoveredDays)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.addSoftConstraintMatch(kcontext, $postHospitalisationCoveredDays - $requiredPostHospitalisationCoveredDays);
+end
