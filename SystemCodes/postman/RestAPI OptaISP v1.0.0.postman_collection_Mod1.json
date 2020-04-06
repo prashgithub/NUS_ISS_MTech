@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "33f2daec-c244-4b2d-9046-b2841c670335",
+		"name": "RestAPI OptaISP v1.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "solvers/optaISPSolver",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "kieserver1!",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "kieserver",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-KIE-ContentType",
+						"value": "xstream",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<solver-instance>\n  <solver-config-file>com/iss_mr/optaisp/ispSolverConfig.solver.xml</solver-config-file>\n</solver-instance>"
+				},
+				"url": {
+					"raw": "http://localhost:8080/kie-server/services/rest/server/containers/OptaISP_1.0.0/solvers/ispSolver",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"kie-server",
+						"services",
+						"rest",
+						"server",
+						"containers",
+						"OptaISP_1.0.0",
+						"solvers",
+						"ispSolver"
+					]
+				},
+				"description": "1st PUT"
+			},
+			"response": []
+		},
+		{
+			"name": "solvers/ispSolver/state/solving",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "kieserver1!",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "kieserver",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-KIE-ContentType",
+						"value": "xstream",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<planning-problem class=\"com.iss_mr.optaisp.ISPSolution\" id=\"1\">\n  <id>0</id>\n  <policyList id=\"2\">\n    <com.iss_mr.optaisp.Policy id=\"3\">\n      <id>0</id>\n      <name>AIA HealthShield Gold Max A</name>\n      <dailyWard>100</dailyWard>\n      <majorOrganTransplant>100</majorOrganTransplant>\n  <postHospitalisationCoveredDays>50</postHospitalisationCoveredDays>\n <preHospitalisationCoveredDays>50</preHospitalisationCoveredDays>\n <surgery>100</surgery>\n <lastEntryAge>100</lastEntryAge>\n    </com.iss_mr.optaisp.Policy>\n    <com.iss_mr.optaisp.Policy id=\"4\">\n      <id>1</id>\n      <name>Prudential PruShield Premier</name>\n      <dailyWard>100</dailyWard>\n      <majorOrganTransplant>100</majorOrganTransplant>\n  <postHospitalisationCoveredDays>100</postHospitalisationCoveredDays>\n <preHospitalisationCoveredDays>100</preHospitalisationCoveredDays>\n <surgery>100</surgery>\n <lastEntryAge>100</lastEntryAge>\n    </com.iss_mr.optaisp.Policy>\n   </policyList>\n  <preferenceList id=\"5\">\n    <com.iss_mr.optaisp.Preference id=\"6\">\n      <id>0</id>\n      <requiredDailyWard>100</requiredDailyWard>\n      <requiredSurgery>100</requiredSurgery>\n      <requiredPreHospitalisationCoveredDays>75</requiredPreHospitalisationCoveredDays>\n <requiredPostHospitalisationCoveredDays>75</requiredPostHospitalisationCoveredDays>\n <requiredMajorOrganTransplant>100</requiredMajorOrganTransplant>\n <requiredAge>30</requiredAge>\n   </com.iss_mr.optaisp.Preference>\n   </preferenceList>\n</planning-problem>\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/kie-server/services/rest/server/containers/OptaISP_1.0.0/solvers/ispSolver/state/solving",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"kie-server",
+						"services",
+						"rest",
+						"server",
+						"containers",
+						"OptaISP_1.0.0",
+						"solvers",
+						"ispSolver",
+						"state",
+						"solving"
+					]
+				},
+				"description": "2nd POST"
+			},
+			"response": []
+		},
+		{
+			"name": "solvers/ispSolver/bestsolution",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "kieserver1!",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "kieserver",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/kie-server/services/rest/server/containers/OptaISP_1.0.0/solvers/ispSolver/bestsolution",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"kie-server",
+						"services",
+						"rest",
+						"server",
+						"containers",
+						"OptaISP_1.0.0",
+						"solvers",
+						"ispSolver",
+						"bestsolution"
+					]
+				},
+				"description": "3rd GET"
+			},
+			"response": []
+		}
+	]
+}
