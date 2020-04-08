@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="nus-iss-mr-ispm" />
+        <module name="ispm" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ispm" options="-parameters" />
       <module name="nus-iss-mr-ispm" options="-parameters" />
     </option>
   </component>

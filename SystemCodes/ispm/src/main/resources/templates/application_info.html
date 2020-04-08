@@ -4,11 +4,37 @@
     <title>Integrated Shield Plan Master</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" media="all"
+          href="/static/css/common.css" th:href="@{/css/bootstrap.min.css}" /></head>
+    <link rel="stylesheet" type="text/css" media="all"
           href="/static/css/common.css" th:href="@{/css/common.css}" />
-</head>
 <body>
 
-<form action="#" th:action="@{/submit}" th:object="${applicationDto}" method="post">
+<form action="#" th:action="@{/question1}" th:object="${applicationDto}" method="post">
+    <div>
+    <div class="form-group form_header">
+        <h1>Please provide your info below before starting recommendation</h1>
+    </div>
+    <div class="form-group col-sm-6" style="margin-left:25%">
+        <label for="name">Name :</label>
+        <input type="name" class="form-control" id="name" placeholder="input your name">
+    </div>
+    <div class="form-group col-sm-6" style="margin-left:25%">
+        <label for="age">Age :</label>
+        <input type="age" class="form-control" id="age" placeholder="input your age">
+    </div>
+    <div class="form-group col-sm-6" style="margin-left:25%">
+        <label for="id">ID :</label>
+        <input type="id" class="form-control" id="id" placeholder="input your id">
+    </div>
+    <div class="form-group col-sm-6" style="margin-left:25%">
+        <label for="issuer">Issuer :</label>
+        <input type="issuer" class="form-control" id="issuer" placeholder="input your issuser">
+    </div>
+    <button type="submit" class="btn btn-lg btn-info next_btn">Next</button>
+</div>
+</form>
+
+<!-- <form action="#" th:action="@{/submit}" th:object="${applicationDto}" method="post">
 
     <table style="text-align:left;">
         <thead>
@@ -50,6 +76,6 @@
     </table>
     <br/>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
+</form>-->
 </body>
 </html>
