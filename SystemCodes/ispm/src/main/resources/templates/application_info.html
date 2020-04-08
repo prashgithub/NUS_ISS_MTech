@@ -20,7 +20,12 @@
     </div>
     <div class="form-group col-sm-6" style="margin-left:25%">
         <label for="age">Age :</label>
-        <input type="age" class="form-control" id="age" placeholder="input your age">
+        <select class="form-control" id="age" name="age">
+            <th:block th:each="i: ${#numbers.sequence(1, 100)}">
+                <option th:if="${i} == 25" th:text="${i}" th:value="${i}" selected></option>
+                <option th:if="${i} != 25" th:text="${i}" th:value="${i}"></option>
+            </th:block>
+        </select>
     </div>
     <div class="form-group col-sm-6" style="margin-left:25%">
         <label for="id">ID :</label>
