@@ -18,9 +18,13 @@ run WebApplication.java
 open http://localhost:8092/ to start
 ```
 
-# How to refresh KIE lib in web application*
+# How to refresh KIE lib in web application
 ```bash
 copy KIE jar /home/iss-user/.m2/repository/com/iss_mr/Integrated_Shield_Plan_Master/Integrated_Shield_Plan_Master-1.0.0.jar to <your folder>\github\NUS_ISS_MTech\SystemCodes\ispm\lib
 
 build and run web application 
 ```
+
+# How to test opta with postman
+import collections "RestAPI OptaISP v1.0.0.postman_collection_Mod1.json" into postman
+send PUT,POST,GET by sequence
