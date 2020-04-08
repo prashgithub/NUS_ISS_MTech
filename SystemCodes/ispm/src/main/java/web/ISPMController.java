@@ -33,8 +33,20 @@ public class ISPMController {
 
 
 
-    @PostMapping("/submit")
-    public String submit(@ModelAttribute ApplicationDto applicationDto, Model model) {
+    @PostMapping("/question1")
+    public String question1(@ModelAttribute ApplicationDto applicationDto, Model model) {
+        model.addAttribute("matchedPolicy", ispmService.getMatchedPolicy(applicationDto));
+        return "question1";
+    }
+
+    @PostMapping("/question2")
+    public String question2(@ModelAttribute ApplicationDto applicationDto, Model model) {
+        model.addAttribute("matchedPolicy", ispmService.getMatchedPolicy(applicationDto));
+        return "question2";
+    }
+
+    @PostMapping("/complete")
+    public String result(@ModelAttribute ApplicationDto applicationDto, Model model) {
         model.addAttribute("matchedPolicy", ispmService.getMatchedPolicy(applicationDto));
         return "complete";
     }
