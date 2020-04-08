@@ -5,7 +5,7 @@ body {
   color:White;
   /*background-color: lightgoldenrodyellow;*/
   /*background-color: mediumseagreen;*/
-  background-image: url("/../img/banner.jpg");
+  background-image: url("/../img/backgroundx.jpg");
 
     /*Full height*/
   /*height: 100%;*/
@@ -45,12 +45,10 @@ form {
   /* Just to center the form on the page */
   /*margin: 0 auto;*/
   margin-top:5%;
-  margin-left:8%;
-  width: 800px;
+  margin-left:10%;
+  width: 80%;
   /* To see the limits of the form */
   padding: 1em;
-  border: 1px solid #CCC;
-  border-radius: 1em;
 
   font-color: white
 
@@ -136,5 +134,29 @@ button {
 #submitbutton {
   display: flex;
   justify-content: center;
+}
+
+.form_header{
+  margin-bottom: 5%;
+}
+
+.next_btn{
+  margin-left: 40%;
+  margin-top: 2%;
+  width: 20%;
+}
+
+.question_choice{
+  margin-left: 25%;
+  margin-top: 1%;
+  height: 80px;
+}
+
+.container{
+  margin-top:5%;
+  margin-left:10%;
+  width: 80%;
+  padding: 1em;
+  font-color: white
 }
 
