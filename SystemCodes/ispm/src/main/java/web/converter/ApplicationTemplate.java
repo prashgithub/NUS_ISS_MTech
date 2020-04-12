@@ -1,4 +1,4 @@
-package web;
+package web.converter;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
