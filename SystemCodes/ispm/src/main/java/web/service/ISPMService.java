@@ -1,12 +1,11 @@
-package web;
+package web.service;
 
 import com.iss_mr.integrated_shield_plan_master.Application;
 import integration.ISPMIntegration;
 import org.springframework.stereotype.Service;
+import web.converter.ApplicationConverter;
 import web.dao.ApplicationDto;
 import web.dao.PolicyDto;
-
-import java.util.List;
 
 @Service
 public class ISPMService {

@@ -1,4 +1,4 @@
-package web;
+package web.converter;
 
 import com.iss_mr.integrated_shield_plan_master.Applicant;
 import com.iss_mr.integrated_shield_plan_master.Application;
