@@ -113,7 +113,7 @@ INSERT INTO comp_policy
 
 
 INSERT INTO policy_feature
-(id,enum_val,name,description) values
+(id,name,description) values
 (1,'POLICY_PREM','Price of premiums'),
 (2,'PRE_HOSP_COVG','Pre-hospitalisation coverage'),
 (3,'POST_HOSP_COVG','Post-hospitalisation coverage'),

@@ -9,10 +9,7 @@ import javax.persistence.Id;
 @Entity
 @Data
 public class PolicyFeature {
-    private @Id
-    @GeneratedValue
-    Long id;
-    private String enumVal;
+    private @Id @GeneratedValue Long id;
     private String name;
     private String description;
 }
