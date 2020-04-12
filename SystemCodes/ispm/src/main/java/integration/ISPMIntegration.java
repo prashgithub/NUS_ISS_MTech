@@ -2,20 +2,21 @@ package integration;
 
 import com.iss_mr.integrated_shield_plan_master.Application;
 import com.iss_mr.integrated_shield_plan_master.Policy;
+import com.iss_mr.optaisp.ISPSolution;
+import com.iss_mr.optaisp.Preference;
 import org.kie.api.KieServices;
 import org.kie.api.event.process.*;
 import org.kie.api.event.rule.*;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.optaplanner.core.api.solver.Solver;
+import org.optaplanner.core.api.solver.SolverFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import web.WebApplication;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ISPMIntegration {
@@ -172,11 +173,73 @@ public class ISPMIntegration {
 			log.info("firedRules: Triggered {} rules", firedRules);
 		} catch (Exception exp) {
 			success = false;
-			log.error("Phq2 rule error: ", exp);
+			log.error(" rule error: ", exp);
 		} finally {
 			releaseResource(container);
 		}
 		return success;
+	}
+
+	public boolean invokeOpta(List<Object> dataObjectList, Map<String, Object> resultMap) {
+		KieContainer container=null;
+		boolean success = true;
+
+		try {
+			KieServices kieServices = KieServices.Factory.get();
+			 container = kieServices.newKieContainer(
+					kieServices.newReleaseId("com.iss_mr", "OptaISP", "1.0.0"));
+			SolverFactory<ISPSolution> solverFactory = SolverFactory.createFromKieContainerXmlResource(container,
+							"com/iss_mr/optaisp/ispSolverConfig.solver.xml");
+			Solver<ISPSolution> solver = solverFactory.buildSolver();
+			ISPSolution solution=solver.solve(getSolution());
+			log.info("invoke opta: Triggered {} opta", solution.getPreferenceList().size());
+			resultMap.put("Policy",solution.getPreferenceList().get(0).getPolicy());
+			resultMap.put("Application",dataObjectList.get(0));
+		} catch (Exception exp) {
+			success = false;
+			log.error(" opta error: ", exp);
+		} finally {
+			releaseResource(container);
+		}
+		return success;
+	}
+
+	private ISPSolution getSolution() {
+		com.iss_mr.optaisp.Policy policy = new com.iss_mr.optaisp.Policy();
+		policy.setId(1);
+		policy.setName("AIA HealthShield Gold Max A");
+		policy.setDailyWard(100);
+		policy.setMajorOrganTransplant(100);
+		policy.setPostHospitalisationCoveredDays(50);
+		policy.setPreHospitalisationCoveredDays(50);
+		policy.setSurgery(100);
+		policy.setLastEntryAge(100);
+
+		com.iss_mr.optaisp.Policy policy2 = new com.iss_mr.optaisp.Policy();
+		policy2.setId(2);
+		policy2.setName("Prudential PruShield Premier");
+		policy2.setDailyWard(100);
+		policy2.setMajorOrganTransplant(100);
+		policy2.setPostHospitalisationCoveredDays(100);
+		policy2.setPreHospitalisationCoveredDays(100);
+		policy2.setSurgery(100);
+		policy2.setLastEntryAge(100);
+
+		List<com.iss_mr.optaisp.Policy> policyList=new ArrayList();
+		policyList.add(policy);
+		policyList.add(policy2);
+
+		Preference preference = new Preference();
+		preference.setRequiredDailyWard(100);
+		preference.setRequiredSurgery(100);
+		preference.setRequiredPreHospitalisationCoveredDays(75);
+		preference.setRequiredPostHospitalisationCoveredDays(75);
+		preference.setRequiredMajorOrganTransplant(100);
+		preference.setRequiredAge(30);
+
+		return new ISPSolution(policyList,
+				Arrays.asList(preference),
+				null);
 	}
 	
 	/**
@@ -191,8 +254,10 @@ public class ISPMIntegration {
 		inputList.add(details);
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 
-		boolean invokeResult = invokeRules(inputList, "policyreasoning", resultMap);
-		log.info("ApplicationResult invoke rule: " + invokeResult);
+		//boolean invokeResult = invokeRules(inputList, "policyreasoning", resultMap);
+		//log.info("ApplicationResult invoke rule: " + invokeResult);
+		boolean invokeResult = invokeOpta(inputList,  resultMap);
+		log.info("ApplicationResult invoke opta: " + invokeResult);
 		
 		Object application = resultMap.get("Application");
 		Object policy=resultMap.get("Policy");
@@ -205,7 +270,12 @@ public class ISPMIntegration {
 		if (application != null && application instanceof Application) {
 			log.info("Application is found");
 			result= (Application)application;
-			result.setMatchedPolicy((Policy)policy);
+			com.iss_mr.optaisp.Policy optimalPolicy=(com.iss_mr.optaisp.Policy)policy;
+			com.iss_mr.integrated_shield_plan_master.Policy policyDisplayed=new com.iss_mr.integrated_shield_plan_master.Policy();
+			policyDisplayed.setName(optimalPolicy.getName());
+			policyDisplayed.setBenefit("PreHospitalisationCoveredDays = "+optimalPolicy.getPreHospitalisationCoveredDays());
+			policyDisplayed.setInsurer(optimalPolicy.getId().toString());
+			result.setMatchedPolicy(policyDisplayed);
 		}
 		
 		return result;

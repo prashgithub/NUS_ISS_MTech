@@ -54,32 +54,44 @@
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-internal</artifactId>
-            <version>7.12.0.Final</version>
+            <version>7.19.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.optaplanner</groupId>
+            <artifactId>optaplanner-core</artifactId>
+            <version>7.19.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.optaplanner</groupId>
+            <artifactId>optaplanner-persistence-jaxb</artifactId>
+            <version>7.19.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-bpmn2</artifactId>
-            <version>7.12.0.Final</version>
+            <version>7.19.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-flow</artifactId>
-            <version>7.12.0.Final</version>
+            <version>7.19.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-flow-builder</artifactId>
-            <version>7.12.0.Final</version>
+            <version>7.19.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-query-jpa</artifactId>
-            <version>7.12.0.Final</version>
+            <version>7.19.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-audit</artifactId>
-            <version>7.12.0.Final</version>
+            <version>7.19.0.Final</version>
         </dependency>
 
         <dependency>
@@ -116,7 +128,7 @@
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-api</artifactId>
-            <version>7.12.0.Final</version>
+            <version>7.19.0.Final</version>
         </dependency>
         <dependency>
             <groupId>com.iss_mr</groupId>
@@ -125,6 +137,13 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/Integrated_Shield_Plan_Master-1.0.0.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>com.iss_mr</groupId>
+            <artifactId>OptaISP</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/OptaISP-1.0.0.jar</systemPath>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -132,7 +151,11 @@
             <version>1.18.12</version>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.0.1-jre</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -144,6 +167,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.kie</groupId>
+                <artifactId>kie-maven-plugin</artifactId>
+                <version>7.19.0.Final</version>
+                <extensions>true</extensions>
             </plugin>
         </plugins>
     </build>
