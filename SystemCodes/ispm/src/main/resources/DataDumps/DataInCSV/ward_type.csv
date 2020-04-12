@@ -1,0 +1,6 @@
+"ward_id";"category";"typ";"descr"
+1;"Basic";"B2C";"equivalent or just slightly better than MediShield Life"
+2;"Standard";"B1";"coverage falls somewhere in between Basic and Class B1"
+3;"Class";"B1";"coverage for treatment in public hospital B1 wards"
+4;"Class";"A";"coverage for treatment in public hospital A wards"
+5;"Private";"Private";"coverage for treatment in private hospitals"

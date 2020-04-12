@@ -160,6 +160,12 @@ INSERT INTO comp_policy_feature
 (34,25,4,1000000,''),
 (35,29,4,600000,'');
 
+INSERT INTO comp_policy_premium
+(id,provider_name,ward_category,ward_type,policy_name,age,premium_amount) VALUES
+(1,'AIA','Private','Private','Basic Plan',40,160)
+;
+
+
 INSERT INTO question
 (id,name,value,stage,extra_data) VALUES
 (0,'question0','Invalid Request',0,''),
