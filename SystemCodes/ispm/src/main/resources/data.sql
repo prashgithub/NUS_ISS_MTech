@@ -150,3 +150,17 @@ INSERT INTO comp_policy_feature
 (33,21,4,1000000,''),
 (34,25,4,1000000,''),
 (35,29,4,600000,'');
+
+INSERT INTO question
+(id,name,value,stage,extra_data) VALUES
+(0,'question0','Invalid Request',0,''),
+(1,'question1','Age',1,''),
+(2,'question2','SPR/Citizen ',1,''),
+(3,'question3','Type of Ward?',2,'/api/wardTypes'),
+(4,'question4','Max Premium?',2,''),
+(5,'question5','Min Pre-Hospitalization days?',2,''),
+(6,'question6','Min Post-Hospitalization days?',2,''),
+(7,'question7','Annual coverage limt?',2,''),
+(8,'question8','Preferred Insurers?',2,'/api/insurerDetails'),
+(9,'question9','Overall Pref/Weightage/Adding Limit?',2,'/api/userPreference')
+;

@@ -14,7 +14,6 @@ public class ISPMService {
     private ISPMIntegration ispmIntegration = new ISPMIntegration();
 
     public PolicyDto getMatchedPolicy(ApplicationDto applicationDto) {
-
         Application result = ispmIntegration.getMatchedPolicy( ApplicationConverter.convertFromApplicationDto(applicationDto) );
         PolicyDto policyDto=new PolicyDto();
         policyDto.setName(result.getMatchedPolicy().getName());
