@@ -26,7 +26,6 @@ INSERT INTO customer
 (24,'The','Cure','dont@cry.com','8749340987',false)
 ;
 
-
 INSERT INTO insurer_detail
 (id,provider_name,start_year,current_rating,turnover_million,customer_size,claim_days) VALUES
 (1,'AIA',1991,7,1200,100000,0),
@@ -111,6 +110,16 @@ INSERT INTO comp_policy
 (27,7,27),
 (28,7,28),
 (29,7,29);
+
+
+INSERT INTO policy_feature
+(id,enum_val,name,description) values
+(1,'POLICY_PREM','Price of premiums'),
+(2,'PRE_HOSP_COVG','Pre-hospitalisation coverage'),
+(3,'POST_HOSP_COVG','Post-hospitalisation coverage'),
+(4,'ANNUAL_COVERAGE_LIMIT','Annual coverage limit'),
+(5,'PRE_HOSP_DAYS','Pre-hospitalisation coverage days'),
+(6,'POST_HOSP_DAYS','Post-hospitalisation coverage days');
 
 
 INSERT INTO comp_policy_feature
