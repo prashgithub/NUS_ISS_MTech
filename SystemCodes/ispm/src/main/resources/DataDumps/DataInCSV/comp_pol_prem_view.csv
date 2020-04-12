@@ -1,0 +1,85 @@
+"COMPANY";"WARD_CATEGORY";"WARD_TYPE";"POLICY_NAME";"AGE";"PREMIUM_AMOUNT"
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";20;382
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";20;320
+"AXA";"Private";"Private";"AXA Shield Plan A";20;331
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";20;328
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";20;322
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";20;278
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";20;324
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";30;450
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";30;450
+"AXA";"Private";"Private";"AXA Shield Plan A";30;428
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";30;420
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";30;427
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";30;368
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";30;420
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";40;700
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";40;644
+"AXA";"Private";"Private";"AXA Shield Plan A";40;600
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";40;610
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";40;720
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";40;590
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";40;650
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";50;1200
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";50;1200
+"AXA";"Private";"Private";"AXA Shield Plan A";50;1078
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";50;1030
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";50;1350
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";50;1030
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";50;1060
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";60;1800
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";60;2000
+"AXA";"Private";"Private";"AXA Shield Plan A";60;1700
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";60;1900
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";60;2113
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";60;1600
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";60;1700
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";65;2300
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";65;2700
+"AXA";"Private";"Private";"AXA Shield Plan A";65;2300
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";65;2500
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";65;2700
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";65;2060
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";65;2300
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";70;3000
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";70;3750
+"AXA";"Private";"Private";"AXA Shield Plan A";70;3000
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";70;3500
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";70;3500
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";70;3000
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";70;3050
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";75;4500
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";75;5300
+"AXA";"Private";"Private";"AXA Shield Plan A";75;4500
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";75;4900
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";75;5300
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";75;3890
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";75;4300
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";80;5600
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";80;7500
+"AXA";"Private";"Private";"AXA Shield Plan A";80;5500
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";80;6600
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";80;6700
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";80;5080
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";80;5900
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";85;6700
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";85;8200
+"AXA";"Private";"Private";"AXA Shield Plan A";85;6600
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";85;8800
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";85;8500
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";85;9500
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";85;10620
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";90;7900
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";90;8400
+"AXA";"Private";"Private";"AXA Shield Plan A";90;8000
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";90;10214
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";90;6300
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";90;7600
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";90;11395
+"AIA";"Private";"Private";"AIA HealthShield Gold Max A";100;9800
+"AVIVA";"Private";"Private";"Aviva MyShield Plan 1";100;9700
+"AXA";"Private";"Private";"AXA Shield Plan A";100;9000
+"Great Eastern";"Private";"Private";"Great Eastern Supreme Health P Plus";100;11289
+"Income";"Private";"Private";"Income Enhanced IncomeShield Preferred";100;7900
+"Prudential";"Private";"Private";"Prudential PruShield A Premier";100;9020
+"Raffles Health Insurance";"Private";"Private";"Raffles Shield Private";100;11040

@@ -1,0 +1,7 @@
+"policyfea_id";"policyfea_sname";"policyfea_fname";"descr"
+1;"Premium_Price";"Price of premiums";""
+2;"Pre_Hosp_Covg";"Pre-hospitalisation coverage";""
+3;"Post_Hosp_Covg";"Post-hospitalisation coverage";""
+4;"Annual_Covg";"Annual coverage limit";""
+5;"PreHospCovg_days";"Pre-hospitalisation coverage days";""
+6;"PostHospCovg_days";"Post-hospitalisation coverage days";""
