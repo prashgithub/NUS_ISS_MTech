@@ -14,7 +14,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -123,12 +122,6 @@
             <groupId>org.drools</groupId>
             <artifactId>drools-persistence-jpa</artifactId>
             <version>7.12.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.optaplanner</groupId>
-            <artifactId>optaplanner-core</artifactId>
-            <version>7.12.0.Final</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.kie</groupId>
