@@ -4,11 +4,19 @@ import com.iss_mr.integrated_shield_plan_master.Application;
 import com.iss_mr.integrated_shield_plan_master.Policy;
 import com.iss_mr.optaisp.ISPSolution;
 import com.iss_mr.optaisp.Preference;
+import org.jbpm.bpmn2.xml.UserTaskHandler;
+import org.jbpm.process.core.impl.WorkImpl;
+import org.jbpm.workflow.core.node.HumanTaskNode;
+import org.jbpm.workflow.instance.WorkflowProcessInstance;
+import org.jbpm.workflow.instance.WorkflowRuntimeException;
+import org.jbpm.workflow.instance.node.HumanTaskNodeInstance;
 import org.kie.api.KieServices;
 import org.kie.api.event.process.*;
 import org.kie.api.event.rule.*;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.process.ProcessInstance;
+import org.kie.api.task.TaskService;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
 import org.slf4j.Logger;
@@ -143,7 +151,6 @@ public class ISPMIntegration {
 				log.info("Node Name: {}  has been left", arg0.getNodeInstance().getNodeName());
 			}
 		});
-
 		return session;
 	}
 	
@@ -180,7 +187,7 @@ public class ISPMIntegration {
 		return success;
 	}
 
-	public boolean invokeOpta(List<Object> dataObjectList, Map<String, Object> resultMap) {
+	public boolean invokeOpta(Application application, Map<String, Object> resultMap) {
 		KieContainer container=null;
 		boolean success = true;
 
@@ -194,7 +201,7 @@ public class ISPMIntegration {
 			ISPSolution solution=solver.solve(getSolution());
 			log.info("invoke opta: Triggered {} opta", solution.getPreferenceList().size());
 			resultMap.put("Policy",solution.getPreferenceList().get(0).getPolicy());
-			resultMap.put("Application",dataObjectList.get(0));
+			resultMap.put("Application",application);
 		} catch (Exception exp) {
 			success = false;
 			log.error(" opta error: ", exp);
@@ -203,6 +210,85 @@ public class ISPMIntegration {
 		}
 		return success;
 	}
+
+	public boolean invokeProcess(List<Object> dataObjectList, Map<String, Object> resultMap) {
+		KieContainer container=null;
+		boolean success = true;
+
+		try {
+			KieServices kieServices = KieServices.Factory.get();
+			container = kieServices.newKieContainer(
+					kieServices.newReleaseId("com.iss_mr", "Integrated_Shield_Plan_Master", "1.0.0"));
+			KieSession session=container.newKieSession("ispSession");
+			session.addEventListener(new ProcessEventListener() {
+				public void beforeVariableChanged(ProcessVariableChangedEvent arg0) {
+					log.info("before variable: {} changed", arg0);
+				}
+
+				public void beforeProcessStarted(ProcessStartedEvent arg0) {
+					log.info("Process Name: {} has been started", arg0.getProcessInstance().getProcessName());
+				}
+
+				public void beforeProcessCompleted(ProcessCompletedEvent arg0) {
+					log.info("Process Name: {} has been completed", arg0.getProcessInstance().getProcessName());
+				}
+
+				public void beforeNodeTriggered(ProcessNodeTriggeredEvent arg0) {
+					log.info("Node Name: {} has been triggered", arg0.getNodeInstance().getNodeName());
+				}
+
+				public void beforeNodeLeft(ProcessNodeLeftEvent arg0) {
+					if(arg0.getNodeInstance() instanceof HumanTaskNodeInstance) {
+						HumanTaskNodeInstance humanTaskNode=(HumanTaskNodeInstance)arg0.getNodeInstance();
+						if(humanTaskNode.getHumanTaskNode().getName().equalsIgnoreCase("Task")) {
+							Application application = (Application)humanTaskNode.getWorkItem().getParameter("application");
+							invokeOpta(application,resultMap);
+						}
+					}
+					// if (arg0.getNodeInstance() instanceof RuleSetNodeInstance){
+					log.info("Node Name: {} has been left", arg0.getNodeInstance().getNodeName());
+					// }
+				}
+
+				public void afterVariableChanged(ProcessVariableChangedEvent arg0) {
+					log.info("after variable: {} changed", arg0);
+				}
+
+				public void afterProcessStarted(ProcessStartedEvent arg0) {
+					log.info("after Process Name: {} has been started", arg0.getProcessInstance().getProcessName());
+				}
+
+				public void afterProcessCompleted(ProcessCompletedEvent arg0) {
+					log.info("Process Name: {} has stopped", arg0.getProcessInstance().getProcessName());
+				}
+
+				public void afterNodeTriggered(ProcessNodeTriggeredEvent arg0) {
+					// if (arg0.getNodeInstance() instanceof RuleSetNodeInstance){
+					log.info("Node Name: {}  has been entered", arg0.getNodeInstance().getNodeName());
+					// }
+				}
+
+				public void afterNodeLeft(ProcessNodeLeftEvent arg0) {
+					log.info("Node Name: {}  has been left", arg0.getNodeInstance().getNodeName());
+				}
+			});
+
+			  Map<String,Object> parameters =new HashMap<>();
+			  parameters.put("application",dataObjectList.get(0));
+			ProcessInstance process=session.startProcess("Integrated_Shield_Plan_Master.process",parameters);
+
+			System.out.println("process state :"+process.getState());
+		}catch(WorkflowRuntimeException e){
+			log.error(" WorkflowRuntimeException : ", e);
+		} catch (Exception exp) {
+			success = false;
+			log.error(" process error: ", exp);
+		} finally {
+			releaseResource(container);
+		}
+		return success;
+	}
+
 
 	private ISPSolution getSolution() {
 		com.iss_mr.optaisp.Policy policy = new com.iss_mr.optaisp.Policy();
@@ -256,7 +342,7 @@ public class ISPMIntegration {
 
 		//boolean invokeResult = invokeRules(inputList, "policyreasoning", resultMap);
 		//log.info("ApplicationResult invoke rule: " + invokeResult);
-		boolean invokeResult = invokeOpta(inputList,  resultMap);
+		boolean invokeResult = invokeProcess(inputList,  resultMap);
 		log.info("ApplicationResult invoke opta: " + invokeResult);
 		
 		Object application = resultMap.get("Application");
