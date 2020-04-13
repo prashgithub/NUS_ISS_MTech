@@ -6,6 +6,7 @@ import com.iss_mr.optaisp.ISPSolution;
 import com.iss_mr.optaisp.Preference;
 import org.jbpm.bpmn2.xml.UserTaskHandler;
 import org.jbpm.process.core.impl.WorkImpl;
+import org.jbpm.process.instance.impl.humantask.HumanTaskHandler;
 import org.jbpm.workflow.core.node.HumanTaskNode;
 import org.jbpm.workflow.instance.WorkflowProcessInstance;
 import org.jbpm.workflow.instance.WorkflowRuntimeException;
@@ -272,15 +273,14 @@ public class ISPMIntegration {
 					log.info("Node Name: {}  has been left", arg0.getNodeInstance().getNodeName());
 				}
 			});
+			CustomHumanTaskHandler humanTaskHandler=new CustomHumanTaskHandler();
+			session.getWorkItemManager().registerWorkItemHandler("Human Task", humanTaskHandler);
 
 			  Map<String,Object> parameters =new HashMap<>();
 			  parameters.put("application",dataObjectList.get(0));
 			ProcessInstance process=session.startProcess("Integrated_Shield_Plan_Master.process",parameters);
-
 			System.out.println("process state :"+process.getState());
-		}catch(WorkflowRuntimeException e){
-			log.error(" WorkflowRuntimeException : ", e);
-		} catch (Exception exp) {
+		}catch (Exception exp) {
 			success = false;
 			log.error(" process error: ", exp);
 		} finally {
