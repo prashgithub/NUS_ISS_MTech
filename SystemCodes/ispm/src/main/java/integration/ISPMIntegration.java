@@ -2,6 +2,7 @@ package integration;
 
 import com.iss_mr.integrated_shield_plan_master.Application;
 import com.iss_mr.integrated_shield_plan_master.Policy;
+import com.iss_mr.optaisp.ISPConstraintConfiguration;
 import com.iss_mr.optaisp.ISPSolution;
 import com.iss_mr.optaisp.Preference;
 import org.jbpm.bpmn2.xml.UserTaskHandler;
@@ -18,6 +19,7 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.api.task.TaskService;
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
 import org.slf4j.Logger;
@@ -199,8 +201,10 @@ public class ISPMIntegration {
 			SolverFactory<ISPSolution> solverFactory = SolverFactory.createFromKieContainerXmlResource(container,
 							"com/iss_mr/optaisp/ispSolverConfig.solver.xml");
 			Solver<ISPSolution> solver = solverFactory.buildSolver();
-			ISPSolution solution=solver.solve(getSolution());
-			log.info("invoke opta: Triggered {} opta", solution.getPreferenceList().size());
+			solver.solve(getSolution());
+			ISPSolution solution=solver.getBestSolution();
+			System.out.println("opta solver explain: "+solver.explainBestScore());
+			log.info("invoke opta: Triggered {} opta", solution.getPreferenceList().get(0).getPolicy().getName());
 			resultMap.put("Policy",solution.getPreferenceList().get(0).getPolicy());
 			resultMap.put("Application",application);
 		} catch (Exception exp) {
@@ -323,9 +327,11 @@ public class ISPMIntegration {
 		preference.setRequiredMajorOrganTransplant(100);
 		preference.setRequiredAge(30);
 
-		return new ISPSolution(policyList,
-				Arrays.asList(preference),
-				null);
+		ISPConstraintConfiguration constraintConfiguration=new ISPConstraintConfiguration();
+		constraintConfiguration.setHardLastEntryAge(HardSoftScore.ofHard(1));
+		constraintConfiguration.setPreHospitalisationCoveredDays(HardSoftScore.ofSoft(10));
+		constraintConfiguration.setPostHospitalisationCoveredDays(HardSoftScore.ofSoft(10));
+		return new ISPSolution(policyList,Arrays.asList(preference),constraintConfiguration);
 	}
 	
 	/**
