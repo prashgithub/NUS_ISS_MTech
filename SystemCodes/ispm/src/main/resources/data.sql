@@ -26,7 +26,6 @@ INSERT INTO customer
 (24,'The','Cure','dont@cry.com','8749340987',false)
 ;
 
-
 INSERT INTO insurer_detail
 (id,provider_name,start_year,current_rating,turnover_million,customer_size,claim_days) VALUES
 (1,'AIA',1991,7,1200,100000,0),
@@ -113,6 +112,16 @@ INSERT INTO comp_policy
 (29,7,29);
 
 
+INSERT INTO policy_feature
+(id,name,description) values
+(1,'POLICY_PREM','Price of premiums'),
+(2,'PRE_HOSP_COVG','Pre-hospitalisation coverage'),
+(3,'POST_HOSP_COVG','Post-hospitalisation coverage'),
+(4,'ANNUAL_COVERAGE_LIMIT','Annual coverage limit'),
+(5,'PRE_HOSP_DAYS','Pre-hospitalisation coverage days'),
+(6,'POST_HOSP_DAYS','Post-hospitalisation coverage days');
+
+
 INSERT INTO comp_policy_feature
 (id,policy_id,policy_feature_id,benefit_value,benefit_desc) VALUES
 (1,4,2,1,'As Charged'),
@@ -150,3 +159,23 @@ INSERT INTO comp_policy_feature
 (33,21,4,1000000,''),
 (34,25,4,1000000,''),
 (35,29,4,600000,'');
+
+INSERT INTO comp_policy_premium
+(id,provider_name,ward_category,ward_type,policy_name,age,premium_amount) VALUES
+(1,'AIA','Private','Private','Basic Plan',40,160)
+;
+
+
+INSERT INTO question
+(id,name,value,stage,extra_data) VALUES
+(0,'question0','Invalid Request',0,''),
+(1,'question1','Age',1,''),
+(2,'question2','SPR/Citizen ',1,''),
+(3,'question3','Type of Ward?',2,'/api/wardTypes'),
+(4,'question4','Max Premium?',2,''),
+(5,'question5','Min Pre-Hospitalization days?',2,''),
+(6,'question6','Min Post-Hospitalization days?',2,''),
+(7,'question7','Annual coverage limt?',2,''),
+(8,'question8','Preferred Insurers?',2,'/api/insurerDetails'),
+(9,'question9','Overall Pref/Weightage/Adding Limit?',2,'/api/userPreference')
+;

@@ -8,8 +8,10 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Policy {
+public class Question {
     private @Id @GeneratedValue Long id;
-    private String insurer;
-    private String policyName;
+    private String name;
+    private String value;
+    private int stage;
+    private String extraData;
 }

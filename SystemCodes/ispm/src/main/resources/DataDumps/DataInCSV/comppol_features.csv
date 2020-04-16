@@ -1,0 +1,36 @@
+"indexid";"comppolicy_id";"policyfea_id";"benefit_value";"descr";"ward_id"
+1;4;2;1;"As Charged";5
+2;8;2;1;"As Charged";5
+3;12;2;1;"As Charged";5
+4;16;2;1;"As Charged";5
+5;21;2;1;"As Charged";5
+6;25;2;1;"As Charged";5
+7;29;2;1;"As Charged";5
+8;4;5;100;"Number of Days";5
+9;8;5;100;"Number of Days";5
+10;12;5;120;"Number of Days";5
+11;16;5;180;"Number of Days";5
+12;21;5;90;"Number of Days";5
+13;25;5;180;"Number of Days";5
+14;29;5;180;"Number of Days";5
+15;4;3;1;"As Charged";5
+16;8;3;1;"As Charged";5
+17;12;3;1;"As Charged";5
+18;16;3;1;"As Charged";5
+19;21;3;1;"As Charged";5
+20;25;3;1;"As Charged";5
+21;29;3;1;"As Charged";5
+22;4;6;100;"Number of Days";5
+23;8;6;100;"Number of Days";5
+24;12;6;120;"Number of Days";5
+25;16;6;365;"Number of Days";5
+26;21;6;90;"Number of Days";5
+27;25;6;365;"Number of Days";5
+28;29;6;365;"Number of Days";5
+29;4;4;1500000;"Annual Coverage Limit";5
+30;8;4;2000000;"Annual Coverage Limit";5
+31;12;4;1500000;"Annual Coverage Limit";5
+32;16;4;1200000;"Annual Coverage Limit";5
+33;21;4;1000000;"Annual Coverage Limit";5
+34;25;4;1000000;"Annual Coverage Limit";5
+35;29;4;600000;"Annual Coverage Limit";5

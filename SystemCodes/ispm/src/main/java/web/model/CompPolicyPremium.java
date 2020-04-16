@@ -8,8 +8,12 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Policy {
+public class CompPolicyPremium {
     private @Id @GeneratedValue Long id;
-    private String insurer;
+    private String providerName;
+    private String wardCategory;
+    private String wardType;
     private String policyName;
+    private int age;
+    private int premiumAmount;
 }
