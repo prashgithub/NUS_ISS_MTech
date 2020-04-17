@@ -9,10 +9,10 @@
           href="/static/css/common.css" th:href="@{/css/common.css}" />
 <body>
 
-<form action="#" th:action="@{/user}" th:object="${applicationDto}" method="get">
+<form action="#" th:action="@{/user}" method="get">
     <div>
     <div class="form-group form_header">
-        <h1>Please provide your info below before starting recommendation</h1>
+        <h2>Please provide your info below before starting recommendation</h2>
     </div>
     <div class="form-group col-sm-6" style="margin-left:25%">
         <label for="name">Name :</label>
@@ -37,7 +37,7 @@
     <div class="form-group col-sm-6" style="margin-left:25%">
         <label for="status">Singapore Status :</label>
         <select class="form-control" id="status" name="status">
-            <option value="singaporean" selected>Singaporean/Permanent Resident</option>
+            <option value="singaporean" selected>Singaporean / Permanent Resident</option>
             <option value="foreigner">Foreigner</option>
         </select>
     </div>
@@ -45,48 +45,5 @@
 </div>
 </form>
 
-<!-- <form action="#" th:action="@{/submit}" th:object="${applicationDto}" method="post">
-
-    <table style="text-align:left;">
-        <thead>
-        <tr>
-            <th colspan="2" height="40">Please provide your info below before starting recommendation</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td height="40">Name</td>
-            <td>
-                <input type="text" name="name" th:field="*{name}" value="0"/>
-            </td>
-        <tr>
-            <td height="40">
-                <label>Age</label>
-            </td>
-            <td>
-                <input type="text" name="age" th:field="*{age}" value="0"/>
-            </td>
-        </tr>
-        <tr>
-            <td height="40">
-                <label>ID</label>
-            </td>
-            <td>
-                <input type="text" name="id" th:field="*{id}" value="0"/>
-            </td>
-        </tr>
-        <tr>
-            <td height="40">
-                <label>Issuer</label>
-            </td>
-            <td>
-                <input type="text" name="issuer" th:field="*{issuer}" value="0"/>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <br/>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>-->
 </body>
 </html>

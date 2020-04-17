@@ -163,3 +163,7 @@ button {
 .checked {
   color: orange;
 }
+
+h2{
+  text-align: center;
+}
