@@ -14,4 +14,13 @@ public class Question {
     private String value;
     private int stage;
     private String extraData;
+    public Long getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getExtraData() {
+        return extraData;
+    }
 }
