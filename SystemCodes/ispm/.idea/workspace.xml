@@ -3,28 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d55b1b96-ada5-4848-8f92-4a998bc397ba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/controller/ISPMController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/controller/ISPMController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/dao/ApplicationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/dao/ApplicationDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/model/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/model/Question.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/common.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/application_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/application_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/question1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/question2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/integration/ISPMIntegration$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/integration/ISPMIntegration$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/integration/ISPMIntegration$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/integration/ISPMIntegration$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/integration/ISPMIntegration$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/integration/ISPMIntegration$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/integration/ISPMIntegration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/integration/ISPMIntegration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/feedback.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/questions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/questions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/common.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/application_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/application_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web/ApplicationConverter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web/ApplicationTemplate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web/ISPMController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web/ISPMService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web/dao/ApplicationDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web/dao/ApplicationDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +40,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/fontawesome/webfonts" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -68,11 +53,11 @@
       <recent name="integration" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\IS\NUS_ISS_MTech\SystemCodes\ispm\src\main\resources\templates" />
-      <recent name="D:\IS\NUS_ISS_MTech\SystemCodes\ispm\src\main\resources\static\js" />
+      <recent name="D:\IS\NUS_ISS_MTech\SystemCodes\ispm\src\main\resources\static\fontawesome\webfonts" />
+      <recent name="D:\IS\NUS_ISS_MTech\SystemCodes\ispm\src\main\resources\static\fontawesome\css" />
+      <recent name="D:\IS\NUS_ISS_MTech\SystemCodes\ispm\src\main\resources\static" />
       <recent name="D:\IS\NUS_ISS_MTech\SystemCodes\ispm\src\main\resources\static\css" />
-      <recent name="D:\IS\NUS_ISS_MTech\SystemCodes\ispm\src\main\resources\static\img" />
-      <recent name="C:\Users\User\Desktop\nus\bitbucket\src\main\resources\templates" />
+      <recent name="D:\IS\NUS_ISS_MTech\SystemCodes\ispm\src\main\resources\templates" />
     </key>
   </component>
   <component name="RunManager" selected="Application.WebApplication">
@@ -160,25 +145,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="277" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582470521198" />
-    <state width="1493" height="184" key="GridCell.Tab.0.bottom" timestamp="1587128814923">
+    <state width="1493" height="136" key="GridCell.Tab.0.bottom" timestamp="1587140501828">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587128814923" />
+    <state width="1493" height="136" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587140501828" />
     <state width="1877" height="311" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582475816632" />
-    <state width="1493" height="184" key="GridCell.Tab.0.center" timestamp="1587128814923">
+    <state width="1493" height="136" key="GridCell.Tab.0.center" timestamp="1587140501828">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587128814923" />
+    <state width="1493" height="136" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587140501828" />
     <state width="1877" height="311" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582475816631" />
-    <state width="1493" height="184" key="GridCell.Tab.0.left" timestamp="1587128814923">
+    <state width="1493" height="136" key="GridCell.Tab.0.left" timestamp="1587140501828">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587128814923" />
+    <state width="1493" height="136" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587140501828" />
     <state width="1877" height="311" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582475816631" />
-    <state width="1493" height="184" key="GridCell.Tab.0.right" timestamp="1587128814923">
+    <state width="1493" height="136" key="GridCell.Tab.0.right" timestamp="1587140501828">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587128814923" />
+    <state width="1493" height="136" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587140501828" />
     <state width="1877" height="311" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582475816631" />
     <state width="1493" height="184" key="GridCell.Tab.1.bottom" timestamp="1587128814924">
       <screen x="0" y="0" width="1536" height="824" />
@@ -220,16 +205,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="173" width="670" height="676" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582459006346" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/web/controller/ISPMController.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
