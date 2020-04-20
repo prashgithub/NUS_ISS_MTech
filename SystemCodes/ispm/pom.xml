@@ -61,6 +61,17 @@
             <version>7.19.0.Final</version>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-dialogflow</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-dialogflow</artifactId>
+            <version>v2beta1-rev15-1.23.0</version>
+        </dependency>
         <dependency>
             <groupId>org.optaplanner</groupId>
             <artifactId>optaplanner-persistence-jaxb</artifactId>
@@ -142,18 +153,17 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/OptaISP-1.0.0.jar</systemPath>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.12</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>27.0.1-jre</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <properties>
