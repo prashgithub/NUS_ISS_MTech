@@ -167,3 +167,11 @@ button {
 h2{
   text-align: center;
 }
+
+.sinra{
+  float:right;
+  background-image: url("/../img/sinra.png");
+  width: 162px;
+  height: 150px;
+  margin-right: 5%;
+}
