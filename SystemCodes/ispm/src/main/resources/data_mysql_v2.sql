@@ -299,5 +299,27 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+DROP TABLE `recommendersys`.`question`;
+
+CREATE TABLE `recommendersys`.`question` (
+`id` INT NOT NULL,
+`name` VARCHAR(100) NULL,
+`value` VARCHAR(100) NULL,
+`stage` INT NULL,
+`extra_data` VARCHAR(450) NULL);
+
+INSERT INTO `recommendersys`.`question`
+(id,name,value,stage,extra_data) VALUES
+(0,'Invalid Question','Invalid Request',0,''),
+(1,'Would you be interested to provide your preferences','Preference',1,'Yes,No'),
+(2,'Ward type','Ward',1,'Basic(B2/C),Standard(B1),Class B1,Class A,Private'),
+(3,'Premium amount payment','Premium ',1,'0 ~ 3000,3000 ~ 6000,6000 ~ 9000,9000 ~ 12000'),
+(4,'Hospitalization coverage','Hospitalization',1,'0 ~ 3 months,3 ~ 6 months,6 ~ 9 months, 9 ~ 12 months'),
+(5,'Annual coverage limit','Limit',1,'0 ~ 500000,500000 ~ 1000000,1000000 ~ 1500000,1500000 ~ 2000000'),
+(6,'question6','Min Post-Hospitalization days?',2,''),
+(7,'question7','Annual coverage limt?',2,''),
+(8,'question8','Preferred Insurers?',2,'/api/insurerDetails'),
+(9,'question9','Overall Pref/Weightage/Adding Limit?',2,'/api/userPreference')
+;
 
 -- Dump completed on 2020-04-20  1:23:40policies
