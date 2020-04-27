@@ -34,129 +34,6 @@ public class ISPMIntegration {
 
     static Logger log = LoggerFactory.getLogger(ISPMIntegration.class);
 
-    public static KieContainer initContainer() {
-        KieServices ks = KieServices.Factory.get();
-        KieContainer kContainer = ks.getKieClasspathContainer();
-        return kContainer;
-    }
-
-    private static KieSession createStatefulSession(KieContainer container, final Map<String, Object> createdObjMap) {
-        //get stateless session
-        KieSession session = container.newKieSession();
-
-        session.addEventListener(new RuleRuntimeEventListener() {
-            public void objectInserted(ObjectInsertedEvent event) {
-                log.info("Object inserted: {}", event.getObject().toString());
-
-                if (event.getObject() instanceof Application) {
-                    Application applicationResult = (Application) event.getObject();
-                    createdObjMap.put("Application", applicationResult);
-                    System.out.println("#########################" + applicationResult);
-                } else if (event.getObject() instanceof Policy) {
-                    Policy applicationResult = (Policy) event.getObject();
-                    createdObjMap.put("Policy", applicationResult);
-                    System.out.println("#########################" + applicationResult);
-                }
-            }
-
-            public void objectUpdated(ObjectUpdatedEvent event) {
-                log.info("Object was updated, new Content: {}", event.getObject().toString());
-            }
-
-            public void objectDeleted(ObjectDeletedEvent event) {
-                log.info("Object retracted: {}", event.getOldObject().toString());
-            }
-        });
-        session.addEventListener(new AgendaEventListener() {
-            public void matchCreated(MatchCreatedEvent event) {
-                log.info("The rule: {}  can be fired in agenda", event.getMatch().getRule().getName());
-            }
-
-            public void matchCancelled(MatchCancelledEvent event) {
-                log.info("The rule: {} cannot b in agenda", event.getMatch().getRule().getName());
-            }
-
-            public void beforeMatchFired(BeforeMatchFiredEvent event) {
-                log.info("The rule: {}  will be fired", event.getMatch().getRule().getName());
-            }
-
-            public void afterMatchFired(AfterMatchFiredEvent event) {
-                log.info("The rule: {}  has be fired", event.getMatch().getRule().getName());
-            }
-
-            public void agendaGroupPopped(AgendaGroupPoppedEvent event) {
-                log.info("Agenda group: {}  has be poped", event.getAgendaGroup().getName());
-            }
-
-            public void agendaGroupPushed(AgendaGroupPushedEvent event) {
-                log.info("Agenda group: {}  has be pushed", event.getAgendaGroup().getName());
-            }
-
-            public void beforeRuleFlowGroupActivated(RuleFlowGroupActivatedEvent event) {
-                log.info("Before rule flow group: {}  activated", event.getRuleFlowGroup().getName());
-            }
-
-            public void afterRuleFlowGroupActivated(RuleFlowGroupActivatedEvent event) {
-                log.info("After rule flow group: {}  activated", event.getRuleFlowGroup().getName());
-            }
-
-            public void beforeRuleFlowGroupDeactivated(RuleFlowGroupDeactivatedEvent event) {
-                log.info("Before rule flow group: {}  deactivated", event.getRuleFlowGroup().getName());
-            }
-
-            public void afterRuleFlowGroupDeactivated(RuleFlowGroupDeactivatedEvent event) {
-                log.info("after rule flow group: {}  activated", event.getRuleFlowGroup().getName());
-            }
-        });
-
-        session.addEventListener(new ProcessEventListener() {
-            public void beforeVariableChanged(ProcessVariableChangedEvent arg0) {
-                log.info("before variable: {} changed", arg0);
-            }
-
-            public void beforeProcessStarted(ProcessStartedEvent arg0) {
-                log.info("Process Name: {} has been started", arg0.getProcessInstance().getProcessName());
-            }
-
-            public void beforeProcessCompleted(ProcessCompletedEvent arg0) {
-                log.info("Process Name: {} has been completed", arg0.getProcessInstance().getProcessName());
-            }
-
-            public void beforeNodeTriggered(ProcessNodeTriggeredEvent arg0) {
-                log.info("Node Name: {} has been triggered", arg0.getNodeInstance().getNodeName());
-            }
-
-            public void beforeNodeLeft(ProcessNodeLeftEvent arg0) {
-                // if (arg0.getNodeInstance() instanceof RuleSetNodeInstance){
-                log.info("Node Name: {} has been left", arg0.getNodeInstance().getNodeName());
-                // }
-            }
-
-            public void afterVariableChanged(ProcessVariableChangedEvent arg0) {
-                log.info("after variable: {} changed", arg0);
-            }
-
-            public void afterProcessStarted(ProcessStartedEvent arg0) {
-                log.info("after Process Name: {} has been started", arg0.getProcessInstance().getProcessName());
-            }
-
-            public void afterProcessCompleted(ProcessCompletedEvent arg0) {
-                log.info("Process Name: {} has stopped", arg0.getProcessInstance().getProcessName());
-            }
-
-            public void afterNodeTriggered(ProcessNodeTriggeredEvent arg0) {
-                // if (arg0.getNodeInstance() instanceof RuleSetNodeInstance){
-                log.info("Node Name: {}  has been entered", arg0.getNodeInstance().getNodeName());
-                // }
-            }
-
-            public void afterNodeLeft(ProcessNodeLeftEvent arg0) {
-                log.info("Node Name: {}  has been left", arg0.getNodeInstance().getNodeName());
-            }
-        });
-        return session;
-    }
-
     private void releaseResource(KieContainer container) {
         try {
             if (container != null) {
@@ -165,29 +42,6 @@ public class ISPMIntegration {
         } catch (Exception e) {
             log.error("Release container error: {}", e.getMessage());
         }
-    }
-
-    public boolean invokeRules(List<Object> dataObjectList, String ruleName, Map<String, Object> resultMap) {
-        KieContainer container = null;
-        boolean success = true;
-
-        try {
-            container = initContainer();
-            KieSession session = createStatefulSession(container, resultMap);
-
-            for (Object dataObj : dataObjectList) {
-                session.insert(dataObj);
-            }
-            session.getAgenda().getAgendaGroup(ruleName).setFocus();
-            int firedRules = session.fireAllRules();
-            log.info("firedRules: Triggered {} rules", firedRules);
-        } catch (Exception exp) {
-            success = false;
-            log.error(" rule error: ", exp);
-        } finally {
-            releaseResource(container);
-        }
-        return success;
     }
 
     public boolean invokeOpta(Application application, Map<String, Object> resultMap) {
@@ -199,7 +53,7 @@ public class ISPMIntegration {
             container = kieServices.newKieContainer(kieServices.newReleaseId("com.iss_mr", "OptaISP", "1.0.0"));
             SolverFactory<ISPSolution> solverFactory = SolverFactory.createFromKieContainerXmlResource(container, "com/iss_mr/optaisp/ispSolverConfig.solver.xml");
             Solver<ISPSolution> solver = solverFactory.buildSolver();
-            solver.solve(getSolution());
+            solver.solve(getSolution(application));
             ISPSolution solution = solver.getBestSolution();
             System.out.println("opta solver explain: " + solver.explainBestScore());
             log.info("invoke opta: Triggered {} opta", solution.getPreferenceList().get(0).getPolicy().getName());
@@ -243,7 +97,7 @@ public class ISPMIntegration {
                 public void beforeNodeLeft(ProcessNodeLeftEvent arg0) {
                     if (arg0.getNodeInstance() instanceof HumanTaskNodeInstance) {
                         HumanTaskNodeInstance humanTaskNode = (HumanTaskNodeInstance) arg0.getNodeInstance();
-                        if (humanTaskNode.getHumanTaskNode().getName().equalsIgnoreCase("Task")) {
+                        if (humanTaskNode.getHumanTaskNode().getName().equalsIgnoreCase("OPTA")) {
                             Application application = (Application) humanTaskNode.getWorkItem().getParameter("application");
                             invokeOpta(application, resultMap);
                         }
@@ -292,7 +146,7 @@ public class ISPMIntegration {
     }
 
 
-    private ISPSolution getSolution() {
+    private ISPSolution getSolution(Application application) {
         com.iss_mr.optaisp.Policy policy = new com.iss_mr.optaisp.Policy();
         policy.setId(1);
         policy.setName("AIA HealthShield Gold Max A");
@@ -317,19 +171,24 @@ public class ISPMIntegration {
         policyList.add(policy);
         policyList.add(policy2);
 
-        Preference preference = new Preference();
-        preference.setRequiredDailyWard(100);
-        preference.setRequiredSurgery(100);
-        preference.setRequiredPreHospitalisationCoveredDays(75);
-        preference.setRequiredPostHospitalisationCoveredDays(75);
-        preference.setRequiredMajorOrganTransplant(100);
-        preference.setRequiredAge(30);
+        return new ISPSolution(policyList, Arrays.asList(formPreference(application.getPreference())), formConstrain(application.getPreference()));
+    }
 
+    private Preference formPreference(com.iss_mr.integrated_shield_plan_master.Preference applicationPreference){
+        Preference preference = new Preference();
+        preference.setRequiredAge(30);
+        preference.setRequiredPreHospitalisationCoveredDays(applicationPreference.getPreHospitalisationCoveredDays().getExpectedValue());
+        preference.setRequiredPostHospitalisationCoveredDays(applicationPreference.getPostHospitalisationCoveredDays().getExpectedValue());
+        preference.setRequiredMajorOrganTransplant(applicationPreference.getMajorOrganTransplant().getExpectedValue());
+        return preference;
+    }
+
+    private ISPConstraintConfiguration formConstrain(com.iss_mr.integrated_shield_plan_master.Preference applicationPreference){
         ISPConstraintConfiguration constraintConfiguration = new ISPConstraintConfiguration();
         constraintConfiguration.setHardLastEntryAge(HardSoftScore.ofHard(1));
-        constraintConfiguration.setPreHospitalisationCoveredDays(HardSoftScore.ofSoft(10));
-        constraintConfiguration.setPostHospitalisationCoveredDays(HardSoftScore.ofSoft(10));
-        return new ISPSolution(policyList, Arrays.asList(preference), constraintConfiguration);
+        constraintConfiguration.setPreHospitalisationCoveredDays(HardSoftScore.ofSoft(applicationPreference.getPreHospitalisationCoveredDays().getImportance()));
+        constraintConfiguration.setPostHospitalisationCoveredDays(HardSoftScore.ofSoft(applicationPreference.getPostHospitalisationCoveredDays().getImportance()));
+        return constraintConfiguration;
     }
 
     /**
@@ -367,15 +226,5 @@ public class ISPMIntegration {
         }
 
         return result;
-    }
-
-
-    public static void main(String[] args) {
-        log.info("Logger loaded.");
-
-        try {
-        } catch (Exception exp) {
-            log.error("Create KJar error", exp);
-        }
     }
 }
