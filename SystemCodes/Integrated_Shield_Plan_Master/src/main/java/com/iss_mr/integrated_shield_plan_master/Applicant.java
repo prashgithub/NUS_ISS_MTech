@@ -15,8 +15,17 @@ public class Applicant implements java.io.Serializable {
 	@org.kie.api.definition.type.Label("Name")
 	private java.lang.String name;
 
-	@org.kie.api.definition.type.Label(value = "Age")
+	@org.kie.api.definition.type.Label("Age")
 	private java.lang.Integer age;
+
+	@org.kie.api.definition.type.Label(value = "Gender")
+	private java.lang.String gender;
+
+	@org.kie.api.definition.type.Label(value = "Nationality")
+	private java.lang.String nationality;
+
+	@org.kie.api.definition.type.Label(value = "Singapore Status")
+	private java.lang.String spstatus;
 
 	public Applicant() {
 	}
@@ -45,11 +54,39 @@ public class Applicant implements java.io.Serializable {
 		this.age = age;
 	}
 
+	public java.lang.String getGender() {
+		return this.gender;
+	}
+
+	public void setGender(java.lang.String gender) {
+		this.gender = gender;
+	}
+
+	public java.lang.String getNationality() {
+		return this.nationality;
+	}
+
+	public void setNationality(java.lang.String nationality) {
+		this.nationality = nationality;
+	}
+
+	public java.lang.String getSpstatus() {
+		return this.spstatus;
+	}
+
+	public void setSpstatus(java.lang.String spstatus) {
+		this.spstatus = spstatus;
+	}
+
 	public Applicant(java.lang.String id, java.lang.String name,
-			java.lang.Integer age) {
+			java.lang.Integer age, java.lang.String gender,
+			java.lang.String nationality, java.lang.String spstatus) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
+		this.gender = gender;
+		this.nationality = nationality;
+		this.spstatus = spstatus;
 	}
 
 }
