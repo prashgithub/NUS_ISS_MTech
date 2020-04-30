@@ -5,6 +5,7 @@ import com.iss_mr.integrated_shield_plan_master.Policy;
 import com.iss_mr.optaisp.ISPConstraintConfiguration;
 import com.iss_mr.optaisp.ISPSolution;
 import com.iss_mr.optaisp.Preference;
+import com.iss_mr.optaisp.Premium;
 import org.jbpm.bpmn2.xml.UserTaskHandler;
 import org.jbpm.process.core.impl.WorkImpl;
 import org.jbpm.process.instance.impl.humantask.HumanTaskHandler;
@@ -33,6 +34,11 @@ import java.util.*;
 public class ISPMIntegration {
 
     static Logger log = LoggerFactory.getLogger(ISPMIntegration.class);
+
+    private List<com.iss_mr.optaisp.Policy> policyList;
+    public void setPolicyList(List<com.iss_mr.optaisp.Policy> policyList){
+        this.policyList=policyList;
+    }
 
     private void releaseResource(KieContainer container) {
         try {
@@ -147,30 +153,6 @@ public class ISPMIntegration {
 
 
     private ISPSolution getSolution(Application application) {
-        com.iss_mr.optaisp.Policy policy = new com.iss_mr.optaisp.Policy();
-        policy.setId(1);
-        policy.setName("AIA HealthShield Gold Max A");
-        policy.setDailyWard(100);
-        policy.setMajorOrganTransplant(100);
-        policy.setPostHospitalisationCoveredDays(50);
-        policy.setPreHospitalisationCoveredDays(50);
-        policy.setSurgery(100);
-        policy.setLastEntryAge(100);
-
-        com.iss_mr.optaisp.Policy policy2 = new com.iss_mr.optaisp.Policy();
-        policy2.setId(2);
-        policy2.setName("Prudential PruShield Premier");
-        policy2.setDailyWard(100);
-        policy2.setMajorOrganTransplant(100);
-        policy2.setPostHospitalisationCoveredDays(100);
-        policy2.setPreHospitalisationCoveredDays(100);
-        policy2.setSurgery(100);
-        policy2.setLastEntryAge(100);
-
-        List<com.iss_mr.optaisp.Policy> policyList = new ArrayList();
-        policyList.add(policy);
-        policyList.add(policy2);
-
         return new ISPSolution(policyList, Arrays.asList(formPreference(application.getPreference())), formConstrain(application.getPreference()));
     }
 

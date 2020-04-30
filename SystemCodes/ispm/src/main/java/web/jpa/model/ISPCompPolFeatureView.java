@@ -31,5 +31,69 @@ public class ISPCompPolFeatureView {
     private String policyName;
     private String benefits;
     private String description;
+
+    public String getPolicyFeatureId() {
+        return policyFeatureId;
+    }
+
+    public void setPolicyFeatureId(String policyFeatureId) {
+        this.policyFeatureId = policyFeatureId;
+    }
+
+    public String getWardCategory() {
+        return wardCategory;
+    }
+
+    public void setWardCategory(String wardCategory) {
+        this.wardCategory = wardCategory;
+    }
+
+    public String getWardType() {
+        return wardType;
+    }
+
+    public void setWardType(String wardType) {
+        this.wardType = wardType;
+    }
+
+    public String getPolicyFeature() {
+        return policyFeature;
+    }
+
+    public void setPolicyFeature(String policyFeature) {
+        this.policyFeature = policyFeature;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getPolicyName() {
+        return policyName;
+    }
+
+    public void setPolicyName(String policyName) {
+        this.policyName = policyName;
+    }
+
+    public String getBenefits() {
+        return benefits;
+    }
+
+    public void setBenefits(String benefits) {
+        this.benefits = benefits;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
 

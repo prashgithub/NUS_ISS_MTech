@@ -16,6 +16,7 @@ public class ApplicationConverter {
         applicant.setNationality("Singaporean");
         applicant.setSpstatus(applicationDto.getStatus());
 
+
         Preference preference=new Preference();
         PreferenceMatrix preferenceMatrix_preHospitalisationCoveredDays=new PreferenceMatrix();
         preferenceMatrix_preHospitalisationCoveredDays.setExpectedValue(75);
