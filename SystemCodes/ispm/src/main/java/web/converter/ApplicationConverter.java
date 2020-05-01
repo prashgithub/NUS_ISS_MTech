@@ -104,6 +104,7 @@ public class ApplicationConverter {
         Application application = new Application();
         application.setApplicant( applicant);
         application.setPreference(preference);
+        application.setCanCollectPreference(applicationDto.getAns1().equals("1"));
         return application;
     }
 
