@@ -61,6 +61,7 @@ public class ISPMIntegration {
             Solver<ISPSolution> solver = solverFactory.buildSolver();
             solver.solve(getSolution(application));
             ISPSolution solution = solver.getBestSolution();
+            log.info("opta best score: "+solver.getBestScore().toString());
             System.out.println("opta solver explain: " + solver.explainBestScore());
             log.info("invoke opta: Triggered {} opta", solution.getPreferenceList().get(0).getPolicy().getName());
             resultMap.put("Policy", solution.getPreferenceList().get(0).getPolicy());
@@ -153,15 +154,30 @@ public class ISPMIntegration {
 
 
     private ISPSolution getSolution(Application application) {
-        return new ISPSolution(policyList, Arrays.asList(formPreference(application.getPreference())), formConstrain(application.getPreference()));
+        return new ISPSolution(policyList, Arrays.asList(formPreference(application)), formConstrain(application.getPreference()));
     }
 
-    private Preference formPreference(com.iss_mr.integrated_shield_plan_master.Preference applicationPreference){
+    private Preference formPreference(Application application){
+        com.iss_mr.integrated_shield_plan_master.Preference applicationPreference=application.getPreference();
         Preference preference = new Preference();
-        preference.setRequiredAge(30);
+        preference.setRequiredAge(application.getApplicant().getAge());
         preference.setRequiredPreHospitalisationCoveredDays(applicationPreference.getPreHospitalisationCoveredDays().getExpectedValue());
         preference.setRequiredPostHospitalisationCoveredDays(applicationPreference.getPostHospitalisationCoveredDays().getExpectedValue());
         preference.setRequiredMajorOrganTransplant(applicationPreference.getMajorOrganTransplant().getExpectedValue());
+        preference.setRequiredSurgery(applicationPreference.getSurgery().getExpectedValue());
+        preference.setRequiredClaimsProcessingDuration(applicationPreference.getClaimsProcessingDuration().getExpectedValue());
+        preference.setRequiredCoinsurance(applicationPreference.getCoinsurance().getExpectedValue());
+        preference.setRequiredcommunityHospital(applicationPreference.getCommunityHospital().getExpectedValue());
+        preference.setRequiredCoPayCappedAt(applicationPreference.getCoPayCappedAt().getExpectedValue());
+        preference.setRequiredCriticalIllnesses(applicationPreference.getCriticalIllnesses().getExpectedValue());
+        preference.setRequiredDeductible(applicationPreference.getDeductible().getExpectedValue());
+        preference.setRequiredEmergencyOverseasTreatment(applicationPreference.getEmergencyOverseasTreatment().getExpectedValue());
+        preference.setRequiredNonPanelSurcharge(applicationPreference.getNonPanelSurcharge().getExpectedValue());
+        preference.setRequiredPremium(applicationPreference.getPremium().getExpectedValue());
+        preference.setRequiredPolicyYearLimit(applicationPreference.getPolicyYearLimit().getExpectedValue());
+        preference.setRequiredPostHospitalisationCoverage(applicationPreference.getPostHospitalisationCoverage().getExpectedValue());
+        preference.setRequiredPreHospitalisationCoverage(applicationPreference.getPreHospitalisationCoverage().getExpectedValue());
+        preference.setRequiredProsthesis(applicationPreference.getProsthesis().getExpectedValue());
         return preference;
     }
 

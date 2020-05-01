@@ -12,8 +12,6 @@ public class Policy implements java.io.Serializable {
 	private java.lang.Integer id;
 	@org.kie.api.definition.type.Label("Name")
 	private java.lang.String name;
-	@org.kie.api.definition.type.Label("Daily Ward")
-	private java.lang.Integer dailyWard;
 	@org.kie.api.definition.type.Label("Major Organ Transplant")
 	private java.lang.Integer majorOrganTransplant;
 	@org.kie.api.definition.type.Label("Post-Hospitalisation Covered Days")
@@ -25,8 +23,44 @@ public class Policy implements java.io.Serializable {
 	@org.kie.api.definition.type.Label("Last Entry Age")
 	private java.lang.Integer lastEntryAge;
 
-	@org.kie.api.definition.type.Label(value = "Premium")
+	@org.kie.api.definition.type.Label("Premium")
 	private java.util.List<com.iss_mr.optaisp.Premium> premium;
+
+	@org.kie.api.definition.type.Label("Claims Processing Duration")
+	private java.lang.Integer claimsProcessingDuration;
+
+	@org.kie.api.definition.type.Label("coPayCappedAt")
+	private java.lang.Integer coPayCappedAt;
+
+	@org.kie.api.definition.type.Label("coinsurance")
+	private java.lang.Integer coinsurance;
+
+	@org.kie.api.definition.type.Label("communityHospital")
+	private java.lang.Integer communityHospital;
+
+	@org.kie.api.definition.type.Label("criticalIllnesses")
+	private java.lang.Integer criticalIllnesses;
+
+	@org.kie.api.definition.type.Label("deductible")
+	private java.lang.Integer deductible;
+
+	@org.kie.api.definition.type.Label("emergencyOverseasTreatment")
+	private java.lang.Integer emergencyOverseasTreatment;
+
+	@org.kie.api.definition.type.Label("nonPanelSurcharge")
+	private java.lang.Integer nonPanelSurcharge;
+
+	@org.kie.api.definition.type.Label("policyYearLimit")
+	private java.lang.Integer policyYearLimit;
+
+	@org.kie.api.definition.type.Label("postHospitalisationCoverage")
+	private java.lang.Integer postHospitalisationCoverage;
+
+	@org.kie.api.definition.type.Label("preHospitalisationCoverage")
+	private java.lang.Integer preHospitalisationCoverage;
+
+	@org.kie.api.definition.type.Label("prosthesis")
+	private java.lang.Integer prosthesis;
 
 	public Policy() {
 	}
@@ -45,14 +79,6 @@ public class Policy implements java.io.Serializable {
 
 	public void setName(java.lang.String name) {
 		this.name = name;
-	}
-
-	public java.lang.Integer getDailyWard() {
-		return this.dailyWard;
-	}
-
-	public void setDailyWard(java.lang.Integer dailyWard) {
-		this.dailyWard = dailyWard;
 	}
 
 	public java.lang.Integer getMajorOrganTransplant() {
@@ -105,22 +131,142 @@ public class Policy implements java.io.Serializable {
 		this.premium = premium;
 	}
 
+	public java.lang.Integer getClaimsProcessingDuration() {
+		return this.claimsProcessingDuration;
+	}
+
+	public void setClaimsProcessingDuration(
+			java.lang.Integer claimsProcessingDuration) {
+		this.claimsProcessingDuration = claimsProcessingDuration;
+	}
+
+	public java.lang.Integer getCoPayCappedAt() {
+		return this.coPayCappedAt;
+	}
+
+	public void setCoPayCappedAt(java.lang.Integer coPayCappedAt) {
+		this.coPayCappedAt = coPayCappedAt;
+	}
+
+	public java.lang.Integer getCoinsurance() {
+		return this.coinsurance;
+	}
+
+	public void setCoinsurance(java.lang.Integer coinsurance) {
+		this.coinsurance = coinsurance;
+	}
+
+	public java.lang.Integer getCommunityHospital() {
+		return this.communityHospital;
+	}
+
+	public void setCommunityHospital(java.lang.Integer communityHospital) {
+		this.communityHospital = communityHospital;
+	}
+
+	public java.lang.Integer getCriticalIllnesses() {
+		return this.criticalIllnesses;
+	}
+
+	public void setCriticalIllnesses(java.lang.Integer criticalIllnesses) {
+		this.criticalIllnesses = criticalIllnesses;
+	}
+
+	public java.lang.Integer getDeductible() {
+		return this.deductible;
+	}
+
+	public void setDeductible(java.lang.Integer deductible) {
+		this.deductible = deductible;
+	}
+
+	public java.lang.Integer getEmergencyOverseasTreatment() {
+		return this.emergencyOverseasTreatment;
+	}
+
+	public void setEmergencyOverseasTreatment(
+			java.lang.Integer emergencyOverseasTreatment) {
+		this.emergencyOverseasTreatment = emergencyOverseasTreatment;
+	}
+
+	public java.lang.Integer getNonPanelSurcharge() {
+		return this.nonPanelSurcharge;
+	}
+
+	public void setNonPanelSurcharge(java.lang.Integer nonPanelSurcharge) {
+		this.nonPanelSurcharge = nonPanelSurcharge;
+	}
+
+	public java.lang.Integer getPolicyYearLimit() {
+		return this.policyYearLimit;
+	}
+
+	public void setPolicyYearLimit(java.lang.Integer policyYearLimit) {
+		this.policyYearLimit = policyYearLimit;
+	}
+
+	public java.lang.Integer getPostHospitalisationCoverage() {
+		return this.postHospitalisationCoverage;
+	}
+
+	public void setPostHospitalisationCoverage(
+			java.lang.Integer postHospitalisationCoverage) {
+		this.postHospitalisationCoverage = postHospitalisationCoverage;
+	}
+
+	public java.lang.Integer getPreHospitalisationCoverage() {
+		return this.preHospitalisationCoverage;
+	}
+
+	public void setPreHospitalisationCoverage(
+			java.lang.Integer preHospitalisationCoverage) {
+		this.preHospitalisationCoverage = preHospitalisationCoverage;
+	}
+
+	public java.lang.Integer getProsthesis() {
+		return this.prosthesis;
+	}
+
+	public void setProsthesis(java.lang.Integer prosthesis) {
+		this.prosthesis = prosthesis;
+	}
+
 	public Policy(java.lang.Integer id, java.lang.String name,
-			java.lang.Integer dailyWard,
 			java.lang.Integer majorOrganTransplant,
 			java.lang.Integer postHospitalisationCoveredDays,
 			java.lang.Integer preHospitalisationCoveredDays,
 			java.lang.Integer surgery, java.lang.Integer lastEntryAge,
-			java.util.List<com.iss_mr.optaisp.Premium> premium) {
+			java.util.List<com.iss_mr.optaisp.Premium> premium,
+			java.lang.Integer claimsProcessingDuration,
+			java.lang.Integer coPayCappedAt, java.lang.Integer coinsurance,
+			java.lang.Integer communityHospital,
+			java.lang.Integer criticalIllnesses, java.lang.Integer deductible,
+			java.lang.Integer emergencyOverseasTreatment,
+			java.lang.Integer nonPanelSurcharge,
+			java.lang.Integer policyYearLimit,
+			java.lang.Integer postHospitalisationCoverage,
+			java.lang.Integer preHospitalisationCoverage,
+			java.lang.Integer prosthesis) {
 		this.id = id;
 		this.name = name;
-		this.dailyWard = dailyWard;
 		this.majorOrganTransplant = majorOrganTransplant;
 		this.postHospitalisationCoveredDays = postHospitalisationCoveredDays;
 		this.preHospitalisationCoveredDays = preHospitalisationCoveredDays;
 		this.surgery = surgery;
 		this.lastEntryAge = lastEntryAge;
 		this.premium = premium;
+		this.claimsProcessingDuration = claimsProcessingDuration;
+		this.coPayCappedAt = coPayCappedAt;
+		this.coinsurance = coinsurance;
+		this.communityHospital = communityHospital;
+		this.criticalIllnesses = criticalIllnesses;
+		this.deductible = deductible;
+		this.emergencyOverseasTreatment = emergencyOverseasTreatment;
+		this.nonPanelSurcharge = nonPanelSurcharge;
+		this.policyYearLimit = policyYearLimit;
+		this.postHospitalisationCoverage = postHospitalisationCoverage;
+		this.preHospitalisationCoverage = preHospitalisationCoverage;
+		this.prosthesis = prosthesis;
 	}
 
 }

@@ -53,6 +53,34 @@ public class ISPMService {
                         policy.setPreHospitalisationCoveredDays(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
                     }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("PostHospCovg_days")){
                         policy.setPostHospitalisationCoveredDays(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Pre_Hosp_Covg")){
+                        policy.setPreHospitalisationCoverage(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Post_Hosp_Covg")){
+                        policy.setPostHospitalisationCoverage(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Annual_Covg")){
+                        policy.setPolicyYearLimit(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("CoInsurance")){
+                        policy.setCoinsurance(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Deductible")){
+                        policy.setDeductible(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("NonPanelSurcharge")){
+                        policy.setNonPanelSurcharge(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("CoPayCappedAt")){
+                        policy.setCoPayCappedAt(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("CommunityHospital")){  // from here , db not covered
+                        policy.setCommunityHospital(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Surgery_Covg")){
+                        policy.setSurgery(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("MajorOrganTransplant_Covg")){
+                        policy.setMajorOrganTransplant(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("ClaimsProcessingDuration")){
+                        policy.setClaimsProcessingDuration(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("CriticalIllnesses_Covg")){
+                        policy.setCriticalIllnesses(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("EmergencyOverseasTreatment")){
+                        policy.setEmergencyOverseasTreatment(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Prosthesis")){
+                        policy.setProsthesis(Integer.parseInt(ispCompPolFeatureView.getBenefits()));
                     }
                 }
             }

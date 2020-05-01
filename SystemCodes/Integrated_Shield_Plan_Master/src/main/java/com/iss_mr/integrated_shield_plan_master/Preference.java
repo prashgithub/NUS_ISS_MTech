@@ -27,6 +27,30 @@ public class Preference implements java.io.Serializable {
 	@org.kie.api.definition.type.Label("Claims Processing Duration")
 	private PreferenceMatrix claimsProcessingDuration;
 
+	@org.kie.api.definition.type.Label("Post Hospitalisation Coverage")
+	private com.iss_mr.integrated_shield_plan_master.PreferenceMatrix postHospitalisationCoverage;
+
+	@org.kie.api.definition.type.Label("Pre Hospitalisation Coverage")
+	private com.iss_mr.integrated_shield_plan_master.PreferenceMatrix preHospitalisationCoverage;
+
+	@org.kie.api.definition.type.Label("co-insurance")
+	private com.iss_mr.integrated_shield_plan_master.PreferenceMatrix coinsurance;
+
+	@org.kie.api.definition.type.Label("Deductible")
+	private com.iss_mr.integrated_shield_plan_master.PreferenceMatrix deductible;
+
+	@org.kie.api.definition.type.Label("Non Panel Surcharge")
+	private com.iss_mr.integrated_shield_plan_master.PreferenceMatrix nonPanelSurcharge;
+
+	@org.kie.api.definition.type.Label("Co-pay Capped At")
+	private com.iss_mr.integrated_shield_plan_master.PreferenceMatrix coPayCappedAt;
+
+	@org.kie.api.definition.type.Label("surgery")
+	private com.iss_mr.integrated_shield_plan_master.PreferenceMatrix surgery;
+
+	@org.kie.api.definition.type.Label(value = "premium")
+	private com.iss_mr.integrated_shield_plan_master.PreferenceMatrix premium;
+
 	public Preference() {
 	}
 
@@ -111,6 +135,78 @@ public class Preference implements java.io.Serializable {
 		this.claimsProcessingDuration = claimsProcessingDuration;
 	}
 
+	public com.iss_mr.integrated_shield_plan_master.PreferenceMatrix getPostHospitalisationCoverage() {
+		return this.postHospitalisationCoverage;
+	}
+
+	public void setPostHospitalisationCoverage(
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix postHospitalisationCoverage) {
+		this.postHospitalisationCoverage = postHospitalisationCoverage;
+	}
+
+	public com.iss_mr.integrated_shield_plan_master.PreferenceMatrix getPreHospitalisationCoverage() {
+		return this.preHospitalisationCoverage;
+	}
+
+	public void setPreHospitalisationCoverage(
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix preHospitalisationCoverage) {
+		this.preHospitalisationCoverage = preHospitalisationCoverage;
+	}
+
+	public com.iss_mr.integrated_shield_plan_master.PreferenceMatrix getCoinsurance() {
+		return this.coinsurance;
+	}
+
+	public void setCoinsurance(
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix coinsurance) {
+		this.coinsurance = coinsurance;
+	}
+
+	public com.iss_mr.integrated_shield_plan_master.PreferenceMatrix getDeductible() {
+		return this.deductible;
+	}
+
+	public void setDeductible(
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix deductible) {
+		this.deductible = deductible;
+	}
+
+	public com.iss_mr.integrated_shield_plan_master.PreferenceMatrix getNonPanelSurcharge() {
+		return this.nonPanelSurcharge;
+	}
+
+	public void setNonPanelSurcharge(
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix nonPanelSurcharge) {
+		this.nonPanelSurcharge = nonPanelSurcharge;
+	}
+
+	public com.iss_mr.integrated_shield_plan_master.PreferenceMatrix getCoPayCappedAt() {
+		return this.coPayCappedAt;
+	}
+
+	public void setCoPayCappedAt(
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix coPayCappedAt) {
+		this.coPayCappedAt = coPayCappedAt;
+	}
+
+	public com.iss_mr.integrated_shield_plan_master.PreferenceMatrix getSurgery() {
+		return this.surgery;
+	}
+
+	public void setSurgery(
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix surgery) {
+		this.surgery = surgery;
+	}
+
+	public com.iss_mr.integrated_shield_plan_master.PreferenceMatrix getPremium() {
+		return this.premium;
+	}
+
+	public void setPremium(
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix premium) {
+		this.premium = premium;
+	}
+
 	public Preference(
 			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix preHospitalisationCoveredDays,
 			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix postHospitalisationCoveredDays,
@@ -120,7 +216,15 @@ public class Preference implements java.io.Serializable {
 			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix criticalIllnesses,
 			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix prosthesis,
 			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix emergencyOverseasTreatment,
-			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix claimsProcessingDuration) {
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix claimsProcessingDuration,
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix postHospitalisationCoverage,
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix preHospitalisationCoverage,
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix coinsurance,
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix deductible,
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix nonPanelSurcharge,
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix coPayCappedAt,
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix surgery,
+			com.iss_mr.integrated_shield_plan_master.PreferenceMatrix premium) {
 		this.preHospitalisationCoveredDays = preHospitalisationCoveredDays;
 		this.postHospitalisationCoveredDays = postHospitalisationCoveredDays;
 		this.policyYearLimit = policyYearLimit;
@@ -130,6 +234,14 @@ public class Preference implements java.io.Serializable {
 		this.prosthesis = prosthesis;
 		this.emergencyOverseasTreatment = emergencyOverseasTreatment;
 		this.claimsProcessingDuration = claimsProcessingDuration;
+		this.postHospitalisationCoverage = postHospitalisationCoverage;
+		this.preHospitalisationCoverage = preHospitalisationCoverage;
+		this.coinsurance = coinsurance;
+		this.deductible = deductible;
+		this.nonPanelSurcharge = nonPanelSurcharge;
+		this.coPayCappedAt = coPayCappedAt;
+		this.surgery = surgery;
+		this.premium = premium;
 	}
 
 }

@@ -9,8 +9,6 @@ public class Preference implements java.io.Serializable {
 
 	static final long serialVersionUID = 1L;
 
-	@org.kie.api.definition.type.Label("Required Daily Ward")
-	private java.lang.Integer requiredDailyWard;
 	@org.kie.api.definition.type.Label("Required Surgery")
 	private java.lang.Integer requiredSurgery;
 	@org.kie.api.definition.type.Label("Required Pre-Hospitalisation Covered Days")
@@ -28,15 +26,46 @@ public class Preference implements java.io.Serializable {
 	@org.optaplanner.core.api.domain.variable.PlanningVariable(valueRangeProviderRefs = {"policyRange"})
 	private com.iss_mr.optaisp.Policy policy;
 
+	@org.kie.api.definition.type.Label("requiredClaimsProcessingDuration")
+	private java.lang.Integer requiredClaimsProcessingDuration;
+
+	@org.kie.api.definition.type.Label("requiredCoPayCappedAt")
+	private java.lang.Integer requiredCoPayCappedAt;
+
+	@org.kie.api.definition.type.Label("required-coinsurance")
+	private java.lang.Integer requiredCoinsurance;
+
+	@org.kie.api.definition.type.Label("required community Hospital")
+	private java.lang.Integer requiredcommunityHospital;
+
+	@org.kie.api.definition.type.Label("required Critical Illnesses")
+	private java.lang.Integer requiredCriticalIllnesses;
+
+	@org.kie.api.definition.type.Label("required Deductible")
+	private java.lang.Integer requiredDeductible;
+
+	@org.kie.api.definition.type.Label(value = "required Emergency Overseas Treatment")
+	private java.lang.Integer requiredEmergencyOverseasTreatment;
+
+	@org.kie.api.definition.type.Label(value = "required Non Panel Surcharge")
+	private java.lang.Integer requiredNonPanelSurcharge;
+
+	@org.kie.api.definition.type.Label(value = "required Policy Year Limit")
+	private java.lang.Integer requiredPolicyYearLimit;
+
+	@org.kie.api.definition.type.Label(value = "required Post Hospitalisation Coverage")
+	private java.lang.Integer requiredPostHospitalisationCoverage;
+
+	@org.kie.api.definition.type.Label(value = "required Pre Hospitalisation Coverage")
+	private java.lang.Integer requiredPreHospitalisationCoverage;
+
+	@org.kie.api.definition.type.Label(value = "requiredPremium")
+	private java.lang.Integer requiredPremium;
+
+	@org.kie.api.definition.type.Label(value = "required Prosthesis")
+	private java.lang.Integer requiredProsthesis;
+
 	public Preference() {
-	}
-
-	public java.lang.Integer getRequiredDailyWard() {
-		return this.requiredDailyWard;
-	}
-
-	public void setRequiredDailyWard(java.lang.Integer requiredDailyWard) {
-		this.requiredDailyWard = requiredDailyWard;
 	}
 
 	public java.lang.Integer getRequiredSurgery() {
@@ -90,19 +119,155 @@ public class Preference implements java.io.Serializable {
 		this.policy = policy;
 	}
 
-	public Preference(java.lang.Integer requiredDailyWard,
-			java.lang.Integer requiredSurgery,
+	public java.lang.Integer getRequiredClaimsProcessingDuration() {
+		return this.requiredClaimsProcessingDuration;
+	}
+
+	public void setRequiredClaimsProcessingDuration(
+			java.lang.Integer requiredClaimsProcessingDuration) {
+		this.requiredClaimsProcessingDuration = requiredClaimsProcessingDuration;
+	}
+
+	public java.lang.Integer getRequiredCoPayCappedAt() {
+		return this.requiredCoPayCappedAt;
+	}
+
+	public void setRequiredCoPayCappedAt(java.lang.Integer requiredCoPayCappedAt) {
+		this.requiredCoPayCappedAt = requiredCoPayCappedAt;
+	}
+
+	public java.lang.Integer getRequiredCoinsurance() {
+		return this.requiredCoinsurance;
+	}
+
+	public void setRequiredCoinsurance(java.lang.Integer requiredCoinsurance) {
+		this.requiredCoinsurance = requiredCoinsurance;
+	}
+
+	public java.lang.Integer getRequiredcommunityHospital() {
+		return this.requiredcommunityHospital;
+	}
+
+	public void setRequiredcommunityHospital(
+			java.lang.Integer requiredcommunityHospital) {
+		this.requiredcommunityHospital = requiredcommunityHospital;
+	}
+
+	public java.lang.Integer getRequiredCriticalIllnesses() {
+		return this.requiredCriticalIllnesses;
+	}
+
+	public void setRequiredCriticalIllnesses(
+			java.lang.Integer requiredCriticalIllnesses) {
+		this.requiredCriticalIllnesses = requiredCriticalIllnesses;
+	}
+
+	public java.lang.Integer getRequiredDeductible() {
+		return this.requiredDeductible;
+	}
+
+	public void setRequiredDeductible(java.lang.Integer requiredDeductible) {
+		this.requiredDeductible = requiredDeductible;
+	}
+
+	public java.lang.Integer getRequiredEmergencyOverseasTreatment() {
+		return this.requiredEmergencyOverseasTreatment;
+	}
+
+	public void setRequiredEmergencyOverseasTreatment(
+			java.lang.Integer requiredEmergencyOverseasTreatment) {
+		this.requiredEmergencyOverseasTreatment = requiredEmergencyOverseasTreatment;
+	}
+
+	public java.lang.Integer getRequiredNonPanelSurcharge() {
+		return this.requiredNonPanelSurcharge;
+	}
+
+	public void setRequiredNonPanelSurcharge(
+			java.lang.Integer requiredNonPanelSurcharge) {
+		this.requiredNonPanelSurcharge = requiredNonPanelSurcharge;
+	}
+
+	public java.lang.Integer getRequiredPolicyYearLimit() {
+		return this.requiredPolicyYearLimit;
+	}
+
+	public void setRequiredPolicyYearLimit(
+			java.lang.Integer requiredPolicyYearLimit) {
+		this.requiredPolicyYearLimit = requiredPolicyYearLimit;
+	}
+
+	public java.lang.Integer getRequiredPostHospitalisationCoverage() {
+		return this.requiredPostHospitalisationCoverage;
+	}
+
+	public void setRequiredPostHospitalisationCoverage(
+			java.lang.Integer requiredPostHospitalisationCoverage) {
+		this.requiredPostHospitalisationCoverage = requiredPostHospitalisationCoverage;
+	}
+
+	public java.lang.Integer getRequiredPreHospitalisationCoverage() {
+		return this.requiredPreHospitalisationCoverage;
+	}
+
+	public void setRequiredPreHospitalisationCoverage(
+			java.lang.Integer requiredPreHospitalisationCoverage) {
+		this.requiredPreHospitalisationCoverage = requiredPreHospitalisationCoverage;
+	}
+
+	public java.lang.Integer getRequiredPremium() {
+		return this.requiredPremium;
+	}
+
+	public void setRequiredPremium(java.lang.Integer requiredPremium) {
+		this.requiredPremium = requiredPremium;
+	}
+
+	public java.lang.Integer getRequiredProsthesis() {
+		return this.requiredProsthesis;
+	}
+
+	public void setRequiredProsthesis(java.lang.Integer requiredProsthesis) {
+		this.requiredProsthesis = requiredProsthesis;
+	}
+
+	public Preference(java.lang.Integer requiredSurgery,
 			java.lang.Integer requiredPreHospitalisationCoveredDays,
 			java.lang.Integer requiredPostHospitalisationCoveredDays,
 			java.lang.Integer requiredMajorOrganTransplant,
-			java.lang.Integer requiredAge, com.iss_mr.optaisp.Policy policy) {
-		this.requiredDailyWard = requiredDailyWard;
+			java.lang.Integer requiredAge, com.iss_mr.optaisp.Policy policy,
+			java.lang.Integer requiredClaimsProcessingDuration,
+			java.lang.Integer requiredCoPayCappedAt,
+			java.lang.Integer requiredCoinsurance,
+			java.lang.Integer requiredcommunityHospital,
+			java.lang.Integer requiredCriticalIllnesses,
+			java.lang.Integer requiredDeductible,
+			java.lang.Integer requiredEmergencyOverseasTreatment,
+			java.lang.Integer requiredNonPanelSurcharge,
+			java.lang.Integer requiredPolicyYearLimit,
+			java.lang.Integer requiredPostHospitalisationCoverage,
+			java.lang.Integer requiredPreHospitalisationCoverage,
+			java.lang.Integer requiredPremium,
+			java.lang.Integer requiredProsthesis) {
 		this.requiredSurgery = requiredSurgery;
 		this.requiredPreHospitalisationCoveredDays = requiredPreHospitalisationCoveredDays;
 		this.requiredPostHospitalisationCoveredDays = requiredPostHospitalisationCoveredDays;
 		this.requiredMajorOrganTransplant = requiredMajorOrganTransplant;
 		this.requiredAge = requiredAge;
 		this.policy = policy;
+		this.requiredClaimsProcessingDuration = requiredClaimsProcessingDuration;
+		this.requiredCoPayCappedAt = requiredCoPayCappedAt;
+		this.requiredCoinsurance = requiredCoinsurance;
+		this.requiredcommunityHospital = requiredcommunityHospital;
+		this.requiredCriticalIllnesses = requiredCriticalIllnesses;
+		this.requiredDeductible = requiredDeductible;
+		this.requiredEmergencyOverseasTreatment = requiredEmergencyOverseasTreatment;
+		this.requiredNonPanelSurcharge = requiredNonPanelSurcharge;
+		this.requiredPolicyYearLimit = requiredPolicyYearLimit;
+		this.requiredPostHospitalisationCoverage = requiredPostHospitalisationCoverage;
+		this.requiredPreHospitalisationCoverage = requiredPreHospitalisationCoverage;
+		this.requiredPremium = requiredPremium;
+		this.requiredProsthesis = requiredProsthesis;
 	}
 
 }

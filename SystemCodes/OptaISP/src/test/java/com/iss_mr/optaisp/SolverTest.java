@@ -14,7 +14,7 @@ public class SolverTest {
 
         public SolverTest() {}
 
-           //@Test
+           @Test
             public void solve() {
                 KieContainer kieContainer = KieServices.Factory.get().getKieClasspathContainer(SolverTest.class.getClassLoader());
                 SolverFactory<ISPSolution> solverFactory =
@@ -32,7 +32,6 @@ public class SolverTest {
                 Policy policy = new Policy();
                 policy.setId(1);
                 policy.setName("AIA HealthShield Gold Max A");
-                policy.setDailyWard(100);
                 policy.setMajorOrganTransplant(100);
                 policy.setPostHospitalisationCoveredDays(50);
                 policy.setPreHospitalisationCoveredDays(50);
@@ -42,7 +41,6 @@ public class SolverTest {
                 Policy policy2 = new Policy();
                 policy2.setId(2);
                 policy2.setName("Prudential PruShield Premier");
-                policy2.setDailyWard(100);
                 policy2.setMajorOrganTransplant(100);
                 policy2.setPostHospitalisationCoveredDays(100);
                 policy2.setPreHospitalisationCoveredDays(100);
@@ -55,7 +53,6 @@ public class SolverTest {
 
 
                 Preference preference = new Preference();
-                preference.setRequiredDailyWard(100);
                 preference.setRequiredSurgery(100);
                 preference.setRequiredPreHospitalisationCoveredDays(75);
                 preference.setRequiredPostHospitalisationCoveredDays(75);
