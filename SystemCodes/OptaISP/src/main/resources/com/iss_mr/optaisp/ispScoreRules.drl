@@ -1,6 +1,6 @@
 package com.iss_mr.optaisp;
 
-
+global org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder scoreHolder;
 // ############################################################################
 // Hard constraints
 // ############################################################################
@@ -11,9 +11,8 @@ rule "Hard last entry age"
         Preference ($requiredAge:requiredAge)
         exists Preference(policy == $policy)
     then
-        scoreHolder.addHardConstraintMatch(kcontext, $lastEntryAge - $requiredAge);
+        scoreHolder.penalize(kcontext, $requiredAge - $lastEntryAge);
 end
-
 
 // ############################################################################
 // Soft constraints
@@ -21,11 +20,20 @@ end
 
 
 
-rule "Pre-Hospitalisation covered days"
+rule "Post Hospitalisation covered days"
     when
         $policy : Policy($postHospitalisationCoveredDays : postHospitalisationCoveredDays)
         Preference ($requiredPostHospitalisationCoveredDays:requiredPostHospitalisationCoveredDays)
         exists Preference(policy == $policy)
     then
-        scoreHolder.addSoftConstraintMatch(kcontext, $postHospitalisationCoveredDays - $requiredPostHospitalisationCoveredDays);
+        scoreHolder.penalize(kcontext, $requiredPostHospitalisationCoveredDays - $postHospitalisationCoveredDays);
+end
+
+rule "Pre Hospitalisation covered days"
+when
+        $policy : Policy($preHospitalisationCoveredDays : preHospitalisationCoveredDays)
+        Preference ($requiredPreHospitalisationCoveredDays:requiredPreHospitalisationCoveredDays)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredPreHospitalisationCoveredDays - $preHospitalisationCoveredDays );
 end

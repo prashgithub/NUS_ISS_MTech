@@ -1,6 +1,7 @@
 package com.iss_mr.optaisp;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.api.solver.SolverFactory;
 import java.util.List;
 import java.util.ArrayList;
@@ -13,16 +14,18 @@ public class SolverTest {
 
         public SolverTest() {}
 
-            @Test
+           //@Test
             public void solve() {
-
                 KieContainer kieContainer = KieServices.Factory.get().getKieClasspathContainer(SolverTest.class.getClassLoader());
                 SolverFactory<ISPSolution> solverFactory =
                         SolverFactory.createFromKieContainerXmlResource(kieContainer,
-                                "com/iss_mr/optaisp/ispSolverConfig.xml");
+                                "com/iss_mr/optaisp/ispSolverConfig.solver.xml");
                 Solver<ISPSolution> solver = solverFactory.buildSolver();
-
-                solver.solve(getSolution());
+                ISPSolution solution=getSolution();
+                solver.solve(solution);
+                System.out.println("explain : "+solver.explainBestScore());
+               System.out.println("score : "+solver.getBestSolution().getScore());
+                System.out.println("result : "+solver.getBestSolution().getPreferenceList().get(0).getPolicy().getName());
             }
 
             private ISPSolution getSolution() {
@@ -36,8 +39,19 @@ public class SolverTest {
                 policy.setSurgery(100);
                 policy.setLastEntryAge(100);
 
+                Policy policy2 = new Policy();
+                policy2.setId(2);
+                policy2.setName("Prudential PruShield Premier");
+                policy2.setDailyWard(100);
+                policy2.setMajorOrganTransplant(100);
+                policy2.setPostHospitalisationCoveredDays(100);
+                policy2.setPreHospitalisationCoveredDays(100);
+                policy2.setSurgery(100);
+                policy2.setLastEntryAge(100);
+
                 List<Policy> policyList=new ArrayList();
                 policyList.add(policy);
+                policyList.add(policy2);
 
 
                 Preference preference = new Preference();
@@ -48,10 +62,13 @@ public class SolverTest {
                 preference.setRequiredMajorOrganTransplant(100);
                 preference.setRequiredAge(30);
 
-
+                ISPConstraintConfiguration constraintConfiguration=new ISPConstraintConfiguration();
+                constraintConfiguration.setHardLastEntryAge(HardSoftScore.ofHard(1));
+                constraintConfiguration.setPreHospitalisationCoveredDays(HardSoftScore.ofSoft(1));
+                constraintConfiguration.setPostHospitalisationCoveredDays(HardSoftScore.ofSoft(1));
 
                 return new ISPSolution(policyList,
                         Arrays.asList(preference),
-                        null);
+                        constraintConfiguration);
             }
         }
