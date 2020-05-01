@@ -186,6 +186,21 @@ public class ISPMIntegration {
         constraintConfiguration.setHardLastEntryAge(HardSoftScore.ofHard(1));
         constraintConfiguration.setPreHospitalisationCoveredDays(HardSoftScore.ofSoft(applicationPreference.getPreHospitalisationCoveredDays().getImportance()));
         constraintConfiguration.setPostHospitalisationCoveredDays(HardSoftScore.ofSoft(applicationPreference.getPostHospitalisationCoveredDays().getImportance()));
+        constraintConfiguration.setPolicyYearLimit(HardSoftScore.ofSoft(applicationPreference.getPolicyYearLimit().getImportance()));
+        constraintConfiguration.setCoinsurance(HardSoftScore.ofSoft(applicationPreference.getCoinsurance().getImportance()));
+        constraintConfiguration.setCommunityHospital(HardSoftScore.ofSoft(applicationPreference.getCommunityHospital().getImportance()));
+        constraintConfiguration.setCoPayCappedAt(HardSoftScore.ofSoft(applicationPreference.getCoPayCappedAt().getImportance()));
+        constraintConfiguration.setDeductible(HardSoftScore.ofSoft(applicationPreference.getDeductible().getImportance()));
+        constraintConfiguration.setEmergencyOverseasTreatment(HardSoftScore.ofSoft(applicationPreference.getEmergencyOverseasTreatment().getImportance()));
+        constraintConfiguration.setMajorOrganTransplant(HardSoftScore.ofSoft(applicationPreference.getMajorOrganTransplant().getImportance()));
+        constraintConfiguration.setPremiumAmount(HardSoftScore.ofSoft(applicationPreference.getPremium().getImportance()));
+        constraintConfiguration.setSurgery(HardSoftScore.ofSoft(applicationPreference.getSurgery().getImportance()));
+        constraintConfiguration.setClaimProcessingDuration(HardSoftScore.ofSoft(applicationPreference.getClaimsProcessingDuration().getImportance()));
+        constraintConfiguration.setCriticalIllness(HardSoftScore.ofSoft(applicationPreference.getCriticalIllnesses().getImportance()));
+        constraintConfiguration.setNonPanelsurcharge(HardSoftScore.ofSoft(applicationPreference.getNonPanelSurcharge().getImportance()));
+        constraintConfiguration.setPostHopitalisationCoverage(HardSoftScore.ofSoft(applicationPreference.getPostHospitalisationCoverage().getImportance()));
+        constraintConfiguration.setPreHopitalisationCoverage(HardSoftScore.ofSoft(applicationPreference.getPreHospitalisationCoverage().getImportance()));
+        constraintConfiguration.setProsthsis(HardSoftScore.ofSoft(applicationPreference.getProsthesis().getImportance()));
         return constraintConfiguration;
     }
 

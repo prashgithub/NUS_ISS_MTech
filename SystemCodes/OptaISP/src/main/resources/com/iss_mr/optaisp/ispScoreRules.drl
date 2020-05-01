@@ -1,9 +1,11 @@
 package com.iss_mr.optaisp;
 
 global org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder scoreHolder;
+import java.util.List;
 // ############################################################################
 // Hard constraints
 // ############################################################################
+global Integer premium;
 
 rule "Hard last entry age"
     when
@@ -18,9 +20,7 @@ end
 // Soft constraints
 // ############################################################################
 
-
-
-rule "Post Hospitalisation covered days"
+rule "Post Hospitalisation Covered Days"
     when
         $policy : Policy($postHospitalisationCoveredDays : postHospitalisationCoveredDays)
         Preference ($requiredPostHospitalisationCoveredDays:requiredPostHospitalisationCoveredDays)
@@ -29,11 +29,147 @@ rule "Post Hospitalisation covered days"
         scoreHolder.penalize(kcontext, $requiredPostHospitalisationCoveredDays - $postHospitalisationCoveredDays);
 end
 
-rule "Pre Hospitalisation covered days"
-when
+rule "Pre Hospitalisation Covered Days"
+    when
         $policy : Policy($preHospitalisationCoveredDays : preHospitalisationCoveredDays)
         Preference ($requiredPreHospitalisationCoveredDays:requiredPreHospitalisationCoveredDays)
         exists Preference(policy == $policy)
     then
         scoreHolder.penalize(kcontext, $requiredPreHospitalisationCoveredDays - $preHospitalisationCoveredDays );
+end
+
+rule "Policy Year Limit"
+    when
+        $policy : Policy($policyYearLimit : policyYearLimit)
+        Preference ($requiredPolicyYearLimit:requiredPolicyYearLimit)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredPolicyYearLimit - $policyYearLimit);
+end
+
+rule "Community Hospital"
+    when
+        $policy : Policy($communityHospital : communityHospital)
+        Preference ($requiredCommunityHospital:requiredcommunityHospital)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredCommunityHospital - $communityHospital);
+end
+
+rule "Major Organ Transplant"
+    when
+        $policy : Policy($majorOrganTransplant : majorOrganTransplant)
+        Preference ($requiredMajorOrganTransplant:requiredMajorOrganTransplant)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredMajorOrganTransplant - $majorOrganTransplant);
+end
+
+rule "Critical Illnesses"
+    when
+        $policy : Policy($criticalIllnesses : criticalIllnesses)
+        Preference ($requiredCriticalIllnesses:requiredCriticalIllnesses)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredCriticalIllnesses - $criticalIllnesses);
+end
+
+rule "Prosthesis"
+    when
+        $policy : Policy($prosthesis : prosthesis)
+        Preference ($requiredProsthesis:requiredProsthesis)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredProsthesis - $prosthesis);
+end
+
+rule "Emergency Overseas Treatment"
+    when
+        $policy : Policy($emergencyOverseasTreatment : emergencyOverseasTreatment)
+        Preference ($requiredEmergencyOverseasTreatment:requiredEmergencyOverseasTreatment)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredEmergencyOverseasTreatment - $emergencyOverseasTreatment);
+end
+
+rule "Claims Processing Duration"
+    when
+        $policy : Policy($claimsProcessingDuration : claimsProcessingDuration)
+        Preference ($requiredClaimsProcessingDuration:requiredClaimsProcessingDuration)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $claimsProcessingDuration - $requiredClaimsProcessingDuration);
+end
+
+rule "Post Hospitalisation Coverage"
+    when
+        $policy : Policy($postHospitalisationCoverage : postHospitalisationCoverage)
+        Preference ($requiredPostHospitalisationCoverage:requiredPostHospitalisationCoverage)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredPostHospitalisationCoverage - $postHospitalisationCoverage);
+end
+
+rule "Pre Hospitalisation Coverage"
+    when
+        $policy : Policy($preHospitalisationCoverage : preHospitalisationCoverage)
+        Preference ($requiredPreHospitalisationCoverage:requiredPreHospitalisationCoverage)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredPreHospitalisationCoverage - $preHospitalisationCoverage);
+end
+
+rule "Co-insurance"
+    when
+        $policy : Policy($coinsurance : coinsurance)
+        Preference ($requiredCoinsurance:requiredCoinsurance)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredCoinsurance - $coinsurance);
+end
+
+rule "Deductible"
+    when
+        $policy : Policy($deductible : deductible)
+        Preference ($requiredDeductible:requiredDeductible)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredDeductible - $deductible);
+end
+
+rule "Non-Panel Surcharge"
+    when
+        $policy : Policy($nonPanelSurcharge : nonPanelSurcharge)
+        Preference ($requiredNonPanelSurcharge:requiredNonPanelSurcharge)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredNonPanelSurcharge - $nonPanelSurcharge);
+end
+
+rule "Co-Pay Capped At"
+    when
+        $policy : Policy($coPayCappedAt : coPayCappedAt)
+        Preference ($requiredCoPayCappedAt:requiredCoPayCappedAt)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredCoPayCappedAt - $coPayCappedAt);
+end
+
+rule "Surgery"
+    when
+        $policy : Policy($surgery : surgery)
+        Preference ($requiredSurgery:requiredSurgery)
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $requiredSurgery - $surgery);
+end
+
+rule "Premium Amount"
+    when
+        Preference ($requiredAge:requiredAge,$requiredPremium:requiredPremium)
+        $policy : Policy($premiums: premium)
+        Premium( ageGroup == $requiredAge, $premium: premiumByAge) from $premiums
+        exists Preference(policy == $policy)
+    then
+        scoreHolder.penalize(kcontext, $premium - $requiredPremium );
 end
