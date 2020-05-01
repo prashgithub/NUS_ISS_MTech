@@ -15,6 +15,7 @@
  */
 package web.jpa.jparepository;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import web.jpa.model.ISPCompPoliciesFeature;
@@ -24,5 +25,5 @@ import web.jpa.model.ISPCompPolicyPremium;
  * @author Prash
  */
 @Repository("ispCompPoliciesPremiumRepository")
-public interface ISPCompPoliciesPremiumRepository extends PagingAndSortingRepository<ISPCompPolicyPremium, Long> {
+public interface ISPCompPoliciesPremiumRepository extends CrudRepository<ISPCompPolicyPremium, Long> {
 }

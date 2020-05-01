@@ -23,5 +23,5 @@ import web.jpa.model.ISPCompPolicies;
  * @author Prash
  */
 @Repository("ispCompPoliciesRepository")
-public interface ISPCompPoliciesRepository extends PagingAndSortingRepository<ISPCompPolicies, Long> {
+public interface ISPCompPoliciesRepository extends org.springframework.data.repository.CrudRepository<ISPCompPolicies, Long> {
 }
