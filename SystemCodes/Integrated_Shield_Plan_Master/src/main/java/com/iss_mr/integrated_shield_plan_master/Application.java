@@ -19,8 +19,12 @@ public class Application implements java.io.Serializable {
 	private java.lang.String issuer;
 
 	@javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
-	@org.kie.api.definition.type.Label(value = "Matched Policy")
+	@org.kie.api.definition.type.Label("Matched Policy")
 	private com.iss_mr.integrated_shield_plan_master.Policy matchedPolicy;
+
+	@javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
+	@org.kie.api.definition.type.Label(value = "Preference")
+	private com.iss_mr.integrated_shield_plan_master.Preference preference;
 
 	public Application() {
 	}
@@ -59,14 +63,25 @@ public class Application implements java.io.Serializable {
 		this.matchedPolicy = matchedPolicy;
 	}
 
+	public com.iss_mr.integrated_shield_plan_master.Preference getPreference() {
+		return this.preference;
+	}
+
+	public void setPreference(
+			com.iss_mr.integrated_shield_plan_master.Preference preference) {
+		this.preference = preference;
+	}
+
 	public Application(long id,
 			com.iss_mr.integrated_shield_plan_master.Applicant applicant,
 			java.lang.String issuer,
-			com.iss_mr.integrated_shield_plan_master.Policy matchedPolicy) {
+			com.iss_mr.integrated_shield_plan_master.Policy matchedPolicy,
+			com.iss_mr.integrated_shield_plan_master.Preference preference) {
 		this.id = id;
 		this.applicant = applicant;
 		this.issuer = issuer;
 		this.matchedPolicy = matchedPolicy;
+		this.preference = preference;
 	}
 
 }

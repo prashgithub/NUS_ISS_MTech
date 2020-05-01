@@ -5,6 +5,7 @@ import com.iss_mr.integrated_shield_plan_master.Policy;
 import com.iss_mr.optaisp.ISPConstraintConfiguration;
 import com.iss_mr.optaisp.ISPSolution;
 import com.iss_mr.optaisp.Preference;
+import com.iss_mr.optaisp.Premium;
 import org.jbpm.bpmn2.xml.UserTaskHandler;
 import org.jbpm.process.core.impl.WorkImpl;
 import org.jbpm.process.instance.impl.humantask.HumanTaskHandler;
@@ -34,6 +35,11 @@ public class ISPMIntegration {
 
     static Logger log = LoggerFactory.getLogger(ISPMIntegration.class);
 
+    private List<com.iss_mr.optaisp.Policy> policyList;
+    public void setPolicyList(List<com.iss_mr.optaisp.Policy> policyList){
+        this.policyList=policyList;
+    }
+
     private void releaseResource(KieContainer container) {
         try {
             if (container != null) {
@@ -55,6 +61,7 @@ public class ISPMIntegration {
             Solver<ISPSolution> solver = solverFactory.buildSolver();
             solver.solve(getSolution(application));
             ISPSolution solution = solver.getBestSolution();
+            log.info("opta best score: "+solver.getBestScore().toString());
             System.out.println("opta solver explain: " + solver.explainBestScore());
             log.info("invoke opta: Triggered {} opta", solution.getPreferenceList().get(0).getPolicy().getName());
             resultMap.put("Policy", solution.getPreferenceList().get(0).getPolicy());
@@ -147,39 +154,30 @@ public class ISPMIntegration {
 
 
     private ISPSolution getSolution(Application application) {
-        com.iss_mr.optaisp.Policy policy = new com.iss_mr.optaisp.Policy();
-        policy.setId(1);
-        policy.setName("AIA HealthShield Gold Max A");
-        policy.setDailyWard(100);
-        policy.setMajorOrganTransplant(100);
-        policy.setPostHospitalisationCoveredDays(50);
-        policy.setPreHospitalisationCoveredDays(50);
-        policy.setSurgery(100);
-        policy.setLastEntryAge(100);
-
-        com.iss_mr.optaisp.Policy policy2 = new com.iss_mr.optaisp.Policy();
-        policy2.setId(2);
-        policy2.setName("Prudential PruShield Premier");
-        policy2.setDailyWard(100);
-        policy2.setMajorOrganTransplant(100);
-        policy2.setPostHospitalisationCoveredDays(100);
-        policy2.setPreHospitalisationCoveredDays(100);
-        policy2.setSurgery(100);
-        policy2.setLastEntryAge(100);
-
-        List<com.iss_mr.optaisp.Policy> policyList = new ArrayList();
-        policyList.add(policy);
-        policyList.add(policy2);
-
-        return new ISPSolution(policyList, Arrays.asList(formPreference(application.getPreference())), formConstrain(application.getPreference()));
+        return new ISPSolution(policyList, Arrays.asList(formPreference(application)), formConstrain(application.getPreference()));
     }
 
-    private Preference formPreference(com.iss_mr.integrated_shield_plan_master.Preference applicationPreference){
+    private Preference formPreference(Application application){
+        com.iss_mr.integrated_shield_plan_master.Preference applicationPreference=application.getPreference();
         Preference preference = new Preference();
-        preference.setRequiredAge(30);
+        preference.setRequiredAge(application.getApplicant().getAge());
         preference.setRequiredPreHospitalisationCoveredDays(applicationPreference.getPreHospitalisationCoveredDays().getExpectedValue());
         preference.setRequiredPostHospitalisationCoveredDays(applicationPreference.getPostHospitalisationCoveredDays().getExpectedValue());
         preference.setRequiredMajorOrganTransplant(applicationPreference.getMajorOrganTransplant().getExpectedValue());
+        preference.setRequiredSurgery(applicationPreference.getSurgery().getExpectedValue());
+        preference.setRequiredClaimsProcessingDuration(applicationPreference.getClaimsProcessingDuration().getExpectedValue());
+        preference.setRequiredCoinsurance(applicationPreference.getCoinsurance().getExpectedValue());
+        preference.setRequiredcommunityHospital(applicationPreference.getCommunityHospital().getExpectedValue());
+        preference.setRequiredCoPayCappedAt(applicationPreference.getCoPayCappedAt().getExpectedValue());
+        preference.setRequiredCriticalIllnesses(applicationPreference.getCriticalIllnesses().getExpectedValue());
+        preference.setRequiredDeductible(applicationPreference.getDeductible().getExpectedValue());
+        preference.setRequiredEmergencyOverseasTreatment(applicationPreference.getEmergencyOverseasTreatment().getExpectedValue());
+        preference.setRequiredNonPanelSurcharge(applicationPreference.getNonPanelSurcharge().getExpectedValue());
+        preference.setRequiredPremium(applicationPreference.getPremium().getExpectedValue());
+        preference.setRequiredPolicyYearLimit(applicationPreference.getPolicyYearLimit().getExpectedValue());
+        preference.setRequiredPostHospitalisationCoverage(applicationPreference.getPostHospitalisationCoverage().getExpectedValue());
+        preference.setRequiredPreHospitalisationCoverage(applicationPreference.getPreHospitalisationCoverage().getExpectedValue());
+        preference.setRequiredProsthesis(applicationPreference.getProsthesis().getExpectedValue());
         return preference;
     }
 

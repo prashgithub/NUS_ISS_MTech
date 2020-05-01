@@ -10,9 +10,8 @@ public class ApplicationConverter {
     public static Application convertFromApplicationDto(ApplicationDto applicationDto) {
         Applicant applicant=new Applicant();
         applicant.setName(applicationDto.getName());
-        applicant.setAge(Integer.parseInt(applicationDto.getAge()));
-        applicant.setId(applicationDto.getId());
-        applicant.setGender(applicationDto.getAge());
+        applicant.setAge(35);
+        applicant.setGender(applicationDto.getGender());
         applicant.setNationality("Singaporean");
         applicant.setSpstatus(applicationDto.getStatus());
 
@@ -62,6 +61,45 @@ public class ApplicationConverter {
         preferenceMatrix_prosthesis.setImportance(5);
         preference.setProsthesis(preferenceMatrix_prosthesis);
 
+        PreferenceMatrix preferenceMatrix_premium=new PreferenceMatrix();
+        preferenceMatrix_premium.setExpectedValue(50);
+        preferenceMatrix_premium.setImportance(15);
+        preference.setPremium(preferenceMatrix_premium);
+
+        PreferenceMatrix preferenceMatrix_surgery=new PreferenceMatrix();
+        preferenceMatrix_surgery.setExpectedValue(50);
+        preferenceMatrix_surgery.setImportance(10);
+        preference.setSurgery(preferenceMatrix_surgery);
+
+        PreferenceMatrix preferenceMatrix_coinsurance=new PreferenceMatrix();
+        preferenceMatrix_coinsurance.setExpectedValue(25);
+        preferenceMatrix_coinsurance.setImportance(5);
+        preference.setCoinsurance(preferenceMatrix_coinsurance);
+
+        PreferenceMatrix preferenceMatrix_coPayCappedAt=new PreferenceMatrix();
+        preferenceMatrix_coPayCappedAt.setExpectedValue(25);
+        preferenceMatrix_coPayCappedAt.setImportance(5);
+        preference.setCoPayCappedAt(preferenceMatrix_coPayCappedAt);
+
+        PreferenceMatrix preferenceMatrix_deductible=new PreferenceMatrix();
+        preferenceMatrix_deductible.setExpectedValue(25);
+        preferenceMatrix_deductible.setImportance(5);
+        preference.setDeductible(preferenceMatrix_deductible);
+
+        PreferenceMatrix preferenceMatrix_nonPanelSurcharge=new PreferenceMatrix();
+        preferenceMatrix_nonPanelSurcharge.setExpectedValue(25);
+        preferenceMatrix_nonPanelSurcharge.setImportance(5);
+        preference.setNonPanelSurcharge(preferenceMatrix_nonPanelSurcharge);
+
+        PreferenceMatrix preferenceMatrix_postHospitalisationCoverage=new PreferenceMatrix();
+        preferenceMatrix_postHospitalisationCoverage.setExpectedValue(50);
+        preferenceMatrix_postHospitalisationCoverage.setImportance(10);
+        preference.setPostHospitalisationCoverage(preferenceMatrix_postHospitalisationCoverage);
+
+        PreferenceMatrix preferenceMatrix_preHospitalisationCoverage=new PreferenceMatrix();
+        preferenceMatrix_preHospitalisationCoverage.setExpectedValue(50);
+        preferenceMatrix_preHospitalisationCoverage.setImportance(10);
+        preference.setPreHospitalisationCoverage(preferenceMatrix_preHospitalisationCoverage);
 
         Application application = new Application();
         application.setApplicant( applicant);

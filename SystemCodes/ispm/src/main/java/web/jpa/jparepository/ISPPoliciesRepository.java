@@ -15,15 +15,13 @@
  */
 package web.jpa.jparepository;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import web.jpa.model.ISPCompPoliciesFeature;
-import web.jpa.model.ISPCompPolicyPremium;
+import web.jpa.model.ISPCompPolicies;
+import web.jpa.model.ISPPolicies;
 
 /**
  * @author Prash
  */
-@Repository("ispCompPoliciesPremiumRepository")
-public interface ISPCompPoliciesPremiumRepository extends CrudRepository<ISPCompPolicyPremium, Long> {
+@Repository("ISPPoliciesRepository")
+public interface ISPPoliciesRepository extends org.springframework.data.repository.CrudRepository<ISPPolicies, Long> {
 }
