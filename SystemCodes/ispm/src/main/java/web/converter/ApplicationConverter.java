@@ -10,7 +10,7 @@ public class ApplicationConverter {
     public static Application convertFromApplicationDto(ApplicationDto applicationDto) {
         Applicant applicant=new Applicant();
         applicant.setName(applicationDto.getName());
-        applicant.setAge(35);
+        applicant.setAge(Integer.parseInt(applicationDto.getAge()));
         applicant.setGender(applicationDto.getGender());
         applicant.setNationality("Singaporean");
         applicant.setSpstatus(applicationDto.getStatus());
