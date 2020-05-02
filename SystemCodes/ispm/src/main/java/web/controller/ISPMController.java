@@ -59,7 +59,7 @@ public class ISPMController {
 
     @GetMapping("/complete")
     public String result(@ModelAttribute ApplicationDto applicationDto, Model model) {
-        model.addAttribute("matchedPolicy", ispmService.getMatchedPolicy(applicationDto));
+        model.addAttribute("matchedPolicy", ispmService.getMatchedPolicy(currentApplication));
         //OPtaplannerService.invoke()
         return "complete";
     }

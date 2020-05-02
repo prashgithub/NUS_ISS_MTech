@@ -8,6 +8,10 @@
   <packaging>kjar</packaging>
   <name>Integrated_Shield_Plan_Master</name>
   <description></description>
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>com.thoughtworks.xstream</groupId>
