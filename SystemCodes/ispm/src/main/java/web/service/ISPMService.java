@@ -6,12 +6,15 @@ import com.iss_mr.optaisp.Premium;
 import integration.ISPMIntegration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import web.controller.CalcController;
 import web.converter.ApplicationConverter;
 import web.dao.ApplicationDto;
 import web.dao.PolicyDto;
-import web.jpa.jparepository.*;
-import web.jpa.model.*;
+import web.jpa.jparepository.ISPCompPoliciesFeatureViewRepository;
+import web.jpa.jparepository.ISPCompPoliciesPremiumRepository;
+import web.jpa.jparepository.ISPPoliciesRepository;
+import web.jpa.model.ISPCompPolFeatureView;
+import web.jpa.model.ISPCompPolicyPremium;
+import web.jpa.model.ISPPolicies;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -20,7 +23,6 @@ import java.util.Map;
 
 @Service
 public class ISPMService {
-
     private ISPMIntegration ispmIntegration = new ISPMIntegration();
     @Autowired private CalcService calcService;
 
@@ -33,11 +35,14 @@ public class ISPMService {
 
     public PolicyDto getMatchedPolicy(ApplicationDto applicationDto) {
         Map<String, Map<String, BigDecimal>> scoreForPolicyFeature = calcService.getScoreForPolicyFeature();
-        Map<String, BigDecimal> featureToWeights1 = scoreForPolicyFeature.get("policy1");
-        Map<String, BigDecimal> featureToWeights = calcService.getScoreForPolicyFeature("policy1");
-        BigDecimal score1 = featureToWeights.get("feature");
-        BigDecimal score = calcService.getScoreForPolicyFeature("policy1", "feature1");
-        //        Map<String, BigDecimal> policyScore = graCalcHolder.getPolicyScore();
+        String policyName = "AIA HealthShield Gold Max A";
+        String featureName = "PostHospCovg_days";
+
+        Map<String, BigDecimal> featureToWeights1 = scoreForPolicyFeature.get(policyName);
+        Map<String, BigDecimal> featureToWeights = calcService.getScoreForPolicyFeature(policyName);
+        BigDecimal score1 = featureToWeights.get(featureName);
+        BigDecimal score = calcService.getScoreForPolicyFeature(policyName, featureName);
+        //        Map<String, BigDecimal> policyScore = .getPolicyScore();
 
         ispmIntegration.setPolicyList(getPolicyList());
         Application result = ispmIntegration.getMatchedPolicy( ApplicationConverter.convertFromApplicationDto(applicationDto));

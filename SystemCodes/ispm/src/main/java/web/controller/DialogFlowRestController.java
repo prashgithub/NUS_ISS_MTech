@@ -1,15 +1,6 @@
 package web.controller;
 
-import com.google.cloud.dialogflow.v2beta1.DetectIntentRequest;
-import com.google.cloud.dialogflow.v2beta1.DetectIntentResponse;
-import com.google.cloud.dialogflow.v2beta1.KnowledgeAnswers;
-import com.google.cloud.dialogflow.v2beta1.KnowledgeBaseName;
-import com.google.cloud.dialogflow.v2beta1.QueryInput;
-import com.google.cloud.dialogflow.v2beta1.QueryParameters;
-import com.google.cloud.dialogflow.v2beta1.QueryResult;
-import com.google.cloud.dialogflow.v2beta1.SessionName;
-import com.google.cloud.dialogflow.v2beta1.SessionsClient;
-import com.google.cloud.dialogflow.v2beta1.TextInput;
+import com.google.cloud.dialogflow.v2beta1.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -61,14 +52,14 @@ public class DialogFlowRestController {
             QueryResult queryResult = response.getQueryResult();
             KnowledgeAnswers knowledgeAnswers = getFromQueryResults(queryResult);
 
-            DF2Response entity = new DF2Response(
+            ;
+            return new ResponseEntity<>(new DF2Response(
                     queryResult.getQueryText()
                     , queryResult.getIntent().getDisplayName()
                     , queryResult.getIntentDetectionConfidence()
                     , queryResult.getFulfillmentText()
                     , toMap(knowledgeAnswers.getAnswersList())
-            );
-            return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
+            ), new HttpHeaders(), HttpStatus.OK);
         }
     }
 

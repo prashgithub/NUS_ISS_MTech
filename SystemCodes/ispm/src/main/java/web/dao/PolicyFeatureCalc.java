@@ -17,8 +17,8 @@ public class PolicyFeatureCalc {
         Map<String, MCDMCalcHolder> outputMap = new LinkedHashMap<>();
         for (ISPCompPolFeatureView v: inputPolicyFeatures){
             String pf = v.getPolicyFeature();
-            MCDMCalcHolder calcHolder = outputMap.computeIfAbsent(pf, s -> MCDMCalcHolder.builder().featureName(s).build());
-            calcHolder.add(v.getBenefits());
+//            MCDMCalcHolder calcHolder = outputMap.computeIfAbsent(pf, s -> MCDMCalcHolder.builder().featureName(s).build());
+//            calcHolder.add(v.getBenefits());
         }
         outputMap.values().forEach(MCDMCalcHolder::compute);
         return outputMap;
