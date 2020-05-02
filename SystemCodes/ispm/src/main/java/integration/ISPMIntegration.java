@@ -1,5 +1,6 @@
 package integration;
 
+import com.iss_mr.integrated_shield_plan_master.Applicant;
 import com.iss_mr.integrated_shield_plan_master.Application;
 import com.iss_mr.integrated_shield_plan_master.Policy;
 import com.iss_mr.integrated_shield_plan_master.Validation;
@@ -52,6 +53,20 @@ public class ISPMIntegration {
         } catch (Exception e) {
             log.error("Release container error: {}", e.getMessage());
         }
+    }
+
+    public boolean invokeDM(Application application, Map<String, Object> resultMap) {
+        boolean success = true;
+        try {
+            DMIntegration dmIntegration=new DMIntegration();
+            String predictPolicy=dmIntegration.predict(application);
+            log.info("invoke DM: Triggered {} knn prediction", predictPolicy);
+            resultMap.put("Policy", predictPolicy);
+        } catch (Exception exp) {
+            success = false;
+            log.error(" dm error: ", exp);
+        }
+        return success;
     }
 
     public boolean invokeOpta(Application application, Map<String, Object> resultMap) {
@@ -111,13 +126,9 @@ public class ISPMIntegration {
                             Application application = (Application) humanTaskNode.getWorkItem().getParameter("application");
                             invokeOpta(application, resultMap);
                         }
-                    }else if("decision".equalsIgnoreCase(arg0.getNodeInstance().getNodeName())){
-                        log.info("getting validation resule from session");
-                        for(Object object:session.getObjects(new ClassObjectFilter(Validation.class))){
-                            log.info("validation result : "+((Validation)object).getResult());
-                        }
-                        for(Object object:session.getObjects(new ClassObjectFilter(Application.class))){
-                            log.info("Application object : "+((Application)object).getId());
+                        if (humanTaskNode.getHumanTaskNode().getName().equalsIgnoreCase("DataMining")) {
+                            Application application = (Application) humanTaskNode.getWorkItem().getParameter("application");
+                            invokeDM(application, resultMap);
                         }
                     }
                     // if (arg0.getNodeInstance() instanceof RuleSetNodeInstance){
@@ -233,19 +244,20 @@ public class ISPMIntegration {
 
         Object application = resultMap.get("Application");
         Object policy = resultMap.get("Policy");
-        if (policy == null) {
-            policy = new com.iss_mr.optaisp.Policy();
-            ((com.iss_mr.optaisp.Policy) policy).setName("Not Found");
-        }
         if (application != null && application instanceof Application) {
             log.info("Application is found");
             result = (Application) application;
-            com.iss_mr.optaisp.Policy optimalPolicy = (com.iss_mr.optaisp.Policy) policy;
             com.iss_mr.integrated_shield_plan_master.Policy policyDisplayed = new com.iss_mr.integrated_shield_plan_master.Policy();
+            if(policy==null){
+                policyDisplayed.setName("Not Found");
+            }
+            else if(policy instanceof  com.iss_mr.optaisp.Policy){
+                policyDisplayed.setName(((com.iss_mr.optaisp.Policy)policy).getName());
+            }else if(policy instanceof String){
+                policyDisplayed.setName((String)policy);
+            }
             if(((Application) application).getIssuer()!=null){
                 policyDisplayed.setName(((Application)application).getIssuer());
-            }else {
-                policyDisplayed.setName(optimalPolicy.getName());
             }
             result.setMatchedPolicy(policyDisplayed);
         }
