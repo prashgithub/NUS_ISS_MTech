@@ -6,20 +6,23 @@ import com.iss_mr.optaisp.Premium;
 import integration.ISPMIntegration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import web.controller.CalcController;
 import web.converter.ApplicationConverter;
 import web.dao.ApplicationDto;
 import web.dao.PolicyDto;
 import web.jpa.jparepository.*;
 import web.jpa.model.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ISPMService {
 
-    //@Autowired
     private ISPMIntegration ispmIntegration = new ISPMIntegration();
+    @Autowired private CalcService calcService;
 
     @Autowired
     ISPPoliciesRepository ispPoliciesRepository;
@@ -29,6 +32,13 @@ public class ISPMService {
     ISPCompPoliciesPremiumRepository ispCompPoliciesPremiumRepository;
 
     public PolicyDto getMatchedPolicy(ApplicationDto applicationDto) {
+        Map<String, Map<String, BigDecimal>> scoreForPolicyFeature = calcService.getScoreForPolicyFeature();
+        Map<String, BigDecimal> featureToWeights1 = scoreForPolicyFeature.get("policy1");
+        Map<String, BigDecimal> featureToWeights = calcService.getScoreForPolicyFeature("policy1");
+        BigDecimal score1 = featureToWeights.get("feature");
+        BigDecimal score = calcService.getScoreForPolicyFeature("policy1", "feature1");
+        //        Map<String, BigDecimal> policyScore = graCalcHolder.getPolicyScore();
+
         ispmIntegration.setPolicyList(getPolicyList());
         Application result = ispmIntegration.getMatchedPolicy( ApplicationConverter.convertFromApplicationDto(applicationDto));
         PolicyDto policyDto=new PolicyDto();

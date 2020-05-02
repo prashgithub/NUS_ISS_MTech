@@ -1,58 +1,28 @@
 package web.controller;
 
-import com.google.common.collect.Table;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import web.dao.GRACalcHolder;
-import web.jpa.jparepository.ISPCompPoliciesFeatureViewRepository;
-import web.jpa.model.ISPCompPolFeatureView;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import web.service.CalcService;
 
-import java.math.BigDecimal;
-import java.util.*;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
 public class CalcController {
-    private static final Logger logger = LoggerFactory.getLogger(CalcController.class);
-    private List<ISPCompPolFeatureView> list = new ArrayList<>();
-
     @Autowired
-    ISPCompPoliciesFeatureViewRepository repository;
-    private GRACalcHolder graCalcHolder;
+    private CalcService calcService;
 
     @GetMapping(value = "/calc", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<Map> getScore() {
-        logger.info("calc");
-        if(list.isEmpty()) repository.findAll().forEach(list::add);
-        if(graCalcHolder == null) graCalcHolder = new GRACalcHolder(list);
-        Map<String, Map<String, BigDecimal>> rowMap = graCalcHolder.getDefaultScore().rowMap();
-        return new ResponseEntity<>(rowMap, new HttpHeaders(), HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/calcUser", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseEntity<Map> getScore(@RequestParam Map<String,String> weights) {
-        logger.info("calc");
-        if(list.isEmpty()) repository.findAll().forEach(list::add);
-        if(graCalcHolder == null) graCalcHolder = new GRACalcHolder(list);
-        Map<String,BigDecimal> def = graCalcHolder.getDefaultWeights();
-        Map<String,BigDecimal> inp = new HashMap<>();
-        def.forEach((k, v) -> {
-            String val = weights.get(k);
-            if(val != null)
-                inp.put(k, new BigDecimal(val));
-            else
-                inp.put(k, v);
-        });
-        Map<String, Map<String, BigDecimal>> rowMap = graCalcHolder.getUserScore(inp).rowMap();
-
-        return new ResponseEntity<>(rowMap, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<>(calcService.getScoreForPolicyFeatureAsTable().rowMap(),
+                new HttpHeaders(), HttpStatus.OK);
     }
 }
