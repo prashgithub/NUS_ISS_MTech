@@ -18,14 +18,26 @@ public class Applicant implements java.io.Serializable {
 	@org.kie.api.definition.type.Label("Age")
 	private java.lang.Integer age;
 
-	@org.kie.api.definition.type.Label(value = "Gender")
+	@org.kie.api.definition.type.Label("Gender")
 	private java.lang.String gender;
 
-	@org.kie.api.definition.type.Label(value = "Nationality")
+	@org.kie.api.definition.type.Label("Nationality")
 	private java.lang.String nationality;
 
-	@org.kie.api.definition.type.Label(value = "Singapore Status")
+	@org.kie.api.definition.type.Label("Singapore Status")
 	private java.lang.String spstatus;
+
+	@org.kie.api.definition.type.Label(value = "Family Size")
+	private java.lang.Integer familySize;
+
+	@org.kie.api.definition.type.Label(value = "Income")
+	private java.lang.Integer income;
+
+	@org.kie.api.definition.type.Label(value = "Expenditure")
+	private java.lang.Integer expenditure;
+
+	@org.kie.api.definition.type.Label(value = "Loan Amount")
+	private java.lang.Integer loanAmount;
 
 	public Applicant() {
 	}
@@ -78,15 +90,53 @@ public class Applicant implements java.io.Serializable {
 		this.spstatus = spstatus;
 	}
 
+	public java.lang.Integer getFamilySize() {
+		return this.familySize;
+	}
+
+	public void setFamilySize(java.lang.Integer familySize) {
+		this.familySize = familySize;
+	}
+
+	public java.lang.Integer getIncome() {
+		return this.income;
+	}
+
+	public void setIncome(java.lang.Integer income) {
+		this.income = income;
+	}
+
+	public java.lang.Integer getExpenditure() {
+		return this.expenditure;
+	}
+
+	public void setExpenditure(java.lang.Integer expenditure) {
+		this.expenditure = expenditure;
+	}
+
+	public java.lang.Integer getLoanAmount() {
+		return this.loanAmount;
+	}
+
+	public void setLoanAmount(java.lang.Integer loanAmount) {
+		this.loanAmount = loanAmount;
+	}
+
 	public Applicant(java.lang.String id, java.lang.String name,
 			java.lang.Integer age, java.lang.String gender,
-			java.lang.String nationality, java.lang.String spstatus) {
+			java.lang.String nationality, java.lang.String spstatus,
+			java.lang.Integer familySize, java.lang.Integer income,
+			java.lang.Integer expenditure, java.lang.Integer loanAmount) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
 		this.nationality = nationality;
 		this.spstatus = spstatus;
+		this.familySize = familySize;
+		this.income = income;
+		this.expenditure = expenditure;
+		this.loanAmount = loanAmount;
 	}
 
 }

@@ -25,6 +25,10 @@ public class ApplicationConverter {
         applicant.setAge(Integer.parseInt(applicationDto.getAge()));
         applicant.setGender(applicationDto.getGender());
         applicant.setNationality("Singaporean");
+        applicant.setFamilySize(3);
+        applicant.setIncome(100000);
+        applicant.setExpenditure(50000);
+        applicant.setLoanAmount(300000);
         applicant.setSpstatus(applicationDto.getStatus());
 
         Preference preference=new Preference();
