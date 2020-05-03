@@ -183,7 +183,7 @@ public class ISPMIntegration {
     private Preference formPreference(Application application){
         com.iss_mr.integrated_shield_plan_master.Preference applicationPreference=application.getPreference();
         Preference preference = new Preference();
-        preference.setRequiredAge(application.getApplicant().getAge());
+        preference.setRequiredAge((application.getApplicant().getAge()/10)*10);
         preference.setRequiredPreHospitalisationCoveredDays(applicationPreference.getPreHospitalisationCoveredDays().getExpectedValue());
         preference.setRequiredPostHospitalisationCoveredDays(applicationPreference.getPostHospitalisationCoveredDays().getExpectedValue());
         preference.setRequiredMajorOrganTransplant(applicationPreference.getMajorOrganTransplant().getExpectedValue());

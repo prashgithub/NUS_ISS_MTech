@@ -92,4 +92,40 @@ public class ApplicationDto {
     public String getAns1() {
         return ans1;
     }
+
+    public String getAns2() {
+        return ans2;
+    }
+
+    public String getAns3() {
+        return ans3;
+    }
+
+    public String getAns4() {
+        return ans4;
+    }
+
+    public String getAns5() {
+        return ans5;
+    }
+
+    public String getPre1() {
+        return pre1;
+    }
+
+    public String getPre2() {
+        return pre2;
+    }
+
+    public String getPre3() {
+        return pre3;
+    }
+
+    public String getPre4() {
+        return pre4;
+    }
+
+    public String getPre5() {
+        return pre5;
+    }
 }
