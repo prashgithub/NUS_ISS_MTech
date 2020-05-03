@@ -55,6 +55,7 @@ public class CalcService {
         loadCache();
         return featureGRACalcHolder.getUsrValNormalizedWRTFeature(featureName, userValue);
     }
+
     public BigDecimal getScoreForPolicyFeature(String policyName, String featureName) {
         loadCache();
         return getDefaultScoreForFeature().get(policyName, featureName);
@@ -79,6 +80,14 @@ public class CalcService {
         return getDefaultScoreForPremium().rowMap();
     }
 
+    public BigDecimal getScoreForPolicyPremium(String policyName, String ageInMap) {
+        loadCache();
+        return getDefaultScoreForPremium().get(policyName, ageInMap);
+    }
+    public List<String> getAvailableAgesForPremium() {
+        loadCache();
+        return new ArrayList<>(getDefaultScoreForPremium().columnMap().keySet());
+    }
     public Table<String, String, BigDecimal> getScoreForPolicyFeatureAsTable() {
         loadCache();
         return getDefaultScoreForFeature();
