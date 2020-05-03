@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import web.controller.CalcController;
 import web.dao.GRACalcHolder;
 import web.jpa.jparepository.ISPCompPoliciesFeatureViewRepository;
 import web.jpa.model.ISPCompPolFeatureView;
@@ -32,6 +31,11 @@ public class CalcService {
 
     private Table<String, String, BigDecimal> getDefaultScore() {
         return graCalcHolder.getDefaultScore();
+    }
+
+    public BigDecimal getNormalValueWRTFeature(String featureName, BigDecimal userValue) {
+        loadCache();
+        return  graCalcHolder.getUsrValNormalizedWRTFeature(featureName, userValue);
     }
 
     public BigDecimal getScoreForPolicyFeature(String policyName, String featureName) {
