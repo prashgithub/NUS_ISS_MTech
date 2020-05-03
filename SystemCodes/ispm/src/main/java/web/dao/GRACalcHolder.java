@@ -62,6 +62,19 @@ public class GRACalcHolder {
         return Formulae.calcUser(holder, weights);
     }
 
+    public BigDecimal getUsrValNormalizedWRTFeature(String featureName, BigDecimal userInput) {
+        return getDeltaRatio(userInput, F.getOrInit(holder).row(Formulae.I_MAX.name()).get(featureName),
+                F.getOrInit(holder).row(Formulae.I_MIN.name()).get(featureName));
+    }
+
+    private static BigDecimal getDeltaRatio(BigDecimal currVal, BigDecimal maxVal, BigDecimal minVal) {
+        BigDecimal maxMinDiff = maxVal.subtract(minVal);
+        return ZERO.compareTo(maxMinDiff) == 0 ?
+                ZERO.compareTo(maxVal) == 0 ? ZERO :
+                        currVal.divide(maxVal, 3, HALF_UP)
+                : currVal.subtract(minVal).divide(maxMinDiff, 3, HALF_UP);
+    }
+
     protected enum Stage {
         I("PolicyInputs") {
             @Override
@@ -94,9 +107,7 @@ public class GRACalcHolder {
                 Formulae.G_MIN.calc(holder);
                 Formulae.G_MAX.calc(holder);
             }
-        }
-        ,U("Gray Relational User Weights")
-        ,F("Aggregate Func"),
+        }, U("Gray Relational User Weights"), F("Aggregate Func"),
         ;
 
         private String name;
@@ -132,11 +143,7 @@ public class GRACalcHolder {
             public void calc(EnumMap<Stage, Table<String, String, BigDecimal>> holder) {
                 transform(I, N, holder, (colName, curr) -> {
                     Table<String, String, BigDecimal> af = Stage.F.getOrInit(holder);
-                    BigDecimal max = af.get(I_MAX.name(), colName);
-                    BigDecimal min = af.get(I_MIN.name(), colName);
-                    BigDecimal maxMinDiff = max.subtract(min);
-                    BigDecimal maxCurrDiff = max.subtract(curr);
-                    return ZERO.compareTo(maxMinDiff) == 0 ? ZERO : maxCurrDiff.divide(maxMinDiff, 3, HALF_UP);
+                    return getDeltaRatio(curr, af.get(I_MAX.name(), colName), af.get(I_MIN.name(), colName));
                 });
             }
         },
@@ -231,8 +238,7 @@ public class GRACalcHolder {
         public abstract void calc(EnumMap<Stage, Table<String, String, BigDecimal>> holder);
 
         private synchronized static Table<String, String, BigDecimal> calcUser(EnumMap<Stage, Table<String, String, BigDecimal>> holder,
-                                                                 Map<String, BigDecimal> featureToUserWeight)
-        {
+                                                                               Map<String, BigDecimal> featureToUserWeight) {
             G_MAIN.transform(G, U, holder, (colName, curr) -> {
                 Table<String, String, BigDecimal> af = Stage.F.getOrInit(holder);
                 BigDecimal max = af.get(D_MAX.name(), colName);
