@@ -17,15 +17,20 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 public class CalcController {
-    @Autowired
-    private CalcService calcService;
-
+    @Autowired private CalcService calcService;
     @GetMapping(value = "/calc", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<Map> getScore() {
         return new ResponseEntity<>(calcService.getScoreForPolicyFeatureAsTable().rowMap(),
                 new HttpHeaders(), HttpStatus.OK);
     }
+    @GetMapping(value = "/calcPremium", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<Map> getPremiumScore() {
+        return new ResponseEntity<>(calcService.getScoreForPolicyPremiumAsTable().rowMap(),
+                new HttpHeaders(), HttpStatus.OK);
+    }
+
     @GetMapping(value = "/featureNormal", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<BigDecimal> getNormalValueWRTFeature(String featureName, String userValue)  {

@@ -1,6 +1,7 @@
 package integration;
 import com.iss_mr.integrated_shield_plan_master.Applicant;
 import com.iss_mr.integrated_shield_plan_master.Application;
+import org.mvel2.util.Make;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
@@ -12,12 +13,10 @@ public class DMIntegration {
            Applicant applicant=application.getApplicant();
            File testFile=new ClassPathResource("dm/PolicyPredict.csv").getFile();
            FileWriter tfw = new FileWriter(testFile, false);
-           String testData="Gender,Age"+System.lineSeparator()+applicant.getGender()+","+applicant.getAge();
-           System.out.println("predict on : "+testData);
-           tfw.write(testData);
+           tfw.write(getTestData(applicant));
            tfw.close();
            String script =new ClassPathResource("dm/InsuranceRecomOrange.py").getFile().getPath();
-           String training_data=new ClassPathResource("dm/PolicyHistoricalData.csv").getFile().getPath();
+           String training_data=new ClassPathResource("dm/PolicyHistoricalData2.csv").getFile().getPath();
            String test_data=new ClassPathResource("dm/PolicyPredict.csv").getFile().getPath();
            System.out.println("dm file path"+script);
            Process p = Runtime.getRuntime().exec("python "+script + " "+training_data+" "+test_data );
@@ -45,4 +44,17 @@ public class DMIntegration {
        }
        return null;
    }
+
+    private String getTestData(Applicant applicant) {
+       StringBuilder sb=new StringBuilder();
+       sb.append("Gender,Age,Family Size,Income,Expenditure,Loan Amount").append(System.lineSeparator())
+               .append(applicant.getGender()).append(",")
+               .append(applicant.getAge()).append(",")
+               .append(applicant.getFamilySize()).append(",")
+               .append(applicant.getIncome()).append(",")
+               .append(applicant.getExpenditure()).append(",")
+               .append(applicant.getLoanAmount());
+        System.out.println("predict on : "+sb.toString());
+        return sb.toString();
+    }
 }

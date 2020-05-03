@@ -36,11 +36,11 @@ public class ISPMService {
 
     public PolicyDto getMatchedPolicy(ApplicationDto applicationDto) {
         ispmIntegration.setPolicyList(getPolicyList());
-        Application result = ispmIntegration.getMatchedPolicy( ApplicationConverter.convertFromApplicationDto(applicationDto));
+        Application result = ispmIntegration.getMatchedPolicy( ApplicationConverter.convertFromApplicationDto(applicationDto,calcService));
         PolicyDto policyDto=new PolicyDto();
         policyDto.setName(result.getMatchedPolicy().getName());
-        policyDto.setBenefit(result.getMatchedPolicy().getBenefit());
-        policyDto.setIssuer(result.getMatchedPolicy().getInsurer());
+        policyDto.setBenefit(result.getMatchedPolicy().getBenefit()==null? "":result.getMatchedPolicy().getBenefit());
+        policyDto.setIssuer(result.getMatchedPolicy().getInsurer()==null? "":result.getMatchedPolicy().getInsurer());
         return policyDto;
     }
 
