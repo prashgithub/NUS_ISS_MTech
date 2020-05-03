@@ -5,14 +5,30 @@ import com.iss_mr.integrated_shield_plan_master.Application;
 import com.iss_mr.integrated_shield_plan_master.Preference;
 import com.iss_mr.integrated_shield_plan_master.PreferenceMatrix;
 import web.dao.ApplicationDto;
+import web.service.CalcService;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+/*
+*  q1: collect preference?
+*  q2: Ward type
+*  q3: Premium amount payment
+*  q4: Hospitalization coverage
+*  q5: Annual coverage limit
+* */
 public class ApplicationConverter {
-    public static Application convertFromApplicationDto(ApplicationDto applicationDto) {
+
+    public static Application convertFromApplicationDto(ApplicationDto applicationDto, CalcService calcService) {
         Applicant applicant=new Applicant();
         applicant.setName(applicationDto.getName());
         applicant.setAge(Integer.parseInt(applicationDto.getAge()));
         applicant.setGender(applicationDto.getGender());
         applicant.setNationality("Singaporean");
+        applicant.setFamilySize(3);
+        applicant.setIncome(100000);
+        applicant.setExpenditure(50000);
+        applicant.setLoanAmount(300000);
         applicant.setSpstatus(applicationDto.getStatus());
 
         Preference preference=new Preference();
@@ -37,8 +53,8 @@ public class ApplicationConverter {
         preference.setClaimsProcessingDuration(preferenceMatrix_criticalIllnesses);
 
         PreferenceMatrix preferenceMatrix_policyYearLimit=new PreferenceMatrix();
-        preferenceMatrix_policyYearLimit.setExpectedValue(25);
-        preferenceMatrix_policyYearLimit.setImportance(10);
+        preferenceMatrix_policyYearLimit.setExpectedValue(getNormalizedUserInput("Annual_Covg",1500000,calcService));
+        preferenceMatrix_policyYearLimit.setImportance(getNormalizedImportance(applicationDto.getPre5()));
         preference.setPolicyYearLimit(preferenceMatrix_policyYearLimit);
 
         PreferenceMatrix preferenceMatrix_majorOrganTransplant=new PreferenceMatrix();
@@ -62,8 +78,8 @@ public class ApplicationConverter {
         preference.setProsthesis(preferenceMatrix_prosthesis);
 
         PreferenceMatrix preferenceMatrix_premium=new PreferenceMatrix();
-        preferenceMatrix_premium.setExpectedValue(50);
-        preferenceMatrix_premium.setImportance(15);
+        preferenceMatrix_premium.setExpectedValue(6000);
+        preferenceMatrix_premium.setImportance(getNormalizedImportance(applicationDto.getPre3()));
         preference.setPremium(preferenceMatrix_premium);
 
         PreferenceMatrix preferenceMatrix_surgery=new PreferenceMatrix();
@@ -108,50 +124,36 @@ public class ApplicationConverter {
         return application;
     }
 
-    private static String getAge(String age) {
-        if( age.equals("0") ) {
-            return "18-34";
-        } else if ( age.equals("1") ) {
-            return "35-49";
-        } else if ( age.equals("2") ) {
-            return "50-64";
+    /*
+    Very Important   0.237543
+    Important        0.235068
+    Medium           0.20895
+    Unimportant      0.193069
+    Very Unimportant 0.12537
+     */
+
+    private static int getNormalizedImportance(String str){
+        int value=Integer.parseInt(str);
+        switch (value) {
+            case 1 :
+                return 12;
+            case  2:
+                return 19;
+            case  3:
+                return 21;
+            case  4:
+                return 23;
+            case  5:
+                return 24;
+            default:
+                return 20;
         }
-        return "65+";
     }
 
-    private static String getGender(String gender) {
-        if( gender.equals("0") ) {
-            return "Male";
-        }
-        return "Female";
-    }
-
-    private static String getRace(String race) {
-        if( race.equals("0") ) {
-            return "Chinese";
-        }else if ( race.equals("1") ) {
-            return "Malay";
-        } else if ( race.equals("2") ) {
-            return "Indian";
-        }
-        return "Others";
-    }
-
-    private static String getMaritialStatus(String status) {
-        if( status.equals("0") ) {
-            return "Single";
-        }else if ( status.equals("1") ) {
-            return "Married";
-        } else if ( status.equals("2") ) {
-            return "Separated";
-        }
-        return "Widowed";
-    }
-
-    private static String getChronic(String status) {
-        if( status.equals("0") ) {
-            return "Yes";
-        }
-        return "No";
+    private static int getNormalizedUserInput(String featureName,int userExpecetdValue,CalcService calcService){
+        BigDecimal score=calcService.getNormalValueWRTFeature(featureName, BigDecimal.valueOf(userExpecetdValue));
+        int normalizedScore= score.setScale(2, RoundingMode.HALF_UP).multiply(new BigDecimal(100)).intValue();
+        System.out.format("\nNormalized score: %s : before %d , after default %s , rescaled %d ",featureName,userExpecetdValue,score.toString(),normalizedScore);
+        return normalizedScore;
     }
 }
