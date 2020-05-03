@@ -35,12 +35,26 @@ public class ISPMService {
     ISPCompPoliciesPremiumRepository ispCompPoliciesPremiumRepository;
 
     public PolicyDto getMatchedPolicy(ApplicationDto applicationDto) {
+//        Map<String, String> userPref = applicationDto.getUserPref();
+
+/*
+        Object preHospCovg_days = userPref.get("PreHospCovg_days"); // "PreHospCovg_days"=>90/120/365/730  --> 0.34
+        Object preHospCovg_days = userPref.get("PreHospCovg_days"); // "PreHospCovg_days"=>90/120/365/730  --> 0.34
+        Object preHospCovg_days = userPref.get("PreHospCovg_days"); // "PreHospCovg_days"=>90/120/365/730  --> 0.34
+        Object preHospCovg_days = userPref.get("PreHospCovg_days"); // "PreHospCovg_days"=>90/120/365/730  --> 0.34
+Any = -1
+Other actual values  90/
+
+*/
+
+
         ispmIntegration.setPolicyList(getPolicyList());
         Application result = ispmIntegration.getMatchedPolicy( ApplicationConverter.convertFromApplicationDto(applicationDto));
         PolicyDto policyDto=new PolicyDto();
         policyDto.setName(result.getMatchedPolicy().getName());
         policyDto.setBenefit(result.getMatchedPolicy().getBenefit());
         policyDto.setIssuer(result.getMatchedPolicy().getInsurer());
+
         return policyDto;
     }
 

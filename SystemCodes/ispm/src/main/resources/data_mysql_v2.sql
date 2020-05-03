@@ -373,18 +373,42 @@ CREATE TABLE `recommendersys`.`question` (
 `stage` INT NULL,
 `extra_data` VARCHAR(450) NULL);
 
-INSERT INTO `recommendersys`.`question`
+INSERT INTO recommendersys.question
 (id,name,value,stage,extra_data) VALUES
-(0,'Invalid Question','Invalid Request',0,''),
-(1,'Would you be interested to provide your preferences','Preference',1,'Yes,No'),
-(2,'Ward type','Ward',1,'Basic(B2/C),Standard(B1),Class B1,Class A,Private'),
-(3,'Premium amount payment','Premium ',1,'0 ~ 3000,3000 ~ 6000,6000 ~ 9000,9000 ~ 12000'),
-(4,'Hospitalization coverage','Hospitalization',1,'0 ~ 3 months,3 ~ 6 months,6 ~ 9 months, 9 ~ 12 months'),
-(5,'Annual coverage limit','Limit',1,'0 ~ 500000,500000 ~ 1000000,1000000 ~ 1500000,1500000 ~ 2000000'),
-(6,'question6','Min Post-Hospitalization days?',2,''),
-(7,'question7','Annual coverage limt?',2,''),
-(8,'question8','Preferred Insurers?',2,'/api/insurerDetails'),
-(9,'question9','Overall Pref/Weightage/Adding Limit?',2,'/api/userPreference')
+(0 ,'Invalid Question','Invalid Request',0,'[{"",""}]'),
+(1 ,'[1/6] What type of Hospital would you prefer?','HospitalType',1,'[{"GOVT_HOSPITAL":"Govt & Restructured Hospitals"},{"PVT_HOSPITAL":"Private Hospitals"}]'),
+(2 ,'[2/6] What type of Ward would you prefer?','WardType',1,'[{"PRIVATE":"Private (Single-Bedded)"},{"CLASS_A":"Class A (2-Bedded)"},{"Class_B1":" B1 (4-Bedded)"},{"LOWER":"Standard/Basic (4-9 Bedded)"}]'),
+(3 ,'[3/6] Do you have any pre-exisiting health conditions?','PreExistingCond',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
+(4 ,'[4/6] Do you work for any hazardious profession?','HighRiskProf',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
+(5 ,'[5/6] Are you smoker or drinker?','HighRiskHealth',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
+(6 ,'[6/6] Are you covered under any other/employer insurence?','AdditionalCover',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
+(7 ,'Would you be interested in providing other preferences?','Preference',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
+(8 ,'[1/8] How much premium would you like to pay above medisafe payment?','Premium',2,'[{"-1":"Any"},{"300":"0 to 300 SGD"},{"600":"301 to 600 SGD"},{"900":"601 to 900 SGD"},{"1200":"901 SGD or above"}]'),
+(9 ,'[2/8] How much percentage of co-payment you would like to bear?','CoInsurance',2,'[{"-1":"Any"},{"5":"5%"},{"10":"10%"},{"20":"20%"},{"25":"25% or above"}]'),
+(10,'[3/8] How much of the max co-insurence would you like to pay?','CoPayCappedAt',2,'[{"-1":"Any"},{"3000":"3000 SGD"},{"5000":"5000 SGD"},{"12000":"12000 SGD"},{"30000":"Full Amount"}]'),
+(11,'[4/8] How much annual deductibles you like to pay?','Deductible',2,'[{"-1":"Any"},{"0":"0 SGD"},{"1000":"1000 SGD"},{"2500":"2500 SGD"},{"3500":"3500 SGD"}]'),
+(12,'[5/8] How much min pre-hospitalization coverage necessary?','PreHospCovg_days',2,'[{"-1":"Any"},{"90":"3 Months"},{"120":"4 Months"},{"180":"6 Months"},{"365":"1 Year"}]'),
+(13,'[6/8] How much min post-hospitalization coverage necessary?','PostHospCovg_days',2,'[{"-1":"Any"},{"90":"3 Months"},{"120":"4 Months"},{"180":"6 Months"},{"365":"1 Year"},{"730":"2 Years"}]'),
+(14,'[7/8] How much min annual coverage would you like to have?','Annual_Covg',2,'[{"-1":"Any"},{"400000":"400K or less"},{"800000":"400K to 800K"},{"1200000":"800K to 1.2 Million"},{"160000":"1.2 Million or above"}]'),
+(15,'[8/8] How much non-panel surcharge is acceptible?','NonPanelSurcharge',2,'[{"-1":"Any"},{"3000":"3000 SGD"},{"5000":"5000 SGD"},{"12000":"12000 SGD"},{"30000":"Full Amount"}]')
 ;
 
--- Dump completed on 2020-04-20  1:23:40policies
+DROP TABLE `recommendersys`.`user_feedback`;
+
+CREATE TABLE `recommendersys`.`user_feedback` (
+`id` INT NOT NULL,
+`name` VARCHAR(30) NULL,
+`age` INT NULL,
+`gender` CHAR(6) NULL,
+`status` CHAR(15) NULL,
+`rating` INT NULL,
+`comments` VARCHAR(100) NULL
+)
+;
+
+INSERT INTO `recommendersys`.`user_feedback`
+(id,name,age,gender,status,rating,comments) VALUES
+(0,'Amanda Brussels',23,'Female','Singaporean',5,'it is a good application'),
+(1,'Tom Hawks',25,'Male','Singapore PR',3,'it is an ok application'),
+(2,'Harry Hawks',55,'Male','Singapore PR',4,'it is a fine application')
+;

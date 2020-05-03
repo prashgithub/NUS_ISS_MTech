@@ -3,22 +3,28 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import web.dao.ApplicationDto;
 import web.dao.QuestionDto;
 import web.model.Question;
 import web.repository.QuestionRepository;
+import web.repository.UserFeedbackRepository;
 import web.service.ISPMService;
 
 import java.util.Optional;
 
 @Controller
 public class ISPMController {
-
     ApplicationDto currentApplication;
 
-    @Autowired ISPMService ispmService;
-    @Autowired QuestionRepository questionRepository;
+    @Autowired
+    ISPMService ispmService;
+    @Autowired
+    QuestionRepository questionRepository;
+    @Autowired
+    UserFeedbackRepository userFeedbackRepository;
 
     @RequestMapping("/")
     public String welcome() {
@@ -38,22 +44,28 @@ public class ISPMController {
 
     @GetMapping("/questions")
     public String questions(@ModelAttribute QuestionDto questionDto, Model model) {
-        Long questionId = questionDto.getQid();
+        final Long answeredQueId = questionDto.getQid();
         String answer = questionDto.getAnswer();
         String preference = questionDto.getPreference();
-        currentApplication.setAnswer(questionId, answer, preference);
-        if (questionId.longValue() == 5L || (questionId.longValue() == 1L && answer.equals("2"))){
+        Question answeredQuestion = questionRepository.findById(answeredQueId).get();
+        if (answeredQueId != 0)
+            currentApplication.setAnswer(answeredQuestion, answeredQueId, answer, preference);
+
+        final Long nextQuestionId = answeredQueId + 1;
+        Optional<Question> nextQuestionOp = questionRepository.findById(nextQuestionId);
+
+        //detect stage change
+        boolean isRedirection = !nextQuestionOp.isPresent()
+//                || answeredQuestion.getStage() < nextQuestionOp.get().getStage()
+                || ("Preference".equalsIgnoreCase(answeredQuestion.getValue()) && answer.equals("2"))
+                ;
+        if (isRedirection && answeredQueId != 0)
             return "redirect:complete";
-        }
-        else{
-            questionId ++;
-        }
-        Optional<Question> byId = questionRepository.findById(questionId);
-        Optional<Question> def = questionRepository.findById(0L);
-        Question question = byId.orElseGet(def::get);
-        model.addAttribute("qid", question.getId());
-        model.addAttribute("name", question.getName());
-        model.addAttribute("choices", question.getExtraData().split(","));
+
+        Question nextQuestion = nextQuestionOp.get();
+        model.addAttribute("qid", nextQuestion.getId());
+        model.addAttribute("name", nextQuestion.getName());
+        model.addAttribute("choices", nextQuestion.getExtraDataValuesAsArray());
         return "questions";
     }
 
@@ -68,5 +80,4 @@ public class ISPMController {
     public String feedback() {
         return "feedback";
     }
-
 }
