@@ -54,7 +54,7 @@ public class ApplicationConverter {
 
         PreferenceMatrix preferenceMatrix_policyYearLimit=new PreferenceMatrix();
         preferenceMatrix_policyYearLimit.setExpectedValue(getNormalizedUserInput("Annual_Covg",1500000,calcService));
-        preferenceMatrix_policyYearLimit.setImportance(getNormalizedImportance(applicationDto.getPre5()));
+//        preferenceMatrix_policyYearLimit.setImportance(getNormalizedImportance(applicationDto.getPre5()));
         preference.setPolicyYearLimit(preferenceMatrix_policyYearLimit);
 
         PreferenceMatrix preferenceMatrix_majorOrganTransplant=new PreferenceMatrix();
@@ -79,7 +79,7 @@ public class ApplicationConverter {
 
         PreferenceMatrix preferenceMatrix_premium=new PreferenceMatrix();
         preferenceMatrix_premium.setExpectedValue(6000);
-        preferenceMatrix_premium.setImportance(getNormalizedImportance(applicationDto.getPre3()));
+//        preferenceMatrix_premium.setImportance(getNormalizedImportance(applicationDto.getPre3()));
         preference.setPremium(preferenceMatrix_premium);
 
         PreferenceMatrix preferenceMatrix_surgery=new PreferenceMatrix();
