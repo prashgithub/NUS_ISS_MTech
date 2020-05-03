@@ -2,7 +2,6 @@ package web.dao;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import web.jpa.model.ISPCompPolFeatureView;
 
 import java.math.BigDecimal;
 import java.util.EnumMap;
@@ -23,13 +22,20 @@ public class GRACalcHolder {
     private final boolean init;
     private final EnumMap<Stage, Table<String, String, BigDecimal>> holder = new EnumMap<>(Stage.class);
 
-    public GRACalcHolder(List<ISPCompPolFeatureView> policyFeatures) {
-        for (ISPCompPolFeatureView v : policyFeatures) {
-            String policyName = v.getPolicyName();
-            String feature = v.getPolicyFeature();
-            BigDecimal value = new BigDecimal(v.getBenefits());
-            I.getOrInit(holder).put(policyName, feature, value);
+    public static class Row {
+        public Row(String rowKey, String colKey, BigDecimal value) {
+            this.rowKey = rowKey;
+            this.colKey = colKey;
+            this.value = value;
         }
+
+        String rowKey;
+        String colKey;
+        BigDecimal value;
+    }
+
+    public GRACalcHolder(List<Row> entries) {
+        for(Row r : entries) I.getOrInit(holder).put(r.rowKey, r.colKey, r.value);
         this.init = init();
     }
 
