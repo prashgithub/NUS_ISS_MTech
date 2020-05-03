@@ -88,4 +88,8 @@ public class ApplicationDto {
             this.pre5 = pre;
         }
     }
+
+    public String getAns1() {
+        return ans1;
+    }
 }

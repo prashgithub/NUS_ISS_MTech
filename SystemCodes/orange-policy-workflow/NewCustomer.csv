@@ -1,0 +1,3 @@
+Customer_ID,Age,Gender,Occupation,Marital Status,Family Size,Income,Expenditure,Loan Category,Loan Amount,Pending Payemnt,Ward Type,Premium Price,Pre Hosp Cov,Post Hosp Cov,Annual Cov,Co Insurance,Deductible,Insurance Provider
+1B14093,50,FEMALE,MANAGER,SINGLE,3,42516,24567,AUTOMOBILE,2569874,89652,Private,Very Important,Important,Important,Very Important,Very Important,Very Important,
+1B14312,60,MALE,MANAGER,SINGLE,3,42516,24567,EDUCATIONAL LOAN,2569874,89652,Private,Very Important,Very Important,Very Important,Unimportant,Unimportant,Medium,

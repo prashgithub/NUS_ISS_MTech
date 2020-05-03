@@ -1,0 +1,45 @@
+package com.iss_mr.integrated_shield_plan_master;
+
+import com.iss_mr.integrated_shield_plan_master.Validation;
+
+rule "Direct to Opta"
+	dialect "mvel"
+	agenda-group "validationReasoning"
+	when
+	    Application( canCollectPreference ==true,applicant.age<=75,applicant.spstatus!="foreigner")
+	then 
+		Validation $var0=new Validation()
+		$var0.setResult( "opta" )
+		insert($var0)
+		System.out.println("inserted opta");
+end
+
+rule "Direct to DM"
+	dialect "mvel"
+	agenda-group "validationReasoning"
+	when
+	     Application( canCollectPreference ==false,applicant.age<=75,applicant.spstatus!="foreigner")
+	then 
+		Validation $var0=new Validation()
+		$var0.setResult( "dm" )
+		insert($var0)
+		System.out.println("inserted dm");
+end
+
+rule "Invalid Age"
+	dialect "mvel"
+	agenda-group "validationReasoning"
+	when
+	     $application:Application(applicant.age>75)
+	then
+		 $application.setIssuer("Age exceeds max 75")
+end
+
+rule "Invalid Status"
+	dialect "mvel"
+	agenda-group "validationReasoning"
+	when
+	     $application:Application(applicant.spstatus=="foreigner")
+	then
+		 $application.setIssuer("Singaporean/PR are allowed to buy only")
+end

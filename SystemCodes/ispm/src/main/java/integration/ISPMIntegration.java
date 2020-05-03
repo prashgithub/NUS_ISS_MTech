@@ -1,13 +1,18 @@
 package integration;
 
+import com.iss_mr.integrated_shield_plan_master.Applicant;
 import com.iss_mr.integrated_shield_plan_master.Application;
 import com.iss_mr.integrated_shield_plan_master.Policy;
+import com.iss_mr.integrated_shield_plan_master.Validation;
 import com.iss_mr.optaisp.ISPConstraintConfiguration;
 import com.iss_mr.optaisp.ISPSolution;
 import com.iss_mr.optaisp.Preference;
 import com.iss_mr.optaisp.Premium;
+import org.drools.core.ClassObjectFilter;
+import org.jbpm.bpmn2.xml.ExclusiveGatewayHandler;
 import org.jbpm.bpmn2.xml.UserTaskHandler;
 import org.jbpm.process.core.impl.WorkImpl;
+import org.jbpm.process.instance.context.exclusive.ExclusiveGroupInstance;
 import org.jbpm.process.instance.impl.humantask.HumanTaskHandler;
 import org.jbpm.workflow.core.node.HumanTaskNode;
 import org.jbpm.workflow.instance.WorkflowProcessInstance;
@@ -18,6 +23,7 @@ import org.kie.api.event.process.*;
 import org.kie.api.event.rule.*;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.ObjectFilter;
 import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.api.task.TaskService;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
@@ -26,7 +32,6 @@ import org.optaplanner.core.api.solver.SolverFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import web.WebApplication;
 
 import java.util.*;
 
@@ -50,6 +55,20 @@ public class ISPMIntegration {
         }
     }
 
+    public boolean invokeDM(Application application, Map<String, Object> resultMap) {
+        boolean success = true;
+        try {
+            DMIntegration dmIntegration=new DMIntegration();
+            String predictPolicy=dmIntegration.predict(application);
+            log.info("invoke DM: Triggered {} knn prediction", predictPolicy);
+            resultMap.put("Policy", predictPolicy);
+        } catch (Exception exp) {
+            success = false;
+            log.error(" dm error: ", exp);
+        }
+        return success;
+    }
+
     public boolean invokeOpta(Application application, Map<String, Object> resultMap) {
         KieContainer container = null;
         boolean success = true;
@@ -65,7 +84,6 @@ public class ISPMIntegration {
             System.out.println("opta solver explain: " + solver.explainBestScore());
             log.info("invoke opta: Triggered {} opta", solution.getPreferenceList().get(0).getPolicy().getName());
             resultMap.put("Policy", solution.getPreferenceList().get(0).getPolicy());
-            resultMap.put("Application", application);
         } catch (Exception exp) {
             success = false;
             log.error(" opta error: ", exp);
@@ -108,9 +126,13 @@ public class ISPMIntegration {
                             Application application = (Application) humanTaskNode.getWorkItem().getParameter("application");
                             invokeOpta(application, resultMap);
                         }
+                        if (humanTaskNode.getHumanTaskNode().getName().equalsIgnoreCase("DataMining")) {
+                            Application application = (Application) humanTaskNode.getWorkItem().getParameter("application");
+                            invokeDM(application, resultMap);
+                        }
                     }
                     // if (arg0.getNodeInstance() instanceof RuleSetNodeInstance){
-                    log.info("Node Name: {} has been left", arg0.getNodeInstance().getNodeName());
+                    log.info("before Node Left: {} ", arg0.getNodeInstance().getNodeName());
                     // }
                 }
 
@@ -143,6 +165,7 @@ public class ISPMIntegration {
             parameters.put("application", dataObjectList.get(0));
             ProcessInstance process = session.startProcess("Integrated_Shield_Plan_Master.process", parameters);
             System.out.println("process state :" + process.getState());
+            resultMap.put("Application", dataObjectList.get(0));
         } catch (Exception exp) {
             success = false;
             log.error(" process error: ", exp);
@@ -186,6 +209,21 @@ public class ISPMIntegration {
         constraintConfiguration.setHardLastEntryAge(HardSoftScore.ofHard(1));
         constraintConfiguration.setPreHospitalisationCoveredDays(HardSoftScore.ofSoft(applicationPreference.getPreHospitalisationCoveredDays().getImportance()));
         constraintConfiguration.setPostHospitalisationCoveredDays(HardSoftScore.ofSoft(applicationPreference.getPostHospitalisationCoveredDays().getImportance()));
+        constraintConfiguration.setPolicyYearLimit(HardSoftScore.ofSoft(applicationPreference.getPolicyYearLimit().getImportance()));
+        constraintConfiguration.setCoinsurance(HardSoftScore.ofSoft(applicationPreference.getCoinsurance().getImportance()));
+        constraintConfiguration.setCommunityHospital(HardSoftScore.ofSoft(applicationPreference.getCommunityHospital().getImportance()));
+        constraintConfiguration.setCoPayCappedAt(HardSoftScore.ofSoft(applicationPreference.getCoPayCappedAt().getImportance()));
+        constraintConfiguration.setDeductible(HardSoftScore.ofSoft(applicationPreference.getDeductible().getImportance()));
+        constraintConfiguration.setEmergencyOverseasTreatment(HardSoftScore.ofSoft(applicationPreference.getEmergencyOverseasTreatment().getImportance()));
+        constraintConfiguration.setMajorOrganTransplant(HardSoftScore.ofSoft(applicationPreference.getMajorOrganTransplant().getImportance()));
+        constraintConfiguration.setPremiumAmount(HardSoftScore.ofSoft(applicationPreference.getPremium().getImportance()));
+        constraintConfiguration.setSurgery(HardSoftScore.ofSoft(applicationPreference.getSurgery().getImportance()));
+        constraintConfiguration.setClaimProcessingDuration(HardSoftScore.ofSoft(applicationPreference.getClaimsProcessingDuration().getImportance()));
+        constraintConfiguration.setCriticalIllness(HardSoftScore.ofSoft(applicationPreference.getCriticalIllnesses().getImportance()));
+        constraintConfiguration.setNonPanelsurcharge(HardSoftScore.ofSoft(applicationPreference.getNonPanelSurcharge().getImportance()));
+        constraintConfiguration.setPostHopitalisationCoverage(HardSoftScore.ofSoft(applicationPreference.getPostHospitalisationCoverage().getImportance()));
+        constraintConfiguration.setPreHopitalisationCoverage(HardSoftScore.ofSoft(applicationPreference.getPreHospitalisationCoverage().getImportance()));
+        constraintConfiguration.setProsthsis(HardSoftScore.ofSoft(applicationPreference.getProsthesis().getImportance()));
         return constraintConfiguration;
     }
 
@@ -202,24 +240,25 @@ public class ISPMIntegration {
         //boolean invokeResult = invokeRules(inputList, "policyreasoning", resultMap);
         //log.info("ApplicationResult invoke rule: " + invokeResult);
         boolean invokeResult = invokeProcess(inputList, resultMap);
-        log.info("ApplicationResult invoke opta: " + invokeResult);
+        log.info("ApplicationResult: " + invokeResult);
 
         Object application = resultMap.get("Application");
         Object policy = resultMap.get("Policy");
-        if (policy == null) {
-            policy = new Policy();
-            policy = (Policy) policy;
-            ((Policy) policy).setName("Not Found");
-            ((Policy) policy).setBenefit("N.A.");
-        }
         if (application != null && application instanceof Application) {
             log.info("Application is found");
             result = (Application) application;
-            com.iss_mr.optaisp.Policy optimalPolicy = (com.iss_mr.optaisp.Policy) policy;
             com.iss_mr.integrated_shield_plan_master.Policy policyDisplayed = new com.iss_mr.integrated_shield_plan_master.Policy();
-            policyDisplayed.setName(optimalPolicy.getName());
-            policyDisplayed.setBenefit("PreHospitalisationCoveredDays = " + optimalPolicy.getPreHospitalisationCoveredDays());
-            policyDisplayed.setInsurer(optimalPolicy.getId().toString());
+            if(policy==null){
+                policyDisplayed.setName("Not Found");
+            }
+            else if(policy instanceof  com.iss_mr.optaisp.Policy){
+                policyDisplayed.setName(((com.iss_mr.optaisp.Policy)policy).getName());
+            }else if(policy instanceof String){
+                policyDisplayed.setName((String)policy);
+            }
+            if(((Application) application).getIssuer()!=null){
+                policyDisplayed.setName(((Application)application).getIssuer());
+            }
             result.setMatchedPolicy(policyDisplayed);
         }
 
