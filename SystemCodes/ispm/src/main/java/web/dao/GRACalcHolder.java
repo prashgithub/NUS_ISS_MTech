@@ -53,9 +53,9 @@ public class GRACalcHolder {
         if (!init) throw new IllegalStateException("Init errors. Please check logs");
     }
 
-    public Map<String, BigDecimal> getDefaultWeights() {
+    public Table<String, String, BigDecimal> getNormalScore() {
         checkInit();
-        return F.getOrInit(holder).row(Formulae.THETA.name());
+        return N.getOrInit(holder);
     }
 
     public Table<String, String, BigDecimal> getDefaultScore() {
