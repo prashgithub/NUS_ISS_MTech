@@ -57,6 +57,20 @@ public class CalcService {
         return featureGRACalcHolder.getUsrValNormalizedWRTFeature(featureName, userValue);
     }
 
+    public BigDecimal getNormalValueWRTPremiumAge(Integer age, BigDecimal userPremium) {
+        return getNormalValueWRTPremiumAge(age.toString(), userPremium);
+    }
+
+    public BigDecimal getNormalValueWRTPremiumAge(String ageValue, BigDecimal userPremium) {
+        loadCache();
+        return premiumGRACalcHolder.getUsrValNormalizedWRTFeature(ageValue, userPremium);
+    }
+
+    public List<String> getAvailableAgesForPremium() {
+        loadCache();
+        return new ArrayList<>(getDefaultScoreForPremium().columnMap().keySet());
+    }
+
     /*feature related*/
 
     public BigDecimal getScoreForPolicyFeature(String policyName, String featureName) {
@@ -89,11 +103,6 @@ public class CalcService {
     public BigDecimal getNormalScoreForPolicyPremium(String policyName, String ageInMap) {
         loadCache();
         return premiumGRACalcHolder.getNormalScore().get(policyName, ageInMap);
-    }
-
-    public List<String> getAvailableAgesForPremium() {
-        loadCache();
-        return new ArrayList<>(getDefaultScoreForPremium().columnMap().keySet());
     }
 
 //    GRA
