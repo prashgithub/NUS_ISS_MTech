@@ -17,12 +17,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.lang.Integer.parseInt;
+
 @Service
 public class CalcService {
     private static final Logger logger = LoggerFactory.getLogger(CalcService.class);
 
-    @Autowired ISPCompPoliciesFeatureViewRepository featureRepo;
-    @Autowired ISPCompPoliciesPremiumViewRepository premiumRepo;
+    @Autowired
+    ISPCompPoliciesFeatureViewRepository featureRepo;
+    @Autowired
+    ISPCompPoliciesPremiumViewRepository premiumRepo;
 
     private List<ISPCompPolFeatureView> featureValues = new ArrayList<>();
     private List<ISPCompPoliciesPremiumView> agePremiumValues = new ArrayList<>();
@@ -63,6 +67,20 @@ public class CalcService {
 
     public BigDecimal getNormalValueWRTPremiumAge(String ageValue, BigDecimal userPremium) {
         loadCache();
+        try {
+            int gap = Integer.MAX_VALUE;
+            String nearestAge = ageValue;
+            for (String age : getAvailableAgesForPremium()) {
+                int currGap = Math.abs(parseInt(ageValue) - parseInt(age));
+                if (gap > currGap){
+                    gap = currGap;
+                    nearestAge = age;
+                }
+            }
+            ageValue = nearestAge;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return premiumGRACalcHolder.getUsrValNormalizedWRTFeature(ageValue, userPremium);
     }
 
@@ -105,7 +123,7 @@ public class CalcService {
         return premiumGRACalcHolder.getNormalScore().get(policyName, ageInMap);
     }
 
-//    GRA
+    //    GRA
     public Map<String, Map<String, BigDecimal>> getScoreForPolicyPremium() {
         loadCache();
         return getDefaultScoreForPremium().rowMap();
