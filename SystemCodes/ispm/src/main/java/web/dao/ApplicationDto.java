@@ -18,31 +18,57 @@ public class ApplicationDto {
     private Map<String, String> userDetails=new LinkedHashMap<>();
     private Map<String, BigDecimal> userFeatureValues=new LinkedHashMap<>();
 
+    private Map<String, UserAnswer> userAnswers =new LinkedHashMap<>();
+
+    public Map<String, UserAnswer> getUserAnswers() {
+        return userAnswers;
+    }
+
+    @Deprecated
     public Map<String, String> getUserDetails() {
         return userDetails;
     }
 
+    @Deprecated
     public Map<String, BigDecimal> getUserFeatureValues() {
         return userFeatureValues;
     }
 
     public void setAnswer(Question answeredQuestion, Long qid, String ans, String pre) {
+        UserAnswer userAnswer = new UserAnswer();
         int stage = answeredQuestion.getStage();
         String key = answeredQuestion.getValue();
-        List<Map<String, String>> listOfMap = answeredQuestion.getExtraDataAsListOfMap();
-        String value = "-1";
+        int prefVal = 3;
         try {
-            value = listOfMap.get(Integer.parseInt(ans)-1).keySet().stream().findFirst().get();
+            prefVal = Integer.parseInt(pre);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        List<Map<String, String>> listOfMap = answeredQuestion.getExtraDataAsListOfMap();
+        String value = null;
+        try {
+            int userSelectedIndex = Integer.parseInt(ans);
+            // if user doesn't select then it 0 else it is 1 or 2 or
+            if(userSelectedIndex > 0)
+                userSelectedIndex = userSelectedIndex - 1;
+            value = listOfMap.get(userSelectedIndex).keySet().stream().findFirst().get();
         } catch (Exception e){
             e.printStackTrace();
             value = listOfMap.get(0).keySet().stream().findFirst().get();
         }
 
+        userAnswer.setStage(stage);
+        userAnswer.setKey(key);
+        userAnswer.setPrefVal(prefVal);
         if(stage == 1){
             userDetails.put(key, value);
+            userAnswer.setAnsValue(value);
         } else if(stage == 2){
-            userFeatureValues.put(key, new BigDecimal(value));
+            BigDecimal featureVal = new BigDecimal(value);
+            userFeatureValues.put(key, featureVal);
+            userAnswer.setFeatureValue(featureVal);
         }
+        userAnswers.put(key, userAnswer);
     }
 
     public String getAge() {

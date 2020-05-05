@@ -17,12 +17,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.lang.Integer.parseInt;
+
 @Service
 public class CalcService {
     private static final Logger logger = LoggerFactory.getLogger(CalcService.class);
 
-    @Autowired ISPCompPoliciesFeatureViewRepository featureRepo;
-    @Autowired ISPCompPoliciesPremiumViewRepository premiumRepo;
+    @Autowired
+    ISPCompPoliciesFeatureViewRepository featureRepo;
+    @Autowired
+    ISPCompPoliciesPremiumViewRepository premiumRepo;
 
     private List<ISPCompPolFeatureView> featureValues = new ArrayList<>();
     private List<ISPCompPoliciesPremiumView> agePremiumValues = new ArrayList<>();
@@ -51,30 +55,75 @@ public class CalcService {
     private Table<String, String, BigDecimal> getDefaultScoreForPremium() {
         return premiumGRACalcHolder.getDefaultScore();
     }
+
     public BigDecimal getNormalValueWRTFeature(String featureName, BigDecimal userValue) {
         loadCache();
         return featureGRACalcHolder.getUsrValNormalizedWRTFeature(featureName, userValue);
     }
+
+    public BigDecimal getNormalValueWRTPremiumAge(Integer age, BigDecimal userPremium) {
+        return getNormalValueWRTPremiumAge(age.toString(), userPremium);
+    }
+
+    public BigDecimal getNormalValueWRTPremiumAge(String ageValue, BigDecimal userPremium) {
+        loadCache();
+        try {
+            int gap = Integer.MAX_VALUE;
+            String nearestAge = ageValue;
+            for (String age : getAvailableAgesForPremium()) {
+                int currGap = Math.abs(parseInt(ageValue) - parseInt(age));
+                if (gap > currGap){
+                    gap = currGap;
+                    nearestAge = age;
+                }
+            }
+            ageValue = nearestAge;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return premiumGRACalcHolder.getUsrValNormalizedWRTFeature(ageValue, userPremium);
+    }
+
+    public List<String> getAvailableAgesForPremium() {
+        loadCache();
+        return new ArrayList<>(getDefaultScoreForPremium().columnMap().keySet());
+    }
+
+    /*feature related*/
 
     public BigDecimal getScoreForPolicyFeature(String policyName, String featureName) {
         loadCache();
         return getDefaultScoreForFeature().get(policyName, featureName);
     }
 
-    public Map<String, BigDecimal> getScoreForPolicyFeature(String policyName) {
-        loadCache();
-        return getDefaultScoreForFeature().rowMap().get(policyName);
-    }
-
     public Map<String, Map<String, BigDecimal>> getScoreForPolicyFeature() {
         loadCache();
         return getDefaultScoreForFeature().rowMap();
     }
-    public Map<String, BigDecimal> getScoreForPolicyPremium(String policyName) {
+
+    public Map<String, Map<String, BigDecimal>> getNormalScoreForPolicyFeature() {
         loadCache();
-        return getDefaultScoreForPremium().rowMap().get(policyName);
+        return featureGRACalcHolder.getNormalScore().rowMap();
     }
 
+    public BigDecimal getNormalScoreForPolicyFeature(String policyName, String ageInMap) {
+        loadCache();
+        return featureGRACalcHolder.getNormalScore().get(policyName, ageInMap);
+    }
+
+    /*premium related*/
+
+    public Map<String, Map<String, BigDecimal>> getNormalScoreForPolicyPremium() {
+        loadCache();
+        return premiumGRACalcHolder.getNormalScore().rowMap();
+    }
+
+    public BigDecimal getNormalScoreForPolicyPremium(String policyName, String ageInMap) {
+        loadCache();
+        return premiumGRACalcHolder.getNormalScore().get(policyName, ageInMap);
+    }
+
+    //    GRA
     public Map<String, Map<String, BigDecimal>> getScoreForPolicyPremium() {
         loadCache();
         return getDefaultScoreForPremium().rowMap();
@@ -83,17 +132,5 @@ public class CalcService {
     public BigDecimal getScoreForPolicyPremium(String policyName, String ageInMap) {
         loadCache();
         return getDefaultScoreForPremium().get(policyName, ageInMap);
-    }
-    public List<String> getAvailableAgesForPremium() {
-        loadCache();
-        return new ArrayList<>(getDefaultScoreForPremium().columnMap().keySet());
-    }
-    public Table<String, String, BigDecimal> getScoreForPolicyFeatureAsTable() {
-        loadCache();
-        return getDefaultScoreForFeature();
-    }
-    public Table<String, String, BigDecimal> getScoreForPolicyPremiumAsTable() {
-        loadCache();
-        return getDefaultScoreForPremium();
     }
 }
