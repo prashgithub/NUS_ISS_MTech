@@ -58,6 +58,11 @@ public class GRACalcHolder {
         return N.getOrInit(holder);
     }
 
+    public Table<String, String, BigDecimal> getInputValues() {
+        checkInit();
+        return I.getOrInit(holder);
+    }
+
     public Table<String, String, BigDecimal> getDefaultScore() {
         checkInit();
         return G.getOrInit(holder);

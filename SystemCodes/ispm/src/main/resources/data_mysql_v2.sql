@@ -383,14 +383,14 @@ INSERT INTO recommendersys.question
 (5 ,'[5/6] Are you smoker or drinker?','HighRiskHealth',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
 (6 ,'[6/6] Are you covered under any other/employer insurence?','AdditionalCover',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
 (7 ,'Would you be interested in providing other preferences?','Preference',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
-(8 ,'[1/8] How much premium would you like to pay above medisafe payment?','Premium',2,'[{"300":"0 to 300 SGD"},{"600":"301 to 600 SGD"},{"900":"601 to 900 SGD"},{"1200":"901 SGD or above"}]'),
+(8 ,'[1/8] How much premium would you like to pay above medisafe payment?','Premium',2,'POST_FIX: SGD'),
 (9 ,'[2/8] How much percentage of co-payment you would like to bear?','CoInsurance',2,'[{"5":"5%"},{"10":"10%"},{"20":"20%"},{"25":"25% or above"}]'),
 (10,'[3/8] How much of the max co-insurence would you like to pay?','CoPayCappedAt',2,'[{"3000":"3000 SGD"},{"5000":"5000 SGD"},{"12000":"12000 SGD"},{"30000":"Full Amount"}]'),
 (11,'[4/8] How much annual deductibles you like to pay?','Deductible',2,'[{"0":"0 SGD"},{"1000":"1000 SGD"},{"2500":"2500 SGD"},{"3500":"3500 SGD"}]'),
 (12,'[5/8] How much min pre-hospitalization coverage necessary?','PreHospCovg_days',2,'[{"90":"3 Months"},{"120":"4 Months"},{"180":"6 Months"},{"365":"1 Year"}]'),
 (13,'[6/8] How much min post-hospitalization coverage necessary?','PostHospCovg_days',2,'[{"90":"3 Months"},{"120":"4 Months"},{"180":"6 Months"},{"365":"1 Year"},{"730":"2 Years"}]'),
 (14,'[7/8] How much min annual coverage would you like to have?','Annual_Covg',2,'[{"400000":"400K or less"},{"800000":"400K to 800K"},{"1200000":"800K to 1.2 Million"},{"160000":"1.2 Million or above"}]'),
-(15,'[8/8] How much non-panel surcharge is acceptible?','NonPanelSurcharge',2,'[{"3000":"3000 SGD"},{"5000":"5000 SGD"},{"12000":"12000 SGD"},{"30000":"Full Amount"}]')
+(15,'[8/8] How much non-panel surcharge is acceptible?','NonPanelSurcharge',2,'POST_FIX: x1000 SGD')
 ;
 
 DROP TABLE `recommendersys`.`user_feedback`;

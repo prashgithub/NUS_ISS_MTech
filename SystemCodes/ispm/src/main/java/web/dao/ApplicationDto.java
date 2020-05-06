@@ -1,6 +1,8 @@
 package web.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import web.model.Question;
+import web.service.CalcService;
 
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
@@ -23,6 +25,7 @@ public class ApplicationDto {
     private Map<String, BigDecimal> userFeatureValues=new LinkedHashMap<>();
 
     private Map<String, UserAnswer> userAnswers =new LinkedHashMap<>();
+    @Autowired private CalcService calcService;
 
     public Map<String, UserAnswer> getUserAnswers() {
         return userAnswers;
@@ -48,7 +51,7 @@ public class ApplicationDto {
         }catch (Exception e){
             e.printStackTrace();
         }
-        List<Map<String, String>> listOfMap = answeredQuestion.getExtraDataAsListOfMap();
+        List<Map<String, String>> listOfMap = answeredQuestion.getExtraDataAsListOfMap(this);
         String value = null;
         try {
             int userSelectedIndex = Integer.parseInt(ans);
@@ -153,5 +156,12 @@ public class ApplicationDto {
 
     public void setLoanAmount(String loanAmount) {
         this.loanAmount = loanAmount;
+    }
+
+    public void setCalcService(CalcService calcService) {
+        this.calcService = calcService;
+    }
+    public CalcService getCalcService() {
+        return calcService;
     }
 }
