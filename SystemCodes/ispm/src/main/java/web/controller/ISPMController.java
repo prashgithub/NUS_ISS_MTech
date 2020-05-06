@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import web.dao.ApplicationDto;
 import web.dao.QuestionDto;
 import web.model.Question;
+import web.model.UserFeedback;
 import web.repository.QuestionRepository;
 import web.repository.UserFeedbackRepository;
 import web.service.CalcService;
@@ -82,5 +83,15 @@ public class ISPMController {
     @GetMapping("/feedback")
     public String feedback() {
         return "feedback";
+    }
+
+    @GetMapping("/end")
+    public String end(@ModelAttribute UserFeedback userFeedback) {
+        userFeedback.setName(currentApplication.getName());
+        userFeedback.setAge(Integer.parseInt(currentApplication.getAge()));
+        userFeedback.setGender(currentApplication.getGender());
+        userFeedback.setStatus(currentApplication.getStatus());
+        userFeedbackRepository.save(userFeedback);
+        return "redirect:start";
     }
 }

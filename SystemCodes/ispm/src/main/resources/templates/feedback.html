@@ -8,27 +8,31 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/common.css}" />
 </head>
 <body>
-<form action="#" th:action="@{/start}" method="get">
+<form action="#" th:action="@{/end}" method="get">
     <div>
         <div class="form-group form_header">
             <h2>Let us know how is our recommendation going for you</h2>
             <h2>Your guidance will help us to improve our system</h2>
         </div>
-        <div class="form-group col-sm-6" style="margin-left:25%;margin-top:5%;font-size:80px;text-align:center">
-            <span class="fa fa-star preference checked"></span>
-            <span class="fa fa-star preference checked"></span>
-            <span class="fa fa-star preference checked"></span>
-            <span class="fa fa-star preference"></span>
-            <span class="fa fa-star preference"></span>
+        <div class="form-group col-sm-6" style="margin-left:25%;margin-top:5%;font-size:40px;text-align:center">
+            <span class="fa fa-star rate checked"></span>
+            <span class="fa fa-star rate checked"></span>
+            <span class="fa fa-star rate checked"></span>
+            <span class="fa fa-star rate"></span>
+            <span class="fa fa-star rate"></span>
         </div>
-        <input type="hidden" id="preference" name="preference" value="3">
+        <div class="form-group col-sm-6" style="margin-left:25%;margin-top:1%">
+            <label for="comments">Comment :</label>
+            <textarea class="form-control" rows="5" id="comments" name="comments"></textarea>
+        </div>
+        <input type="hidden" id="rating" name="rating" value="3">
         <button type="submit" class="btn btn-lg btn-info next_btn">Restart</button>
     </div>
 </form>
 <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
 <script>
 $(document).ready(function(){
-  $(".preference").click(function(){
+  $(".rate").click(function(){
       var index = $(this).index();
       var parent = $(this).parent();
       $("span.checked").each(function(){
@@ -37,7 +41,7 @@ $(document).ready(function(){
       for(var i =0;i<= index;i++){
           parent.find("span:eq("+i+")").addClass("checked");
       }
-      $("#preference").val(index+1);
+      $("#rating").val(index+1);
   });
 });
 </script>

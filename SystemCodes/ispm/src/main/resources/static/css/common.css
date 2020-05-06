@@ -70,11 +70,6 @@ legend {
   width: 150px;
 }
 
-
-div + div {
-  margin-top: 1em;
-  }
-
 /* label {
   /* To make sure that all label have the same size and are properly align */
   /* display: inline-block; */
@@ -146,12 +141,6 @@ button {
   width: 20%;
 }
 
-.question_choice{
-  margin-left: 25%;
-  margin-top: 1%;
-  height: 80px;
-}
-
 .container{
   margin-top:5%;
   margin-left:10%;
@@ -174,4 +163,9 @@ h2{
   width: 162px;
   height: 150px;
   margin-right: 5%;
+}
+
+input[type=radio] {
+    width: 15px;
+    height: 15px;
 }

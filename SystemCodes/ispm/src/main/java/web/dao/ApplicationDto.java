@@ -13,7 +13,6 @@ public class ApplicationDto {
     private String id = "0";
     private String name = "";
     private String age = "0";
-    private String issuer="";
     private String status = "";
     private String gender="";
     private String familySize="";
@@ -100,14 +99,6 @@ public class ApplicationDto {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getIssuer() {
-        return issuer;
-    }
-
-    public void setIssuer(String issuer) {
-        this.issuer = issuer;
     }
 
     public String getStatus() {
