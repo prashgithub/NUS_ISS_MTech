@@ -11,9 +11,12 @@ public class ApplicationDto {
     private String id = "0";
     private String name = "";
     private String age = "0";
-    private String issuer="";
     private String status = "";
     private String gender="";
+    private String income="100000";
+    private String expenditure="50000";
+    private String loanAmount="300000";
+    private String familySize="3";
 
     private Map<String, String> userDetails=new LinkedHashMap<>();
     private Map<String, BigDecimal> userFeatureValues=new LinkedHashMap<>();
@@ -95,14 +98,6 @@ public class ApplicationDto {
         this.name = name;
     }
 
-    public String getIssuer() {
-        return issuer;
-    }
-
-    public void setIssuer(String issuer) {
-        this.issuer = issuer;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -117,6 +112,38 @@ public class ApplicationDto {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getIncome() {
+        return income;
+    }
+
+    public void setIncome(String income) {
+        this.income = income;
+    }
+
+    public String getExpenditure() {
+        return expenditure;
+    }
+
+    public void setExpenditure(String expenditure) {
+        this.expenditure = expenditure;
+    }
+
+    public String getLoanAmount() {
+        return loanAmount;
+    }
+
+    public void setLoanAmount(String loanAmount) {
+        this.loanAmount = loanAmount;
+    }
+
+    public String getFamilySize() {
+        return familySize;
+    }
+
+    public void setFamilySize(String familySize) {
+        this.familySize = familySize;
     }
 
 }

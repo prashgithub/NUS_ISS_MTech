@@ -4,7 +4,6 @@
     <title>Integrated Shield Plan Master</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}" />
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/fontawesome/css/all.min.css}" />
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/common.css}" />
 </head>
 <body>
@@ -13,21 +12,31 @@
         <div class="form-group form_header">
             <h2 th:utext="${name}"></h2>
         </div>
-        <div class="form-group col-sm-6 stars" style="margin-left:25%">
-            <span class="fa fa-star preference checked"></span>
-            <span class="fa fa-star preference checked"></span>
-            <span class="fa fa-star preference checked"></span>
-            <span class="fa fa-star preference"></span>
-            <span class="fa fa-star preference"></span>
-        </div>
-        <th:block th:each="choice, index : ${choices}">
-            <div class="form-group col-sm-6 question_choice">
-                <div class="alert alert-info" th:value="${index.count}"><strong th:text="${choice}"></strong></div>
+        <div class="row importance" style="margin-left:10%;padding-bottom:1%">
+            <div class="col-sm-2">
+                <label>Importance :</label>
             </div>
-        </th:block>
+            <div class="col-sm-10">
+                <div>
+                    <label class="radio-inline"><input type="radio" name="preference" value="1" checked> Not very important</label>
+                    <label class="radio-inline"><input type="radio" name="preference" value="2"> Somewhat important</label>
+                    <label class="radio-inline"><input type="radio" name="preference" value="3"> Moderately important</label>
+                </div>
+                <div>
+                    <label class="radio-inline"><input type="radio" name="preference" value="4"> Very important</label>
+                    <label class="radio-inline"><input type="radio" name="preference" value="5"> Extremely important</label>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-left:10%;width:80%">
+            <th:block th:each="choice, index : ${choices}">
+                <div class="col-sm-6">
+                    <div class="alert alert-info" th:value="${index.count}"><strong th:text="${choice}"></strong></div>
+                </div>
+            </th:block>
+        </div>
         <input type="hidden" id="qid" name="qid" th:value="${qid}">
         <input type="hidden" id="answer" name="answer" value="0">
-        <input type="hidden" id="preference" name="preference" value="3">
         <button type="submit" class="btn btn-lg btn-info next_btn">Next</button>
     </div>
 </form>
@@ -35,27 +44,22 @@
 <script>
 $(document).ready(function(){
   var qid = $("#qid").val();
-  if(qid == "1"){
-      $(".stars").hide();
+  if(qid=="7"){
+    $(".importance").hide();
   }
   $(".alert").click(function(){
-      $(".alert-danger").addClass("alert-info");
-      $(".alert-danger").removeClass("alert-danger");
-      var choice = $(this).attr("value");
-      $(this).removeClass("alert-info");
-      $(this).addClass("alert-danger");
-      $("#answer").val(choice);
-  });
-  $(".preference").click(function(){
-      var index = $(this).index();
-      var parent = $(this).parent();
-      $("span.checked").each(function(){
-          $(this).removeClass("checked");
-      });
-      for(var i =0;i<= index;i++){
-          parent.find("span:eq("+i+")").addClass("checked");
+      if($(this).hasClass("alert-danger")){
+        $(this).addClass("alert-info");
+        $(this).removeClass("alert-danger");
+        $("#answer").val("0");
       }
-      $("#preference").val(index+1);
+      else{
+        $(".alert-danger").addClass("alert-info");
+        $(".alert-danger").removeClass("alert-danger");
+        $(this).removeClass("alert-info");
+        $(this).addClass("alert-danger");
+        $("#answer").val($(this).attr("value"));
+      }
   });
 });
 </script>
