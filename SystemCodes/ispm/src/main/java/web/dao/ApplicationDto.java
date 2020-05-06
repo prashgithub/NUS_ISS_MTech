@@ -1,6 +1,8 @@
 package web.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import web.model.Question;
+import web.service.CalcService;
 
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
@@ -13,15 +15,16 @@ public class ApplicationDto {
     private String age = "0";
     private String status = "";
     private String gender="";
-    private String income="100000";
-    private String expenditure="50000";
-    private String loanAmount="300000";
-    private String familySize="3";
+    private String familySize="";
+    private String income="";
+    private String expenditure="";
+    private String loanAmount="";
 
     private Map<String, String> userDetails=new LinkedHashMap<>();
     private Map<String, BigDecimal> userFeatureValues=new LinkedHashMap<>();
 
     private Map<String, UserAnswer> userAnswers =new LinkedHashMap<>();
+    @Autowired private CalcService calcService;
 
     public Map<String, UserAnswer> getUserAnswers() {
         return userAnswers;
@@ -47,7 +50,7 @@ public class ApplicationDto {
         }catch (Exception e){
             e.printStackTrace();
         }
-        List<Map<String, String>> listOfMap = answeredQuestion.getExtraDataAsListOfMap();
+        List<Map<String, String>> listOfMap = answeredQuestion.getExtraDataAsListOfMap(this);
         String value = null;
         try {
             int userSelectedIndex = Integer.parseInt(ans);
@@ -114,6 +117,14 @@ public class ApplicationDto {
         this.gender = gender;
     }
 
+    public String getFamilySize() {
+        return familySize;
+    }
+
+    public void setFamilySize(String familySize) {
+        this.familySize = familySize;
+    }
+
     public String getIncome() {
         return income;
     }
@@ -138,12 +149,10 @@ public class ApplicationDto {
         this.loanAmount = loanAmount;
     }
 
-    public String getFamilySize() {
-        return familySize;
+    public void setCalcService(CalcService calcService) {
+        this.calcService = calcService;
     }
-
-    public void setFamilySize(String familySize) {
-        this.familySize = familySize;
+    public CalcService getCalcService() {
+        return calcService;
     }
-
 }

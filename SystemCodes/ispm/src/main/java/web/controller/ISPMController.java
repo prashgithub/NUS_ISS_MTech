@@ -12,6 +12,7 @@ import web.model.Question;
 import web.model.UserFeedback;
 import web.repository.QuestionRepository;
 import web.repository.UserFeedbackRepository;
+import web.service.CalcService;
 import web.service.ISPMService;
 
 import java.util.Optional;
@@ -20,12 +21,10 @@ import java.util.Optional;
 public class ISPMController {
     ApplicationDto currentApplication;
 
-    @Autowired
-    ISPMService ispmService;
-    @Autowired
-    QuestionRepository questionRepository;
-    @Autowired
-    UserFeedbackRepository userFeedbackRepository;
+    @Autowired CalcService calcService;
+    @Autowired ISPMService ispmService;
+    @Autowired QuestionRepository questionRepository;
+    @Autowired UserFeedbackRepository userFeedbackRepository;
 
     @RequestMapping("/")
     public String welcome() {
@@ -40,6 +39,7 @@ public class ISPMController {
     @GetMapping("/user")
     public String user(@ModelAttribute ApplicationDto applicationDto) {
         currentApplication = applicationDto;
+        currentApplication.setCalcService(calcService);
         return "redirect:questions";
     }
 
@@ -49,6 +49,9 @@ public class ISPMController {
         String answer = questionDto.getAnswer();
         String preference = questionDto.getPreference();
         Question answeredQuestion = questionRepository.findById(answeredQueId).get();
+        if(currentApplication.getCalcService() == null)
+            currentApplication.setCalcService(calcService);
+
         if (answeredQueId != 0)
             currentApplication.setAnswer(answeredQuestion, answeredQueId, answer, preference);
 
@@ -66,7 +69,7 @@ public class ISPMController {
         Question nextQuestion = nextQuestionOp.get();
         model.addAttribute("qid", nextQuestion.getId());
         model.addAttribute("name", nextQuestion.getName());
-        model.addAttribute("choices", nextQuestion.getExtraDataValuesAsArray());
+        model.addAttribute("choices", nextQuestion.getExtraDataValuesAsArray(currentApplication));
         return "questions";
     }
 

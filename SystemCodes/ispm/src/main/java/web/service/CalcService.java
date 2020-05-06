@@ -52,9 +52,18 @@ public class CalcService {
         return featureGRACalcHolder.getDefaultScore();
     }
 
+    private Table<String, String, BigDecimal> getInputValuesForFeature() {
+        return featureGRACalcHolder.getInputValues();
+    }
+
     private Table<String, String, BigDecimal> getDefaultScoreForPremium() {
         return premiumGRACalcHolder.getDefaultScore();
     }
+
+    public Table<String, String, BigDecimal> getInputValuesForPremium() {
+        return premiumGRACalcHolder.getInputValues();
+    }
+
 
     public BigDecimal getNormalValueWRTFeature(String featureName, BigDecimal userValue) {
         loadCache();
@@ -67,6 +76,10 @@ public class CalcService {
 
     public BigDecimal getNormalValueWRTPremiumAge(String ageValue, BigDecimal userPremium) {
         loadCache();
+        return premiumGRACalcHolder.getUsrValNormalizedWRTFeature(getNearestAgeFor(ageValue), userPremium);
+    }
+
+    private String getNearestAgeFor(String ageValue) {
         try {
             int gap = Integer.MAX_VALUE;
             String nearestAge = ageValue;
@@ -81,12 +94,37 @@ public class CalcService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return premiumGRACalcHolder.getUsrValNormalizedWRTFeature(ageValue, userPremium);
+        return ageValue;
     }
 
     public List<String> getAvailableAgesForPremium() {
         loadCache();
         return new ArrayList<>(getDefaultScoreForPremium().columnMap().keySet());
+    }
+
+    public List<BigDecimal> getAvailablePremiumsForAge(String ageValue) {
+        loadCache();
+        String nearestAge = getNearestAgeFor(ageValue);
+        return getInputValuesForPremium()
+                .columnMap()
+                .get(nearestAge)
+                .values()
+                .stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    public List<BigDecimal> getAvailableValuesForFeature(String featureName) {
+        loadCache();
+        return getInputValuesForFeature()
+                .columnMap()
+                .get(featureName)
+                .values()
+                .stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     /*feature related*/
