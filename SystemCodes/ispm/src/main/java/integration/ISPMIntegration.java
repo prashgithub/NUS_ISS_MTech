@@ -131,9 +131,7 @@ public class ISPMIntegration {
                             invokeDM(application, resultMap);
                         }
                     }
-                    // if (arg0.getNodeInstance() instanceof RuleSetNodeInstance){
                     log.info("before Node Left: {} ", arg0.getNodeInstance().getNodeName());
-                    // }
                 }
 
                 public void afterVariableChanged(ProcessVariableChangedEvent arg0) {
@@ -149,9 +147,7 @@ public class ISPMIntegration {
                 }
 
                 public void afterNodeTriggered(ProcessNodeTriggeredEvent arg0) {
-                    // if (arg0.getNodeInstance() instanceof RuleSetNodeInstance){
                     log.info("Node Name: {}  has been entered", arg0.getNodeInstance().getNodeName());
-                    // }
                 }
 
                 public void afterNodeLeft(ProcessNodeLeftEvent arg0) {
@@ -237,8 +233,6 @@ public class ISPMIntegration {
         inputList.add(details);
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
 
-        //boolean invokeResult = invokeRules(inputList, "policyreasoning", resultMap);
-        //log.info("ApplicationResult invoke rule: " + invokeResult);
         boolean invokeResult = invokeProcess(inputList, resultMap);
         log.info("ApplicationResult: " + invokeResult);
 
