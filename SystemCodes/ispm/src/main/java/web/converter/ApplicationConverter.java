@@ -140,15 +140,15 @@ public class ApplicationConverter {
 
         switch (userImportance) {
             case 1 :
-                return 12;
+                return 25;
             case  2:
-                return 19;
+                return 50;
             case  3:
-                return 21;
+                return 75;
             case  4:
-                return 23;
+                return 100;
             case  5:
-                return 24;
+                return 120;
             default:
                 return 20;
         }
