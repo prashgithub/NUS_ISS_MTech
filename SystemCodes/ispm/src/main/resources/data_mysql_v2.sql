@@ -3,11 +3,9 @@
 -- Host: localhost    Database: recommendersys
 -- ------------------------------------------------------
 -- Server version	8.0.19
-drop database  recommendersys;
+drop database  recommendersys IF EXISTS `recommendersys`;
 create database  recommendersys;
 use recommendersys;
-select * from comp_pol_fea_view;
-select * from comp_pol_prem_view;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
