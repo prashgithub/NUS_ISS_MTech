@@ -1,2 +1,2 @@
-Gender,Age
-FEMALE,43
+Gender,Age,Family Size,Income,Expenditure,Loan Amount
+male,25,3,100000,50000,300000
