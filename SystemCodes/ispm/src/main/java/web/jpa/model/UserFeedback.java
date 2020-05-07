@@ -1,5 +1,4 @@
-package web.model;
-
+package web.jpa.model;
 
 import lombok.Data;
 

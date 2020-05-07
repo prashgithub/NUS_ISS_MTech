@@ -13,16 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package web.repository;
+package web.jpa.jparepository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import web.model.Policy;
-import web.model.PolicyFeature;
+import web.jpa.model.Question;
 
 /**
  * @author Prash
  */
-@Repository("policyFeatureRepository")
-public interface PolicyFeatureRepository extends PagingAndSortingRepository<PolicyFeature, Long> {
+@Repository("questionRepository")
+public interface QuestionRepository extends PagingAndSortingRepository<Question, Long> {
 }
