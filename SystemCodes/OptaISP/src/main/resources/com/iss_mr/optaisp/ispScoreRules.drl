@@ -98,7 +98,7 @@ rule "Claims Processing Duration"
         Preference ($requiredClaimsProcessingDuration:requiredClaimsProcessingDuration)
         exists Preference(policy == $policy)
     then
-        scoreHolder.penalize(kcontext, $claimsProcessingDuration - $requiredClaimsProcessingDuration);
+        scoreHolder.reward(kcontext, $claimsProcessingDuration - $requiredClaimsProcessingDuration);
 end
 
 rule "Post Hospitalisation Coverage"
@@ -125,7 +125,7 @@ rule "Co-insurance"
         Preference ($requiredCoinsurance:requiredCoinsurance)
         exists Preference(policy == $policy)
     then
-        scoreHolder.penalize(kcontext, $requiredCoinsurance - $coinsurance);
+        scoreHolder.reward(kcontext, $requiredCoinsurance - $coinsurance);
 end
 
 rule "Deductible"
@@ -134,7 +134,7 @@ rule "Deductible"
         Preference ($requiredDeductible:requiredDeductible)
         exists Preference(policy == $policy)
     then
-        scoreHolder.penalize(kcontext, $requiredDeductible - $deductible);
+        scoreHolder.reward(kcontext, $requiredDeductible - $deductible);
 end
 
 rule "Non-Panel Surcharge"
@@ -143,7 +143,7 @@ rule "Non-Panel Surcharge"
         Preference ($requiredNonPanelSurcharge:requiredNonPanelSurcharge)
         exists Preference(policy == $policy)
     then
-        scoreHolder.penalize(kcontext, $requiredNonPanelSurcharge - $nonPanelSurcharge);
+        scoreHolder.reward(kcontext, $requiredNonPanelSurcharge - $nonPanelSurcharge);
 end
 
 rule "Co-Pay Capped At"
@@ -152,7 +152,7 @@ rule "Co-Pay Capped At"
         Preference ($requiredCoPayCappedAt:requiredCoPayCappedAt)
         exists Preference(policy == $policy)
     then
-        scoreHolder.penalize(kcontext, $requiredCoPayCappedAt - $coPayCappedAt);
+        scoreHolder.reward(kcontext, $requiredCoPayCappedAt - $coPayCappedAt);
 end
 
 rule "Surgery"
@@ -171,5 +171,5 @@ rule "Premium Amount"
         Premium( ageGroup == $requiredAge, $premium: premiumByAge) from $premiums
         exists Preference(policy == $policy)
     then
-        scoreHolder.penalize(kcontext, $premium - $requiredPremium );
+        scoreHolder.reward(kcontext, $requiredPremium - $premium );
 end
