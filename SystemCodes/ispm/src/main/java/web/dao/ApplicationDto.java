@@ -1,7 +1,7 @@
 package web.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import web.model.Question;
+import web.jpa.model.Question;
 import web.service.CalcService;
 
 import java.math.BigDecimal;

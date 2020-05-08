@@ -140,15 +140,15 @@ public class ApplicationConverter {
 
         switch (userImportance) {
             case 1 :
-                return 12;
+                return 25;
             case  2:
-                return 19;
+                return 50;
             case  3:
-                return 21;
+                return 75;
             case  4:
-                return 23;
+                return 100;
             case  5:
-                return 24;
+                return 120;
             default:
                 return 20;
         }
@@ -168,6 +168,9 @@ public class ApplicationConverter {
             }
             normalizedScore = score.setScale(2, RoundingMode.HALF_UP).multiply(new BigDecimal(100)).intValue();
             System.out.format("\nNormalized score: %s : before %s , after default %s , rescaled %d ","Premium".equalsIgnoreCase(featureName)?featureName+" "+applicationDto.getAge():featureName,userExpecetdValue.toString(),score.toString(),normalizedScore);
+            if(normalizedScore<0 || normalizedScore>100){
+                throw new RuntimeException("Invalid normalizedScore found"+normalizedScore);
+            }
         }
         return normalizedScore;
     }

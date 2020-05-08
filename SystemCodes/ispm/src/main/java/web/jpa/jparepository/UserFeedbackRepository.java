@@ -1,3 +1,5 @@
+package web.jpa.jparepository;
+
 /*
  * Copyright 2015 the original author or authors.
  *
@@ -13,16 +15,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package web.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import web.model.Policy;
-import web.model.Question;
+import web.jpa.model.UserFeedback;
 
 /**
  * @author Prash
  */
-@Repository("questionRepository")
-public interface QuestionRepository extends PagingAndSortingRepository<Question, Long> {
+@Repository("userFeedbackRepository")
+public interface UserFeedbackRepository extends PagingAndSortingRepository<UserFeedback, Long> {
 }

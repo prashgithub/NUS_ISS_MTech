@@ -3,11 +3,9 @@
 -- Host: localhost    Database: recommendersys
 -- ------------------------------------------------------
 -- Server version	8.0.19
-drop database  recommendersys;
+drop database  recommendersys IF EXISTS `recommendersys`;
 create database  recommendersys;
 use recommendersys;
-select * from comp_pol_fea_view;
-select * from comp_pol_prem_view;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -115,56 +113,118 @@ CREATE TABLE `comppol_features` (
 
 LOCK TABLES `comppol_features` WRITE;
 /*!40000 ALTER TABLE `comppol_features` DISABLE KEYS */;
-INSERT INTO `comppol_features` VALUES (1,4,2,1,'As Charged',5),(2,8,2,1,'As Charged',5),(3,12,2,1,'As Charged',5),(4,16,2,1,'As Charged',5),(5,21,2,1,'As Charged',5),(6,25,2,1,'As Charged',5),(7,29,2,1,'As Charged',5),(8,4,5,100,'Number of Days',5),(9,8,5,100,'Number of Days',5),(10,12,5,120,'Number of Days',5),(11,16,5,180,'Number of Days',5),(12,21,5,90,'Number of Days',5),(13,25,5,180,'Number of Days',5),(14,29,5,180,'Number of Days',5),(15,4,3,1,'As Charged',5),(16,8,3,1,'As Charged',5),(17,12,3,1,'As Charged',5),(18,16,3,1,'As Charged',5),(19,21,3,1,'As Charged',5),(20,25,3,1,'As Charged',5),(21,29,3,1,'As Charged',5),(22,4,6,100,'Number of Days',5),(23,8,6,100,'Number of Days',5),(24,12,6,120,'Number of Days',5),(25,16,6,365,'Number of Days',5),(26,21,6,90,'Number of Days',5),(27,25,6,365,'Number of Days',5),(28,29,6,365,'Number of Days',5),(29,4,4,1500000,'Annual Coverage Limit',5),(30,8,4,2000000,'Annual Coverage Limit',5),(31,12,4,1500000,'Annual Coverage Limit',5),(32,16,4,1200000,'Annual Coverage Limit',5),(33,21,4,1000000,'Annual Coverage Limit',5),(34,25,4,1000000,'Annual Coverage Limit',5),(35,29,4,600000,'Annual Coverage Limit',5),(64,4,7,10,'CoInsurance Percentage Payment',5),(65,8,7,11,'CoInsurance Percentage Payment',5),(66,12,7,10,'CoInsurance Percentage Payment',5),(67,16,7,11,'CoInsurance Percentage Payment',5),(68,21,7,10,'CoInsurance Percentage Payment',5),(69,25,7,11,'CoInsurance Percentage Payment',5),(70,29,7,10,'CoInsurance Percentage Payment',5),(71,4,8,3500,'Deductible Payment',5),(72,8,8,3500,'Deductible Payment',5),(73,12,8,3500,'Deductible Payment',5),(74,16,8,3500,'Deductible Payment',5),(75,21,8,3500,'Deductible Payment',5),(76,25,8,3500,'Deductible Payment',5),(77,29,8,3500,'Deductible Payment',5),(78,4,9,5,'Percentage of Non Panel Surcharge',5),(79,8,9,2,'Percentage of Non Panel Surcharge',5),(80,12,9,4,'Percentage of Non Panel Surcharge',5),(81,16,9,5,'Percentage of Non Panel Surcharge',5),(82,21,9,6,'Percentage of Non Panel Surcharge',5),(83,25,9,2,'Percentage of Non Panel Surcharge',5),(84,29,9,1,'Percentage of Non Panel Surcharge',5),(85,4,10,0,'CoPayCappedAt Max Amount',5),(86,8,10,3000,'CoPayCappedAt Max Amount',5),(87,12,10,0,'CoPayCappedAt Max Amount',5),(88,16,10,3000,'CoPayCappedAt Max Amount',5),(89,21,10,0,'CoPayCappedAt Max Amount',5),(90,25,10,3000,'CoPayCappedAt Max Amount',5),(91,29,10,0,'CoPayCappedAt Max Amount',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (92,29,11,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (93,4,11,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (94,8,11,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (95,12,11,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (96,16,11,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (97,21,11,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (98,25,11,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (99,4,12,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (100,8,12,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (101,12,12,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (102,16,12,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (103,21,12,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (104,25,12,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (105,29,12,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (106,4,13,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (107,8,13,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (108,12,13,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (109,16,13,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (110,21,13,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (111,25,13,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (112,29,13,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (113,4,14,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (114,8,14,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (115,12,14,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (116,16,14,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (117,21,14,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (118,25,14,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (119,29,14,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (120,4,15,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (121,8,15,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (122,12,15,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (123,16,15,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (124,21,15,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (125,25,15,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (126,29,15,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (127,4,16,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (128,8,16,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (129,12,16,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (130,16,16,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (131,21,16,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (132,25,16,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (133,29,16,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (134,4,17,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (135,8,17,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (136,12,17,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (137,16,17,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (138,21,17,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (139,25,17,1,'',5);
-INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (140,29,17,1,'',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (1,4,2,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (2,8,2,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (3,12,2,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (4,16,2,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (5,21,2,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (6,25,2,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (7,29,2,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (8,4,5,100,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (9,8,5,100,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (10,12,5,120,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (11,16,5,180,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (12,21,5,90,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (13,25,5,180,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (14,29,5,180,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (15,4,3,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (16,8,3,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (17,12,3,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (18,16,3,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (19,21,3,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (20,25,3,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (21,29,3,1,'As Charged',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (22,4,6,100,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (23,8,6,100,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (24,12,6,120,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (25,16,6,365,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (26,21,6,90,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (27,25,6,365,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (28,29,6,365,'Number of Days',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (29,4,4,1500000,'Annual Coverage Limit',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (30,8,4,2000000,'Annual Coverage Limit',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (31,12,4,1500000,'Annual Coverage Limit',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (32,16,4,1200000,'Annual Coverage Limit',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (33,21,4,1000000,'Annual Coverage Limit',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (34,25,4,1000000,'Annual Coverage Limit',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (35,29,4,600000,'Annual Coverage Limit',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (64,4,7,5,'CoInsurance Percentage Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (65,8,7,8,'CoInsurance Percentage Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (66,12,7,15,'CoInsurance Percentage Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (67,16,7,12,'CoInsurance Percentage Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (68,21,7,18,'CoInsurance Percentage Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (69,25,7,20,'CoInsurance Percentage Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (70,29,7,11,'CoInsurance Percentage Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (71,4,8,2000,'Deductible Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (72,8,8,2500,'Deductible Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (73,12,8,3500,'Deductible Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (74,16,8,3000,'Deductible Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (75,21,8,4000,'Deductible Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (76,25,8,4500,'Deductible Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (77,29,8,5000,'Deductible Payment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (78,4,9,5,'Percentage of Non Panel Surcharge',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (79,8,9,2,'Percentage of Non Panel Surcharge',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (80,12,9,4,'Percentage of Non Panel Surcharge',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (81,16,9,5,'Percentage of Non Panel Surcharge',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (82,21,9,6,'Percentage of Non Panel Surcharge',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (83,25,9,2,'Percentage of Non Panel Surcharge',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (84,29,9,1,'Percentage of Non Panel Surcharge',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (85,4,10,0,'CoPayCappedAt Max Amount',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (86,8,10,3000,'CoPayCappedAt Max Amount',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (87,12,10,0,'CoPayCappedAt Max Amount',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (88,16,10,3000,'CoPayCappedAt Max Amount',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (89,21,10,0,'CoPayCappedAt Max Amount',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (90,25,10,3000,'CoPayCappedAt Max Amount',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (91,29,10,0,'CoPayCappedAt Max Amount',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (92,4,11,45,'CommunityHospital',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (93,8,11,50,'CommunityHospital',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (94,12,11,45,'CommunityHospital',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (95,16,11,80,'CommunityHospital',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (96,21,11,90,'CommunityHospital',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (97,25,11,75,'CommunityHospital',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (98,29,11,85,'CommunityHospital',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (99,4,12,50000,'Surgery Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (100,8,12,50000,'Surgery Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (101,12,12,50000,'Surgery Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (102,16,12,17000,'Surgery Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (103,21,12,14000,'Surgery Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (104,25,12,50000,'Surgery Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (105,29,12,50000,'Surgery Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (106,4,13,80,'Major Organ Transplant Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (107,8,13,70,'Major Organ Transplant Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (108,12,13,100,'Major Organ Transplant Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (109,16,13,10,'Major Organ Transplant Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (110,21,13,50,'Major Organ Transplant Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (111,25,13,70,'Major Organ Transplant Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (112,29,13,100,'Major Organ Transplant Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (113,4,14,1,'Claims Processing Duration',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (114,8,14,1,'Claims Processing Duration',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (115,12,14,3,'Claims Processing Duration',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (116,16,14,2,'Claims Processing Duration',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (117,21,14,1,'Claims Processing Duration',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (118,25,14,0,'Claims Processing Duration',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (119,29,14,5,'Claims Processing Duration',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (120,4,15,10000,'Critical Illnesses Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (121,8,15,15000,'Critical Illnesses Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (122,12,15,0,'Critical Illnesses Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (123,16,15,0,'Critical Illnesses Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (124,21,15,0,'Critical Illnesses Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (125,25,15,0,'Critical Illnesses Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (126,29,15,0,'Critical Illnesses Coverage',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (127,4,16,100,'Emergency Overseas Treatment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (128,8,16,100,'Emergency Overseas Treatment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (129,12,16,100,'Emergency Overseas Treatment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (130,16,16,100,'Emergency Overseas Treatment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (131,21,16,75,'Emergency Overseas Treatment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (132,25,16,75,'Emergency Overseas Treatment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (133,29,16,100,'Emergency Overseas Treatment',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (134,4,17,25000,'Prosthesis',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (135,8,17,25000,'Prosthesis',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (136,12,17,25000,'Prosthesis',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (137,16,17,25000,'Prosthesis',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (138,21,17,20000,'Prosthesis',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (139,25,17,10000,'Prosthesis',5);
+INSERT INTO `comppol_features` (`indexid`,`comppolicy_id`,`policyfea_id`,`benefit_value`,`descr`,`ward_id`) VALUES (140,29,17,25000,'Prosthesis',5);
 /*!40000 ALTER TABLE `comppol_features` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -373,25 +433,30 @@ CREATE TABLE `recommendersys`.`question` (
 `stage` INT NULL,
 `extra_data` VARCHAR(450) NULL);
 
-INSERT INTO recommendersys.question
-(id,name,value,stage,extra_data) VALUES
-(0 ,'Invalid Question','Invalid Request',0,'[{"",""}]'),
-(1 ,'[1/6] What type of Hospital would you prefer?','HospitalType',1,'[{"GOVT_HOSPITAL":"Govt & Restructured Hospitals"},{"PVT_HOSPITAL":"Private Hospitals"}]'),
-(2 ,'[2/6] What type of Ward would you prefer?','WardType',1,'[{"PRIVATE":"Private (Single-Bedded)"},{"CLASS_A":"Class A (2-Bedded)"},{"Class_B1":" B1 (4-Bedded)"},{"LOWER":"Standard/Basic (4-9 Bedded)"}]'),
-(3 ,'[3/6] Do you have any pre-exisiting health conditions?','PreExistingCond',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
-(4 ,'[4/6] Do you work for any hazardious profession?','HighRiskProf',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
-(5 ,'[5/6] Are you smoker or drinker?','HighRiskHealth',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
-(6 ,'[6/6] Are you covered under any other/employer insurence?','AdditionalCover',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
-(7 ,'Would you be interested in providing other preferences?','Preference',1,'[{"TRUE":"Yes"},{"FALSE":"No"}]'),
-(8 ,'[1/8] How much premium would you like to pay above medisafe payment?','Premium',2,'POST_FIX: SGD'),
-(9 ,'[2/8] How much percentage of co-payment you would like to bear?','CoInsurance',2,'[{"5":"5%"},{"10":"10%"},{"20":"20%"},{"25":"25% or above"}]'),
-(10,'[3/8] How much of the max co-insurence would you like to pay?','CoPayCappedAt',2,'[{"3000":"3000 SGD"},{"5000":"5000 SGD"},{"12000":"12000 SGD"},{"30000":"Full Amount"}]'),
-(11,'[4/8] How much annual deductibles you like to pay?','Deductible',2,'[{"0":"0 SGD"},{"1000":"1000 SGD"},{"2500":"2500 SGD"},{"3500":"3500 SGD"}]'),
-(12,'[5/8] How much min pre-hospitalization coverage necessary?','PreHospCovg_days',2,'[{"90":"3 Months"},{"120":"4 Months"},{"180":"6 Months"},{"365":"1 Year"}]'),
-(13,'[6/8] How much min post-hospitalization coverage necessary?','PostHospCovg_days',2,'[{"90":"3 Months"},{"120":"4 Months"},{"180":"6 Months"},{"365":"1 Year"},{"730":"2 Years"}]'),
-(14,'[7/8] How much min annual coverage would you like to have?','Annual_Covg',2,'[{"400000":"400K or less"},{"800000":"400K to 800K"},{"1200000":"800K to 1.2 Million"},{"160000":"1.2 Million or above"}]'),
-(15,'[8/8] How much non-panel surcharge is acceptible?','NonPanelSurcharge',2,'POST_FIX: x1000 SGD')
-;
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (0,'Invalid Question','Invalid Request',0,'[{\"\",\"\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (1,'[1/6] What type of Hospital would you prefer?','HospitalType',1,'[{\"GOVT_HOSPITAL\":\"Govt & Restructured Hospitals\"},{\"PVT_HOSPITAL\":\"Private Hospitals\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (2,'[2/6] What type of Ward would you prefer?','WardType',1,'[{\"PRIVATE\":\"Private (Single-Bedded)\"},{\"CLASS_A\":\"Class A (2-Bedded)\"},{\"Class_B1\":\" B1 (4-Bedded)\"},{\"LOWER\":\"Standard/Basic (4-9 Bedded)\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (3,'[3/6] Do you have any pre-exisiting health conditions?','PreExistingCond',1,'[{\"TRUE\":\"Yes\"},{\"FALSE\":\"No\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (4,'[4/6] Do you work for any hazardious profession?','HighRiskProf',1,'[{\"TRUE\":\"Yes\"},{\"FALSE\":\"No\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (5,'[5/6] Are you smoker or drinker?','HighRiskHealth',1,'[{\"TRUE\":\"Yes\"},{\"FALSE\":\"No\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (6,'[6/6] Are you covered under any other/employer insurence?','AdditionalCover',1,'[{\"TRUE\":\"Yes\"},{\"FALSE\":\"No\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (7,'Would you be interested in providing other preferences?','Preference',1,'[{\"TRUE\":\"Yes\"},{\"FALSE\":\"No\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (8,'[1/15] How much premium would you like to pay above medisafe payment?','Premium',2,'POST_FIX: SGD');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (9,'[2/15] How much percentage of co-payment you would like to bear?','CoInsurance',2,'[{\"5\":\"5%\"},{\"10\":\"10%\"},{\"15\":\"15%\"},{\"20\":\"20% \"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (10,'[3/15] How much of the max co-insurence would you like to pay?','CoPayCappedAt',2,'[{\"0\":\"0 SGD\"},{\"1000\":\"1000 SGD\"},{\"2000\":\"2000 SGD\"},{\"3000\":\"3000 SGD\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (11,'[4/15] How much annual deductibles you like to pay?','Deductible',2,'[{\"2000\":\"2000 SGD\"},{\"3000\":\"3000 SGD\"},{\"4000\":\"4000 SGD\"},{\"5000\":\"5000 SGD\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (12,'[5/15] How much min pre-hospitalization coverage necessary?','PreHospCovg_days',2,'[{\"90\":\"3 Months\"},{\"120\":\"4 Months\"},{\"180\":\"6 Months\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (13,'[6/15] How much min post-hospitalization coverage necessary?','PostHospCovg_days',2,'[{\"90\":\"3 Months\"},{\"120\":\"4 Months\"},{\"180\":\"6 Months\"},{\"365\":\"1 Year\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (14,'[7/15] How much min annual coverage would you like to have?','Annual_Covg',2,'[{\"600000\":\"600K or less\"},{\"1000000\":\"600K to 1 Million\"},{\"1200000\":\"1 Million to 1.2 Million\"},{\"1500000\":\"1 Million to 1.5 Million\"},{\"2000000\":\"1.5 Million or above\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (15,'[8/15] How much non-panel surcharge is acceptible?','NonPanelSurcharge',2,'POST_FIX: x1000 SGD');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (16,'[9/15] How much min community hospital coverage necessary?','CommunityHospital',2,'[{\"45\":\"45 Days or Below\"},{\"60\":\"60 Days\"},{\"75\":\"75 Days\"},{\"90\":\"90 Days\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (17,'[10/15] How much surgery coverage necessary?','Surgery_Covg',2,'[{\"14000\":\"15K SGD or less\"},{\"16000\":\"16K ~ 20K SGD\"},{\"21000\":\"21K ~ 45K SGD\"},{\"45000\":\"45K SGD or above\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (18,'[11/15] How much organ transplant coverage necessary?','MajorOrganTransplant_Covg',2,'[{\"60\":\" Selected organs are covered\"},{\"90\":\"No limitation\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (19,'[12/15] How much add on to policy year limit for critical illnesses coverage necessary?','CriticalIllnesses_Covg',2,'[{\"0\":\"9K or less\"},{\"10000\":\"10K ~ 14K SGD\"}, {\"15000\":\"15K or above\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (20,'[13/15] How much emergency overseas treatment coverage necessary?','EmergencyOverseasTreatment',2,'[{\"75\":\"Limited to policy Day coverage\"},{\"90\":\" Limited to Singapore Private Hospital charges\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (21,'[14/15] How much prosthesis benefit per year necessary?','Prosthesis',2,'[{\"10000\":\"10K ~ 19K\"},{\"20000\":\"20K ~ 24K\"},{\"25000\":\"25K or above\"}]');
+INSERT INTO `question` (`id`,`name`,`value`,`stage`,`extra_data`) VALUES (22,'[15/15] How long claims processing duration is acceptible?','ClaimsProcessingDuration',2,'[{\"0\":\"Same day\"},{\"1\":\"1 Day\"},{\"2\":\"2 Days\"},{\"3\":\"3 Days\"},{\"4\":\"4 Days or above\"}]');
+
 
 DROP TABLE `recommendersys`.`user_feedback`;
 

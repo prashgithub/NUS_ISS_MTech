@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import web.dao.ApplicationDto;
 import web.dao.QuestionDto;
-import web.model.Question;
-import web.model.UserFeedback;
-import web.repository.QuestionRepository;
-import web.repository.UserFeedbackRepository;
+import web.jpa.jparepository.QuestionRepository;
+import web.jpa.jparepository.UserFeedbackRepository;
+import web.jpa.model.Question;
+import web.jpa.model.UserFeedback;
 import web.service.CalcService;
 import web.service.ISPMService;
 
@@ -23,8 +23,10 @@ public class ISPMController {
 
     @Autowired CalcService calcService;
     @Autowired ISPMService ispmService;
-    @Autowired QuestionRepository questionRepository;
-    @Autowired UserFeedbackRepository userFeedbackRepository;
+    @Autowired
+    QuestionRepository questionRepository;
+    @Autowired
+    UserFeedbackRepository userFeedbackRepository;
 
     @RequestMapping("/")
     public String welcome() {

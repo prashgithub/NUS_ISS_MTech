@@ -1,4 +1,4 @@
-package web.model;
+package web.jpa.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
