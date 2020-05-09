@@ -1,4 +1,4 @@
-# How to build & run 
+# How to build & run a standalone application
 
 ## Build artifacts 
 Build workflow
