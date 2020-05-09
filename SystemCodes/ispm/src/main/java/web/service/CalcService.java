@@ -114,6 +114,11 @@ public class CalcService {
                 .sorted()
                 .collect(Collectors.toList());
     }
+    public BigDecimal getPremiumForPolicyAndAge(String policyName, String ageValue) {
+        loadCache();
+        String nearestAge = getNearestAgeFor(ageValue);
+        return getInputValuesForPremium().get(policyName, nearestAge);
+    }
 
     public List<BigDecimal> getAvailableValuesForFeature(String featureName) {
         loadCache();
