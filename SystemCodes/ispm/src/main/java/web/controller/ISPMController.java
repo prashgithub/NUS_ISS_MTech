@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import web.dao.ApplicationDto;
 import web.dao.QuestionDto;
+import web.dao.PolicyDto;
 import web.jpa.jparepository.QuestionRepository;
 import web.jpa.jparepository.UserFeedbackRepository;
 import web.jpa.model.Question;
@@ -77,7 +78,9 @@ public class ISPMController {
 
     @GetMapping("/complete")
     public String result(@ModelAttribute ApplicationDto applicationDto, Model model) {
-        model.addAttribute("matchedPolicy", ispmService.getMatchedPolicy(currentApplication));
+        PolicyDto policy = ispmService.getMatchedPolicy(currentApplication);
+        model.addAttribute("name", policy.getName());
+        model.addAttribute("benefits", policy.getBenefit().split(","));
         //OPtaplannerService.invoke()
         return "complete";
     }
