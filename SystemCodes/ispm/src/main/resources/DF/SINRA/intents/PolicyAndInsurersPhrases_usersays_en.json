@@ -1,0 +1,381 @@
+[
+  {
+    "id": "e0cee28d-5d9d-4a32-8e04-ec88fd97eacd",
+    "data": [
+      {
+        "text": "Raffles Shield",
+        "alias": "Policy",
+        "meta": "@Policy",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "56ae2e40-db3d-461a-8747-49ccce3cdeac",
+    "data": [
+      {
+        "text": "Prudential PruShield A Premier",
+        "alias": "Policy",
+        "meta": "@Policy",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6b3ba80d-21e4-4b06-8444-dbe3e9270ea9",
+    "data": [
+      {
+        "text": "Any good features of ",
+        "userDefined": false
+      },
+      {
+        "text": "PruShield",
+        "alias": "Policy",
+        "meta": "@Policy",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "eb972058-5489-48b9-b13a-ac0a311d8058",
+    "data": [
+      {
+        "text": "what is the benefits of ",
+        "userDefined": false
+      },
+      {
+        "text": "IncomeShield",
+        "alias": "Policy",
+        "meta": "@Policy",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "07159907-ab60-483a-b093-8e091e113d04",
+    "data": [
+      {
+        "text": "How is ",
+        "userDefined": false
+      },
+      {
+        "text": "Income",
+        "alias": "Insurer",
+        "meta": "@Insurer",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "feda8437-34ea-445e-9bc5-ac416237cc9c",
+    "data": [
+      {
+        "text": "Great Eastern Supreme Health P Plus",
+        "alias": "Policy",
+        "meta": "@Policy",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "568fbbfe-643e-463a-9f7c-dfdbdb89c2d8",
+    "data": [
+      {
+        "text": "AXA-Shield Plan A",
+        "alias": "Policy",
+        "meta": "@Policy",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "4ee76d3f-b991-487f-9ed4-59bc0bf76486",
+    "data": [
+      {
+        "text": "Aviva ",
+        "userDefined": false
+      },
+      {
+        "text": "MyShield Plan 1",
+        "alias": "Policy",
+        "meta": "@Policy",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "c5730397-f5bf-4a9d-bba1-6837881b329e",
+    "data": [
+      {
+        "text": "Is ",
+        "userDefined": false
+      },
+      {
+        "text": "Health-Shield",
+        "alias": "Policy",
+        "meta": "@Policy",
+        "userDefined": true
+      },
+      {
+        "text": " good?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "30a6261b-12af-42fc-b7c3-22cacae9e8ff",
+    "data": [
+      {
+        "text": "How is ",
+        "userDefined": false
+      },
+      {
+        "text": "Supreme-Health",
+        "alias": "Policy",
+        "meta": "@Policy",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "f7769c08-3101-43a6-9917-ae0acba77590",
+    "data": [
+      {
+        "text": "what are the ",
+        "userDefined": false
+      },
+      {
+        "text": "benefits",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": " of ",
+        "userDefined": false
+      },
+      {
+        "text": "Aviva",
+        "alias": "Insurer",
+        "meta": "@Insurer",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "MyShield",
+        "alias": "Policy",
+        "meta": "@Policy",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "07d82dd6-a5c9-48b7-8b64-922f216c7925",
+    "data": [
+      {
+        "text": "How is ",
+        "userDefined": false
+      },
+      {
+        "text": "Raffles",
+        "alias": "Insurer",
+        "meta": "@Insurer",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "4fc87201-8c44-49fc-981b-ed6f9a9167c1",
+    "data": [
+      {
+        "text": "How is ",
+        "userDefined": false
+      },
+      {
+        "text": "AXA",
+        "alias": "Insurer",
+        "meta": "@Insurer",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "485f0c7a-9fda-40e5-a324-715b91a37a12",
+    "data": [
+      {
+        "text": "How is ",
+        "userDefined": false
+      },
+      {
+        "text": "Prudential",
+        "alias": "Insurer",
+        "meta": "@Insurer",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "db49fb6e-5293-4b55-98b7-07a08c203846",
+    "data": [
+      {
+        "text": "How is ",
+        "userDefined": false
+      },
+      {
+        "text": "AIA",
+        "alias": "Insurer",
+        "meta": "@Insurer",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "3272e5f9-ab8c-4951-b56a-aa512d0ff8de",
+    "data": [
+      {
+        "text": "How is ",
+        "userDefined": false
+      },
+      {
+        "text": "Great-Eastern",
+        "alias": "Insurer",
+        "meta": "@Insurer",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e616c380-cfab-4ec4-afab-00e765d947ee",
+    "data": [
+      {
+        "text": "How is ",
+        "userDefined": false
+      },
+      {
+        "text": "Aviva",
+        "alias": "Insurer",
+        "meta": "@Insurer",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6337f2fb-affb-4677-87a0-0103becda43c",
+    "data": [
+      {
+        "text": "What is an ",
+        "userDefined": false
+      },
+      {
+        "text": "ISP",
+        "alias": "Policy",
+        "meta": "@Policy",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]
