@@ -75,7 +75,8 @@ public class ISPMIntegration {
 
         try {
             KieServices kieServices = KieServices.Factory.get();
-            container = kieServices.newKieContainer(kieServices.newReleaseId("com.iss_mr", "OptaISP", "1.0.0"));
+            //container = kieServices.newKieContainer(kieServices.newReleaseId("com.iss_mr", "OptaISP", "1.0.0"));
+            container =kieServices.newKieClasspathContainer();
             SolverFactory<ISPSolution> solverFactory = SolverFactory.createFromKieContainerXmlResource(container, "com/iss_mr/optaisp/ispSolverConfig.solver.xml");
             Solver<ISPSolution> solver = solverFactory.buildSolver();
             solver.solve(getSolution(application));
@@ -99,8 +100,8 @@ public class ISPMIntegration {
 
         try {
             KieServices kieServices = KieServices.Factory.get();
-            container = kieServices.newKieContainer(
-                    kieServices.newReleaseId("com.iss_mr", "Integrated_Shield_Plan_Master", "1.0.0"));
+            //container = kieServices.newKieContainer(kieServices.newReleaseId("com.iss_mr", "Integrated_Shield_Plan_Master", "1.0.0"));
+            container =kieServices.newKieClasspathContainer();
             KieSession session = container.newKieSession("ispSession");
             session.addEventListener(new ProcessEventListener() {
                 public void beforeVariableChanged(ProcessVariableChangedEvent arg0) {
