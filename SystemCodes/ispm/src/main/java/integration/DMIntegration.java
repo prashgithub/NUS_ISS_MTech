@@ -21,8 +21,8 @@ public class DMIntegration {
            FileUtils.copyInputStreamToFile(new ClassPathResource("dm/InsuranceRecomOrange.py").getInputStream(), script);
            System.out.println("dm file path"+script.getPath());
 
-           File training_data = createTempFile("PolicyHistoricalData2.csv");
-           FileUtils.copyInputStreamToFile(new ClassPathResource("dm/PolicyHistoricalData2.csv").getInputStream(), training_data);
+           File training_data = createTempFile("PolicyHistoricalData3.csv");
+           FileUtils.copyInputStreamToFile(new ClassPathResource("dm/PolicyHistoricalData3.csv").getInputStream(), training_data);
            System.out.println("training data file path"+training_data.getPath());
 
            Process p = Runtime.getRuntime().exec("python "+script.getPath() + " "+training_data.getPath()+" "+testFile.getPath() );
