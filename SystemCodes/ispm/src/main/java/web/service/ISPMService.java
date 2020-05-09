@@ -39,9 +39,67 @@ public class ISPMService {
         Application result = ispmIntegration.getMatchedPolicy( ApplicationConverter.convertFromApplicationDto(applicationDto,calcService));
         PolicyDto policyDto=new PolicyDto();
         policyDto.setName(result.getMatchedPolicy().getName());
-        policyDto.setBenefit(result.getMatchedPolicy().getBenefit()==null? "Private hospital,My own room,Choose my doctor,Cover for pre-post hospitalisation expenses":result.getMatchedPolicy().getBenefit());
+        policyDto.setBenefit(result.getMatchedPolicy().getName()==null? "Private hospital,My own room,Choose my doctor,Cover for pre-post hospitalisation expenses":getPolicyInfo(result.getMatchedPolicy().getName().trim(),result.getApplicant().getAge()));
         policyDto.setIssuer(result.getMatchedPolicy().getInsurer()==null? "":result.getMatchedPolicy().getInsurer());
         return policyDto;
+    }
+
+    private String getPolicyInfo(String policyName,int age){
+        StringBuilder sb=new StringBuilder();
+        String featureInfo="%s: %s";
+        int policyId=-1;
+        for(ISPPolicies ispPolicies:ispPoliciesRepository.findAll()) {
+            if(ispPolicies.getPolicyName().equalsIgnoreCase(policyName)){
+                policyName=ispPolicies.getPolicyName();
+                policyId=ispPolicies.getPolicyId();
+                break;
+            }
+        }
+
+        for(ISPCompPolicyPremium ispCompPolicyPremium:ispCompPoliciesPremiumRepository.findAll()){
+            if(ispCompPolicyPremium.getComppolicyId()==policyId && ispCompPolicyPremium.getAge()==((age/10)*10)){
+                sb.append(String.format(featureInfo,"Premium (age group "+((age/10)*10)+")",ispCompPolicyPremium.getPremAmount())).append(",");
+            }
+        }
+            for(ISPCompPolFeatureView ispCompPolFeatureView: ispCompPoliciesFeatureViewRepository.findAll()){
+                if(ispCompPolFeatureView.getPolicyName().equalsIgnoreCase(policyName)){
+                    if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("PreHospCovg_days")){
+                        sb.append(String.format(featureInfo,"Pre-hospitalization Coverage Days",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("PostHospCovg_days")){
+                        sb.append(String.format(featureInfo,"Post-hospitalization Coverage Days",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Pre_Hosp_Covg")){
+                        //sb.append(String.format(featureInfo,"Pre-hospitalization Coverage",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Post_Hosp_Covg")){
+                       // sb.append(String.format(featureInfo,"Post-hospitalization Coverage",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Annual_Covg")){
+                        sb.append(String.format(featureInfo,"Annual Coverage",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("CoInsurance")){
+                        sb.append(String.format(featureInfo,"Co-insurence",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Deductible")){
+                        sb.append(String.format(featureInfo,"Annual Deductibles",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("NonPanelSurcharge")){
+                        sb.append(String.format(featureInfo,"Non-panel Surcharge",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("CoPayCappedAt")){
+                        sb.append(String.format(featureInfo,"Co-payment Capped At",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("CommunityHospital")){
+                        sb.append(String.format(featureInfo,"Community Hospital Coverage Days",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Surgery_Covg")){
+                        sb.append(String.format(featureInfo,"Surgery Coverage",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("MajorOrganTransplant_Covg")){
+                        sb.append(String.format(featureInfo,"Major Organ Transplant Coverage",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("ClaimsProcessingDuration")){
+                        sb.append(String.format(featureInfo,"Claims Processing Duration",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("CriticalIllnesses_Covg")){
+                        sb.append(String.format(featureInfo,"Additional Critical Illnesses Coverage",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("EmergencyOverseasTreatment")){
+                        sb.append(String.format(featureInfo,"Emergency Overseas Treatment Coverage",ispCompPolFeatureView.getBenefits())).append(",");
+                    }else if(ispCompPolFeatureView.getPolicyFeature().equalsIgnoreCase("Prosthesis")){
+                        sb.append(String.format(featureInfo,"Annual Prosthesis Coverage",ispCompPolFeatureView.getBenefits())).append(",");
+                    }
+                }
+            }
+
+       return sb.toString();
     }
 
     private List<com.iss_mr.optaisp.Policy> getPolicyList(){
