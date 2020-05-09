@@ -1,0 +1,39 @@
+{
+  "default": [
+    "https://www.moh.gov.sg/home/our-healthcare-system/medishield-life/about-integrated-shield-plans/comparison-of-integrated-shield-plans",
+    "https://www.moh.gov.sg/docs/librariesprovider5/integrated-shield-plans-documents/myshield-terms-and-conditions-(1-jan-2019).pdf"
+  ],
+  "aviva": [
+    "https://www.aviva.com.sg/en/faq/myshield-and-myhealth-plus-faq/",
+    "https://www.aviva.com.sg/content/dam/aviva-public/sg/documents/aviva-myshield/Aviva_MyShield_FAQs.pdf",
+    "https://www.aviva.com.sg/content/dam/aviva-public/sg/documents/aviva-life/myhealthplus/aviva-myhealthplus-faq.pdf",
+    "https://www.aviva.com.sg/content/dam/aviva-public/sg/documents/aviva-life/myhealthplus/Aviva-MyHealthPlus-Annual-Deductibles-Co-insurance-Benefits-FAQ.pdf"
+  ],
+  "aia": [
+    "https://www.aia.com.sg/en/IP-Riders.html",
+    "https://www.aia.com.sg/content/dam/sg/en/docs/product_brochures/medical-protection/aia-health-shield-gold-max-english-brochure.pdf",
+    "https://www.aia.com.sg/content/dam/sg/en/docs/product_brochures/medical-protection/aia-health-shield-gold-max-vitalhealth-for-foreigners.pdf"
+  ],
+  "axa": [
+      "https://www.axa.com.sg/health-insurance/axa-shield#plans",
+      "https://www.axa.com.sg/health-insurance/axa-shield#add-ons"
+  ],
+  "prudential": [
+    "https://www.prudential.com.sg/products/medical/medical-faq",
+    "https://www.prudential.com.sg/Products/medical/PRUshield"
+  ],
+  "raffles": [
+    "https://www.rafflesshield.com.sg/plans/",
+    "https://www.rafflesshield.com.sg/2018/12/others/is-this-covered-under-my-plan-or-not-5-common-scenarios-to-take-note-of-when-buying-health-insurance/"
+  ],
+  "income": [
+    "https://www.income.com.sg/health-and-personal-accident/incomeshield",
+    "https://www.income.com.sg/health-and-personal-accident/incomeshield-standard-plan",
+    "https://www.income.com.sg/health-and-personal-accident/enhanced-incomeshield"
+  ],
+  "great_eastern": [
+    "https://www.greateasternlife.com/content/dam/great-eastern/sg/homepage/personal-insurance/our-products/health-insurance/great-supremehealth/medishield-life-faqs.pdf",
+    "https://www.greateasternlife.com/sg/en/personal-insurance/our-products/health-insurance/great-supremehealth.html",
+    "https://www.greateasternlife.com/content/dam/great-eastern/sg/homepage/personal-insurance/our-products/health-insurance/great-supremehealth/great-supremehealth-brochure.pdf"
+  ]
+}
