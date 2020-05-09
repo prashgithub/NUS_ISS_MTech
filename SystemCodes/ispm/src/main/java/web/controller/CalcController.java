@@ -63,4 +63,9 @@ public class CalcController {
         BigDecimal normalValueWRTFeature = calcService.getNormalValueWRTPremiumAge(age, new BigDecimal(userValue));
         return new ResponseEntity<>(normalValueWRTFeature,new HttpHeaders(), HttpStatus.OK);
     }
+    @GetMapping(value = "/getPolicyPremiumForUserAge", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<BigDecimal> getPremiumUserAgePolicyName(String policyName, String age)  {
+        return new ResponseEntity<>(calcService.getPremiumForPolicyAndAge(policyName, age),new HttpHeaders(), HttpStatus.OK);
+    }
 }

@@ -31,12 +31,13 @@
         <div class="row" style="margin-left:10%;width:80%">
             <th:block th:each="choice, index : ${choices}">
                 <div class="col-sm-6">
-                    <div class="alert alert-info" th:value="${index.count}"><strong th:text="${choice}"></strong></div>
+                    <div class="alert alert-info" th:if="${index.count} != 1" th:value="${index.count}"><strong th:text="${choice}"></strong></div>
+                    <div class="alert alert-danger" th:if="${index.count} == 1" th:value="${index.count}"><strong th:text="${choice}"></strong></div>
                 </div>
             </th:block>
         </div>
         <input type="hidden" id="qid" name="qid" th:value="${qid}">
-        <input type="hidden" id="answer" name="answer" value="0">
+        <input type="hidden" id="answer" name="answer" value="1">
         <button type="submit" class="btn btn-lg btn-info next_btn">Next</button>
     </div>
 </form>
@@ -44,22 +45,15 @@
 <script>
 $(document).ready(function(){
   var qid = $("#qid").val();
-  if(qid=="7"){
+  if(parseInt(qid)<=7){
     $(".importance").hide();
   }
   $(".alert").click(function(){
-      if($(this).hasClass("alert-danger")){
-        $(this).addClass("alert-info");
-        $(this).removeClass("alert-danger");
-        $("#answer").val("0");
-      }
-      else{
-        $(".alert-danger").addClass("alert-info");
-        $(".alert-danger").removeClass("alert-danger");
-        $(this).removeClass("alert-info");
-        $(this).addClass("alert-danger");
-        $("#answer").val($(this).attr("value"));
-      }
+    $(".alert-danger").addClass("alert-info");
+    $(".alert-danger").removeClass("alert-danger");
+    $(this).removeClass("alert-info");
+    $(this).addClass("alert-danger");
+    $("#answer").val($(this).attr("value"));
   });
 });
 </script>

@@ -1,0 +1,56 @@
+{
+  "id": "95c34085-21bf-4dab-af65-754cde919a5f",
+  "name": "PolicyAndInsurersPhrases",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "023049cd-6664-42c9-9f10-9cf890534617",
+          "required": false,
+          "dataType": "@Policy",
+          "name": "Policy",
+          "value": "$Policy",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+        {
+          "id": "d23d8376-b977-43ea-8ae0-23d71ec4cb2b",
+          "required": false,
+          "dataType": "@Insurer",
+          "name": "Insurer",
+          "value": "$Insurer",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}
