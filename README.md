@@ -7,6 +7,7 @@
 ---
 ## SECTION 2 : EXECUTIVE SUMMARY / PAPER ABSTRACT
 Insurance is a means of protection from financial loss. An insurance policy is a contract used to indemnify individuals for covered losses and in managing cash flow uncertainty. Insurance industry has already several well-established players and in Singapore particularly there are several new entrants as well. Competition in insurance is important in providing competitive premiums and quality service. With the overwhelming number of plans, individuals will have more options and determining the right plan can be time consuming and might not result in choosing the best plan. SINRA Singapore Intelligent Insurance Recommender Agent is a system which has considered the core features of design simplicity and intelligent performance to provide the insurance policy recommendation to the user by understanding their needs.
+
 ---
 ## SECTION 3 : CREDITS / PROJECT CONTRIBUTION
 
