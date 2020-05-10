@@ -1,5 +1,11 @@
 # How to build & run a standalone application
 
+## Prerequisite
+JAVA_HOME is set , JDK 8 or above
+Maven is installed.
+Mysql 8 is installed and excute NUS_ISS_MTech\SystemCodes\ispm\src\main\resources\data_mysql_v2.sql
+Python 3 (below 3.8) is installed and Orange 3 (pip install Orange3)
+
 ## Build artifacts 
 Build workflow
 
