@@ -18,14 +18,14 @@ Insurance is a means of protection from financial loss. An insurance policy is a
 | LI SHENG | A0150700Y | UI Design and Development | e0015786@u.nus.edu |
 | VEDA YOGEESHA | A0213556H | Team Lead, Documentation, UI Screen, Database set up and normalization, Documentaiton, Data mining, Domain Expert | e0508657@u.nus.edu |
 
-## SECTION 4 : Video Presentation
-https://youtu.be/8rgjBga2Eko
-
-
 ---
-## SECTION 4 : VIDEO OF SYSTEM MODELLING & USE CASE DEMO
+## SECTION 4.1 : VIDEO OF SYSTEM MODELLING & USE CASE DEMO
 
 [Introduction Video](https://youtu.be/TClfU8v5sDg)
+
+## SECTION 4.2 : VIDEO PRESENTATION
+
+[Video Presentation](https://youtu.be/8rgjBga2Eko)
 
 ---
 ## SECTION 5 : USER GUIDE
