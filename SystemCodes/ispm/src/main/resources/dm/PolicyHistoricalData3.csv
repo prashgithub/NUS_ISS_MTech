@@ -1,4 +1,4 @@
-Insurance Provider,Gender,Age,Occupation,Marital Status,Family Size,Income Enhanced IncomeShield Preferred,Expenditure,Loan Category,Loan Amount,Pending Payemnt
+Insurance Provider,Gender,Age,Occupation,Marital Status,Family Size,Income,Expenditure,Loan Category,Loan Amount,Pending Payemnt
 AXA Shield Plan A,FEMALE,21,CLERK,MARRIED,3,750000,25641,GOLD LOAN,214569,16324
 AXA Shield Plan A,FEMALE,21,BANK MANAGER,MARRIED,4,930000,35680,HOUSING,679040,34000
 AXA Shield Plan A,FEMALE,24,PRODUCT ENGINEER,MARRIED,6,118927,29000,SHOPPING,80660,4500
