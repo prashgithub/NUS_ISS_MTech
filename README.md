@@ -16,6 +16,7 @@ Insurance is a means of protection from financial loss. An insurance policy is a
 | :------------ |:---------------:| :-----| :-----|
 | ZHANG YU | A0213498X | KIE workflow, Opta, Data mining and Integration | e0508599@u.nus.edu |
 | LI SHENG | A0150700Y | UI Design and Development | e0015786@u.nus.edu |
+| VEDA YOGEESHA | A0213556H | Team Lead, Documentation, UI Screen, Database set up and normalization, Documentaiton, Data mining, Domain Expert | e0508657@u.nus.edu |
 
 
 
@@ -27,7 +28,7 @@ Insurance is a means of protection from financial loss. An insurance policy is a
 ---
 ## SECTION 5 : USER GUIDE
 
-`<Github File Link>` : <https://github.com/prashgithub/NUS_ISS_MTech/blob/master/User%20Manual.pptx>
+`<Github File Link>` : <https://github.com/prashgithub/NUS_ISS_MTech/blob/master/ProjectReport/UserManual.zip>
 
 ### [ 1 ] To run the system in windows or iss-vm
 
@@ -42,30 +43,71 @@ Insurance is a means of protection from financial loss. An insurance policy is a
 ---
 ## SECTION 6 : PROJECT REPORT / PAPER
 
-`<Github File Link>` : <https://github.com/prashgithub/NUS_ISS_MTech/blob/master/Functional_Specification_Document.docx>
+`<Github File Link>` : <https://github.com/prashgithub/NUS_ISS_MTech/blob/master/ProjectReport/Project%20Report.pdf>
 
-**Sections for Project Report / Paper:**
-1.	Introduction	
-	1. Purpose of the document	
-	2. Project Scope	
-	3. Scope of the document	
-	4. Terms/Acronyms and Definitions	
-	5. Risks and Assumptions	
-2. System/ Solution Overview	
-	1. Basics of Health Insurance in Singapore	
-	2. Dialogflow	
-	3. Data mining	
-	4. Multi criteria decision making model	
+Table of Contents
+-------------------------------------------------
+
+1.	Introduction
+	1. Purpose of the document
+	2. Project Scope
+	3. Scope of the document
+	4. Terms/Acronyms and Definitions
+	5. Risks and Assumptions
+
+2.	System/ Solution Overview
+	1. Basics of Health Insurance in Singapore
+	2. Dialogflow
+	3. Data mining
+	4. Multi criteria decision making model
 	5. OptaPlanner
-	6. Intuitionistic Fuzzy sets (IFS)	
-3. Functional Specifications	
-	1. System Design	
-4. References	
-5. Appendix	
+	6. Intuitionistic Fuzzy sets (IFS)
+
+3.	Functional Specifications
+	1. Knowledge Modelling
+	2. Use cases
+	3. Field level specifications
+	4. Form Business Rules and Dependencies
+	5. UML Diagrams
+
+4.	System Model
+	1. System Architecture
+	2. Mock-up
+	
+5.	References
+
+6.	Appendix
+	1. Future enhancements	2.7
+	2. Matrix of the knowledge learnt with the system development cycle
+	3. System Guides
 
 ---
 ## SECTION 7 : MISCELLANEOUS
 
-### DEFINITION OF INTEGRATED SHIELD PLAN
-An Integrated Shield Plan (IP) provides coverage on top of your MediShield Life. Different types of IPs provide different coverage. Some cover you for a higher-type ward (A/B1) in a public hospital, while others cover admission into a private hospital.MediShield Life is the most basic sort of health insurance and covers basic healthcare in public hospitals’ lower-class wards. However, addition of Integrated Shield Plan (IP) gives you the option to get treated in better class wards and private hospitals, managed by the private insurer.
+Term Description
+------------------------------------------------------
+
+1. An Integrated Shield Plan (IP): provides coverage on top of your MediShield Life. Different types of IPs provide different coverage. Some cover you for a higher-type ward (A/B1) in a public hospital, while others cover admission into a private hospital.MediShield Life is the most basic sort of health insurance and covers basic healthcare in public hospitals’ lower-class wards. However, addition of Integrated Shield Plan (IP) gives you the option to get treated in better class wards and private hospitals, managed by the private insurer.
+
+2. Premium:	Your premium is what you’ll pay the insurance company for the privilege of having an active insurance plan. Most people pay theirs every month, but your payments might be due once a quarter or once a year.
+
+3. Co-payment:	The co-payment (or co-pay) is the amount you owe each time you receive certain types of medical care. Co-pays can vary depending on the kind of service you’re getting. For example, you may have to pay a $30 co-pay for each visit to your GP and $60 for each visit to a specialist.
+
+4. Coinsurance:	After you’ve met your deductible for the year you’re not off the hook when it comes to medical bills. You’ll generally face some amount of coinsurance. That’s the percentage you’ll pay of medical expenses. For example, you might meet your $2,500 deductible in May and from then on your coinsurance would be 20%. That means you would pay $20 of a $100 bill and the insurance company would pay the other $80.
+
+5. Claim limits: There are limits to what you can claim under a policy. For example, limits may be included for all claims as well as for each illness, disability, per month, year, or for a lifetime.
+
+6. Age limit: There is no age limit for MediShield Life. It covers you for life, and there is no age limit for entry into the scheme. Private insurance plans may have an age limit, and may not be available to you once you reach a certain age. Some health insurance policies provide cover for your whole life.
+
+7. Policy riders: A policy rider may be added to an existing policy, which provides additional coverage.
+
+8. Claim: a request by a plan member, or a plan member's health care provider, for the insurance company to pay for medical services.
+
+9. Underwriting: the process by which health insurance companies determine whether to extend coverage to an applicant and/or set the policy's premium.
+
+10. Pre-existing condition:	a health problem that has been diagnosed, or for which you have been treated, before buying a health insurance plan.
+
+11. Deductible:	A deductible is what you pay annually for health services before your insurance company pays its share. For instance, if you have a deductible of $1,000, your insurance plan might not start covering its share of your bills until you’ve paid $1,000 for healthcare in a given year. However, plans often cover the cost of things like preventive care doctor’s visits even before you’ve paid your full deductible amount.
+
+
 
