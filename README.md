@@ -44,21 +44,21 @@
 
 **Sections for Project Report / Paper:**
 1.	Introduction	
-1.1	Purpose of the document	
-1.2	Project Scope	
-1.3	Scope of the document	
-1.4      Terms/Acronyms and Definitions	
-1.5      Risks and Assumptions	
-2.	System/ Solution Overview	
-2.1 	Basics of Health Insurance in Singapore	
-2.2 Dialogflow	
-2.3 Data mining	
-2.4 Multi criteria decision making model	
-2.5 OptaPlanner
-2.6 Intuitionistic Fuzzy sets (IFS)	
-3.	Functional Specifications	
-3.1 System Design	
-3.	References	
+	1. Purpose of the document	
+	2. Project Scope	
+	3. Scope of the document	
+	4. Terms/Acronyms and Definitions	
+	5. Risks and Assumptions	
+2. System/ Solution Overview	
+	1. Basics of Health Insurance in Singapore	
+	2. Dialogflow	
+	3. Data mining	
+	4. Multi criteria decision making model	
+	5. OptaPlanner
+	6. Intuitionistic Fuzzy sets (IFS)	
+3. Functional Specifications	
+	1. System Design	
+	2. References	
 4.	Appendix	
 
 ---
