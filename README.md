@@ -16,6 +16,7 @@ Insurance is a means of protection from financial loss. An insurance policy is a
 | :------------ |:---------------:| :-----| :-----|
 | ZHANG YU | A0213498X | KIE workflow, Opta, Data mining and Integration | e0508599@u.nus.edu |
 | LI SHENG | A0150700Y | UI Design and Development | e0015786@u.nus.edu |
+| VEDA YOGEESHA | A0213556H | Team Lead, Documentation, UI Screen, Database set up and normalization, Documentaiton, Data mining, Domain Expert | e0508657@u.nus.edu |
 
 
 
@@ -27,7 +28,7 @@ Insurance is a means of protection from financial loss. An insurance policy is a
 ---
 ## SECTION 5 : USER GUIDE
 
-`<Github File Link>` : <https://github.com/prashgithub/NUS_ISS_MTech/blob/master/User%20Manual.pptx>
+`<Github File Link>` : <https://github.com/prashgithub/NUS_ISS_MTech/blob/master/ProjectReport/UserManual.zip>
 
 ### [ 1 ] To run the system in windows or iss-vm
 
@@ -42,26 +43,43 @@ Insurance is a means of protection from financial loss. An insurance policy is a
 ---
 ## SECTION 6 : PROJECT REPORT / PAPER
 
-`<Github File Link>` : <https://github.com/prashgithub/NUS_ISS_MTech/blob/master/Functional_Specification_Document.docx>
+`<Github File Link>` : <https://github.com/prashgithub/NUS_ISS_MTech/blob/master/ProjectReport/Project%20Report.pdf>
 
-**Sections for Project Report / Paper:**
-1.	Introduction	
-	1. Purpose of the document	
-	2. Project Scope	
-	3. Scope of the document	
-	4. Terms/Acronyms and Definitions	
-	5. Risks and Assumptions	
-2. System/ Solution Overview	
-	1. Basics of Health Insurance in Singapore	
-	2. Dialogflow	
-	3. Data mining	
-	4. Multi criteria decision making model	
+Table of Contents
+-------------------------------------------------
+
+1.	Introduction
+	1. Purpose of the document
+	2. Project Scope
+	3. Scope of the document
+	4. Terms/Acronyms and Definitions
+	5. Risks and Assumptions
+
+2.	System/ Solution Overview
+	1. Basics of Health Insurance in Singapore
+	2. Dialogflow
+	3. Data mining
+	4. Multi criteria decision making model
 	5. OptaPlanner
-	6. Intuitionistic Fuzzy sets (IFS)	
-3. Functional Specifications	
-	1. System Design	
-4. References	
-5. Appendix	
+	6. Intuitionistic Fuzzy sets (IFS)
+
+3.	Functional Specifications
+	1. Knowledge Modelling
+	2. Use cases
+	3. Field level specifications
+	4. Form Business Rules and Dependencies
+	5. UML Diagrams
+
+4.	System Model
+	1. System Architecture
+	2. Mock-up
+	
+5.	References
+
+6.	Appendix
+	1. Future enhancements	2.7
+	2. Matrix of the knowledge learnt with the system development cycle
+	3. System Guides
 
 ---
 ## SECTION 7 : MISCELLANEOUS
