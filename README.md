@@ -23,10 +23,6 @@ Insurance is a means of protection from financial loss. An insurance policy is a
 
 [Introduction Video](https://youtu.be/TClfU8v5sDg)
 
-## SECTION 4.2 : VIDEO PRESENTATION
-
-[Video Presentation](https://youtu.be/8rgjBga2Eko)
-
 ---
 ## SECTION 5 : USER GUIDE
 
