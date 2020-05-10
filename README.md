@@ -15,6 +15,7 @@ Insurance is a means of protection from financial loss. An insurance policy is a
 | Official Full Name  | Student ID (MTech Applicable)  | Work Items (Who Did What) | Email (Optional) |
 | :------------ |:---------------:| :-----| :-----|
 | ZHANG YU | A0213498X | KIE workflow, Opta, Data mining and Integration | e0508599@u.nus.edu |
+| Li Sheng | A0150700Y | UI Design and Development | e0015786@u.nus.edu |
 
 
 
