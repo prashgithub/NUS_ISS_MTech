@@ -58,8 +58,8 @@
 	6. Intuitionistic Fuzzy sets (IFS)	
 3. Functional Specifications	
 	1. System Design	
-	2. References	
-4.	Appendix	
+4. References	
+5. Appendix	
 
 ---
 ## SECTION 7 : MISCELLANEOUS
