@@ -40,7 +40,7 @@ Insurance is a means of protection from financial loss. An insurance policy is a
 
 > to run the application, setup Section "Prerequisite" in readme.md and double click startWebApp.bat
 
-> **Go to URL using web browser** http://127.0.0.1:8090 or http://0.0.0.0:8090 
+> **Go to URL using web browser** http://127.0.0.1:8092 or http://0.0.0.0:8092 
 
 ---
 ## SECTION 6 : PROJECT REPORT / PAPER
