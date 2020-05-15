@@ -16,7 +16,7 @@ Insurance is a means of protection from financial loss. An insurance policy is a
 | PRASHANT CHAUDHARY | A0213485E | Inception, Domain Concepts/Ideas, Restful APIs, Question Module Design, H2 DB for initial Stage, Dialog-Flow, Normalization/GRA/MCDM Calculation Module, Spring Integration, Video Documentation/Presentation | e0508586@u.nus.edu |
 | ZHANG YU | A0213498X | KIE workflow, Opta, Data mining and Integration | e0508599@u.nus.edu |
 | LI SHENG | A0150700Y | UI Design and Development | e0015786@u.nus.edu |
-| VEDA YOGEESHA | A0213556H | Team Lead, Documentation, UI Screen, Database set up and normalization, Documentaiton, Data mining, Domain Expert | e0508657@u.nus.edu |
+| VEDA YOGEESHA | A0213556H | Team Lead, Documentation, UI Screen Design, Database set up and normalization, Reasearch and Study on MCDM, GRA approaches, Data mining, Domain Expert | e0508657@u.nus.edu |
 
 ---
 ## SECTION 4.1 : VIDEO PRESENTATION
